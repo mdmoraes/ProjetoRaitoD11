@@ -15,10 +15,12 @@ type
     MenuSubImportarPlanilha: TMenuItem;
     MenuSubProdutos: TMenuItem;
     MenuEmitirPedido: TMenuItem;
+    MenuSairdoSistema: TMenuItem;
     procedure MenuClienteClick(Sender: TObject);
     procedure MenuSubImportarPlanilhaClick(Sender: TObject);
     procedure MenuSubProdutosClick(Sender: TObject);
     procedure MenuEmitirPedidoClick(Sender: TObject);
+    procedure MenuSairdoSistemaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -29,7 +31,7 @@ var
   frmPrincipal: TfrmPrincipal;
 
 implementation
-uses UCadastroDeClientes, UImportarPlanilha, UCadastroDeProdutos; //UEmissaoDePedido;
+uses UCadastroDeClientes, UImportarPlanilha, UCadastroDeProdutos, UPedido;
 
 {$R *.dfm}
 
@@ -45,12 +47,20 @@ end;
 
 procedure TfrmPrincipal.MenuEmitirPedidoClick(Sender: TObject);
 begin
-//    try
-//    Application.CreateForm(TfrmEmissaoDePedido, frmEmissaoDePedido);
-//    frmEmissaoDePedido.ShowModal;
-//    finally
-//    frmEmissaoDePedido.Free;
-//    end;
+    try
+    Application.CreateForm(TfrmPedido, frmPedido);
+    frmPedido.ShowModal;
+    finally
+    frmPedido.Free;
+    end;
+end;
+
+procedure TfrmPrincipal.MenuSairdoSistemaClick(Sender: TObject);
+begin
+ if MessageDlg('Confirma sair do Sistema ?',mtConfirmation, [mbYes, mbNo], 0)= mrYes then
+  begin
+  Application.Terminate;
+  end;
 end;
 
 procedure TfrmPrincipal.MenuSubImportarPlanilhaClick(Sender: TObject);

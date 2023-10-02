@@ -17,9 +17,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Windows10 Dark');
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
-  Application.CreateForm(TfrmPedido, frmPedido);
   Application.Run;
 end.

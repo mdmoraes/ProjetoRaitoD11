@@ -38,5 +38,9 @@ object frmPrincipal: TfrmPrincipal
         OnClick = MenuEmitirPedidoClick
       end
     end
+    object MenuSairdoSistema: TMenuItem
+      Caption = 'Sair do Sistema'
+      OnClick = MenuSairdoSistemaClick
+    end
   end
 end
