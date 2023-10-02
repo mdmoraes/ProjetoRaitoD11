@@ -1,0 +1,18 @@
+ALTERAÇÕES DO SISTEMA RAITO:
+
+-Ao colocar para imprimir o pedido sistema trava.
+
+-Não consigo fazer alterações inclusões: numero de código, descrição.
+-Botão e-mail não funciona ( tenho que ficar procurando disco C, sistema raito ,e-mail).
+-Fazer rodar sistema rodar no mauser.
+-Pode deletar as Representações Reta e Dfm Auto peças.
+
+Dúvidas.
+
+Hoje só tenho a Cabexpress como representada e preciso saber:
+
+- Temos mais ou menos 3.000 itens. Cabe neste programa?
+- No campo de códigos teria que ter 11 caracteres.
+-Descrição do produto teria que ser maior.
+-Abrir mais um campo : código/quantia/unidade/produto/Blindagem.
+                                               Valor bruto/ICMS 18% ICMS 12%/ICMS7%/D1/D2/D3/valor li…
