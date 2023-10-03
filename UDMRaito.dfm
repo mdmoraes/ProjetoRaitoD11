@@ -1,6 +1,6 @@
 object DMRaito: TDMRaito
   Height = 480
-  Width = 640
+  Width = 720
   object FDConnection1: TFDConnection
     Params.Strings = (
       'Database=dbratio'
@@ -511,16 +511,20 @@ object DMRaito: TDMRaito
   end
   object FdTableItens: TFDTable
     Active = True
-    IndexFieldNames = 'codinc'
+    IndexFieldNames = 'id_pedido'
+    MasterSource = dsPedido
+    MasterFields = 'num_pedido'
+    DetailFields = 'id_pedido'
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.itens'
-    Left = 136
-    Top = 104
+    Left = 272
+    Top = 112
     object fdtncfldFdTableItenscodinc: TFDAutoIncField
       FieldName = 'codinc'
       Origin = 'codinc'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FdTableItensid_pedido: TIntegerField
       FieldName = 'id_pedido'
@@ -586,5 +590,15 @@ object DMRaito: TDMRaito
       FieldName = 'marcado'
       Origin = 'marcado'
     end
+  end
+  object dsPedido: TDataSource
+    DataSet = FdTablePedido
+    Left = 112
+    Top = 104
+  end
+  object dsItens: TDataSource
+    DataSet = FdTableItens
+    Left = 352
+    Top = 120
   end
 end

@@ -117,6 +117,8 @@ type
     fltfldFdTableItensvalorliquido: TFloatField;
     strngfldFdTableItensgrupo: TStringField;
     FdTableItensmarcado: TShortintField;
+    dsPedido: TDataSource;
+    dsItens: TDataSource;
   private
     { Private declarations }
   public

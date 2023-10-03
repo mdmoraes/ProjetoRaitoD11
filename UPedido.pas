@@ -11,7 +11,6 @@ type
   TfrmPedido = class(TForm)
     lbl: TLabel;
     dbedtnum_pedido: TDBEdit;
-    dsPedido: TDataSource;
     lbl1: TLabel;
     dbedtdata_pedido: TDBEdit;
     lbl2: TLabel;
@@ -19,7 +18,6 @@ type
     Label1: TLabel;
     DBEdit1: TDBEdit;
     dbgrdItens: TDBGrid;
-    dsItens: TDataSource;
     panelNav: TPanel;
     btnNovo: TSpeedButton;
     btnAlterar: TSpeedButton;
@@ -31,6 +29,7 @@ type
     btnCancelar: TSpeedButton;
     btnGravar: TSpeedButton;
     procedure btnNovoClick(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,21 +46,20 @@ uses UDMRaito;
 
 {$R *.dfm}
 
+procedure TfrmPedido.btn1Click(Sender: TObject);
+begin
+Close;
+end;
+
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
 var it: Integer;
 begin
   panelConfirma.Enabled:= True;
   panelNav.Visible:= False;
-
-
-
-       try      //EVENTO ACUMULADOR DE REGISTROS ...MAMO...
+       try
           DMRaito.FdTablePedido.DisableControls;
-          try
-       //   DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
           DMRaito.FdTablePedido.First;
           DMRaito.FdTablePedido.Last;
-
           if DMRaito.FdTablePedido['num_pedido']<> null then
           it := DMRaito.FdTablePedido['num_pedido']
           else
@@ -69,14 +67,10 @@ begin
           DMRaito.FdTablePedido.Insert;
           DMRaito.FdTablePedido['num_pedido'] := it + 1;
           DMRaito.FdTablePedido['data_pedido']:= DateToStr(Now);
-
           DBEdit1.SetFocus;
-
           finally
           DMRaito.FdTablePedido.EnableControls;
           end;
-       finally
-       end;
 end;
 
 end.

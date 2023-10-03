@@ -142,7 +142,7 @@ object frmPedido: TfrmPedido
     Width = 67
     Height = 23
     DataField = 'num_pedido'
-    DataSource = dsPedido
+    DataSource = DMRaito.dsPedido
     TabOrder = 0
   end
   object dbedtdata_pedido: TDBEdit
@@ -151,7 +151,7 @@ object frmPedido: TfrmPedido
     Width = 154
     Height = 23
     DataField = 'data_pedido'
-    DataSource = dsPedido
+    DataSource = DMRaito.dsPedido
     TabOrder = 1
   end
   object dbedtrepresentada: TDBEdit
@@ -160,7 +160,6 @@ object frmPedido: TfrmPedido
     Width = 393
     Height = 23
     DataField = 'representada'
-    DataSource = dsPedido
     TabOrder = 2
   end
   object DBEdit1: TDBEdit
@@ -169,7 +168,6 @@ object frmPedido: TfrmPedido
     Width = 433
     Height = 23
     DataField = 'cliente'
-    DataSource = dsPedido
     TabOrder = 3
   end
   object dbgrdItens: TDBGrid
@@ -177,7 +175,7 @@ object frmPedido: TfrmPedido
     Top = 312
     Width = 1097
     Height = 201
-    DataSource = dsItens
+    DataSource = DMRaito.dsItens
     TabOrder = 4
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -194,7 +192,7 @@ object frmPedido: TfrmPedido
       item
         Expanded = False
         FieldName = 'id_pedido'
-        Width = 46
+        Width = 74
         Visible = True
       end
       item
@@ -379,13 +377,14 @@ object frmPedido: TfrmPedido
       ParentFont = False
       TabOrder = 0
       TabStop = False
+      OnClick = btn1Click
     end
     object dbnv1: TDBNavigator
       Left = 21
       Top = 8
       Width = 144
       Height = 18
-      DataSource = dsPedido
+      DataSource = DMRaito.dsPedido
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       Hints.Strings = (
         'Primeiro'
@@ -396,15 +395,5 @@ object frmPedido: TfrmPedido
       ShowHint = True
       TabOrder = 1
     end
-  end
-  object dsPedido: TDataSource
-    DataSet = DMRaito.FdTablePedido
-    Left = 1168
-    Top = 128
-  end
-  object dsItens: TDataSource
-    DataSet = DMRaito.FdTableItens
-    Left = 1160
-    Top = 304
   end
 end
