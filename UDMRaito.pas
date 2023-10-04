@@ -119,6 +119,7 @@ type
     FdTableItensmarcado: TShortintField;
     dsPedido: TDataSource;
     dsItens: TDataSource;
+    dsCliente: TDataSource;
   private
     { Private declarations }
   public

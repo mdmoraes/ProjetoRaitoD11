@@ -8,21 +8,10 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, Vcl.StdCtrls,
   Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.Buttons;
+  Vcl.Buttons, Vcl.Consts;
 
 type
   TfrmCadastroClientes = class(TForm)
-    lbl: TLabel;
-    dbedtnomecliente: TDBEdit;
-    ds: TDataSource;
-    lbl2: TLabel;
-    dbedtregiao: TDBEdit;
-    lbl1: TLabel;
-    dbedtdatacadastro: TDBEdit;
-    lbl3: TLabel;
-    dbedtendereco: TDBEdit;
-    lbl4: TLabel;
-    dbedtbairro: TDBEdit;
     pnlContainer: TPanel;
     pnlNav: TPanel;
     btnNovo: TSpeedButton;
@@ -34,6 +23,19 @@ type
     pnlConfirma: TPanel;
     btnCancelar: TSpeedButton;
     btnGravar: TSpeedButton;
+    panelTela: TPanel;
+    lbl: TLabel;
+    lbl2: TLabel;
+    lbl1: TLabel;
+    lbl3: TLabel;
+    lbl4: TLabel;
+    dbedtnomecliente: TDBEdit;
+    dbedtregiao: TDBEdit;
+    dbedtdatacadastro: TDBEdit;
+    dbedtendereco: TDBEdit;
+    dbedtbairro: TDBEdit;
+    lbl5: TLabel;
+    dbedtidcliente: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -62,15 +64,19 @@ end;
 
 procedure TfrmCadastroClientes.btnAlterarClick(Sender: TObject);
 begin
-pnlConfirma.Enabled:= True;
+    pnlConfirma.Enabled:= True;
     pnlNav.Visible:= False;
+    panelTela.Enabled:= True;
     DMRaito.FDTableCliente.Edit;
+    //panelTela.Enabled:= False;
+
 end;
 
 procedure TfrmCadastroClientes.btnCancelarClick(Sender: TObject);
 begin
-  pnlConfirma.Enabled:= False;
+    pnlConfirma.Enabled:= False;
     pnlNav.Visible:= True;
+    panelTela.Enabled:= False;
     DMRaito.FDTableCliente.Cancel;
 end;
 
@@ -80,16 +86,20 @@ begin
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
     DMRaito.FDTableCliente.Delete;
+    ShowMessage('Registro excluído com sucesso.!');
+
   end;
 end;
 
 procedure TfrmCadastroClientes.btnGravarClick(Sender: TObject);
 begin
-DMRaito.FDTableCliente.Edit;
+    panelTela.Enabled:= True;
+    DMRaito.FDTableCliente.Edit;
     DMRaito.FDTableCliente.Post;
     ShowMessage('Registro gravado com sucesso.!');
     pnlConfirma.Enabled:= False;
     pnlNav.Visible:= True;
+    panelTela.Enabled:= False;
 end;
 
 procedure TfrmCadastroClientes.btnNovoClick(Sender: TObject);
@@ -97,11 +107,12 @@ procedure TfrmCadastroClientes.btnNovoClick(Sender: TObject);
 begin
   pnlConfirma.Enabled:= True;
   pnlNav.Visible:= False;
+  panelTela.Enabled:= True;
 
        try      //EVENTO ACUMULADOR DE REGISTROS ...MAMO...
           DMRaito.FDTableCliente.DisableControls;
           try
-       //   DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
+          DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
           DMRaito.FDTableCliente.First;
           DMRaito.FDTableCliente.Last;
 
@@ -120,6 +131,7 @@ begin
           end;
        finally
        end;
+
 //   pnlConfirma.Visible:= False;
 //  pnlNav.Visible:= True;
 

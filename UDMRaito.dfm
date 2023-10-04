@@ -14,7 +14,7 @@ object DMRaito: TDMRaito
   end
   object FDTableCliente: TFDTable
     Active = True
-    IndexFieldNames = 'idcliente'
+    IndexName = 'IdxCliente'
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.cadastroclientes'
@@ -291,8 +291,8 @@ object DMRaito: TDMRaito
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.cadastroprodutos'
-    Left = 168
-    Top = 16
+    Left = 224
+    Top = 8
     object FdTableCadastroProdutosidproduto: TIntegerField
       FieldName = 'idproduto'
       Origin = 'idproduto'
@@ -600,5 +600,10 @@ object DMRaito: TDMRaito
     DataSet = FdTableItens
     Left = 352
     Top = 120
+  end
+  object dsCliente: TDataSource
+    DataSet = FDTableCliente
+    Left = 104
+    Top = 16
   end
 end

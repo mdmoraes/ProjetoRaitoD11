@@ -10,7 +10,8 @@ uses
   UCadastroDeProdutos in 'UCadastroDeProdutos.pas' {frmCadastroDeProdutos},
   UPedido in 'UPedido.pas' {frmPedido},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  Vcl.Consts in 'Vcl.Consts.pas';
 
 {$R *.res}
 

@@ -127,6 +127,7 @@
             <Form>frmPedido</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Vcl.Consts.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

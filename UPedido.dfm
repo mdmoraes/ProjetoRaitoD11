@@ -2,7 +2,7 @@ object frmPedido: TfrmPedido
   Left = 0
   Top = 0
   Caption = 'Emiss'#227'o de Pedido'
-  ClientHeight = 681
+  ClientHeight = 662
   ClientWidth = 1288
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -12,44 +12,12 @@ object frmPedido: TfrmPedido
   Font.Style = []
   Position = poScreenCenter
   TextHeight = 15
-  object lbl: TLabel
-    Left = 40
-    Top = 16
-    Width = 67
-    Height = 15
-    Caption = 'num_pedido'
-    FocusControl = dbedtnum_pedido
-  end
-  object lbl1: TLabel
-    Left = 1120
-    Top = 16
-    Width = 65
-    Height = 15
-    Caption = 'data_pedido'
-    FocusControl = dbedtdata_pedido
-  end
-  object lbl2: TLabel
-    Left = 552
-    Top = 16
-    Width = 68
-    Height = 15
-    Caption = 'representada'
-    FocusControl = dbedtrepresentada
-  end
-  object Label1: TLabel
-    Left = 113
-    Top = 16
-    Width = 35
-    Height = 15
-    Caption = 'cliente'
-    FocusControl = DBEdit1
-  end
   object panelConfirma: TPanel
-    Left = 147
-    Top = 577
+    Left = 243
+    Top = 611
     Width = 471
     Height = 34
-    TabOrder = 6
+    TabOrder = 1
     object btnCancelar: TSpeedButton
       Left = 42
       Top = 5
@@ -113,6 +81,7 @@ object frmPedido: TfrmPedido
         0303030303030303030303030303030303030303030303030303030303030303
         0303}
       NumGlyphs = 2
+      OnClick = btnCancelarClick
     end
     object btnGravar: TSpeedButton
       Left = 359
@@ -134,133 +103,15 @@ object frmPedido: TfrmPedido
         99337777777777F777F30B770077B039993377FFFFFF77F777330BB7007BB999
         93337777FF777777733370000000073333333777777773333333}
       NumGlyphs = 2
+      OnClick = btnGravarClick
     end
   end
-  object dbedtnum_pedido: TDBEdit
-    Left = 40
-    Top = 32
-    Width = 67
-    Height = 23
-    DataField = 'num_pedido'
-    DataSource = DMRaito.dsPedido
-    TabOrder = 0
-  end
-  object dbedtdata_pedido: TDBEdit
-    Left = 1120
-    Top = 32
-    Width = 154
-    Height = 23
-    DataField = 'data_pedido'
-    DataSource = DMRaito.dsPedido
-    TabOrder = 1
-  end
-  object dbedtrepresentada: TDBEdit
-    Left = 552
-    Top = 32
-    Width = 393
-    Height = 23
-    DataField = 'representada'
-    TabOrder = 2
-  end
-  object DBEdit1: TDBEdit
-    Left = 113
-    Top = 32
-    Width = 433
-    Height = 23
-    DataField = 'cliente'
-    TabOrder = 3
-  end
-  object dbgrdItens: TDBGrid
-    Left = 0
-    Top = 312
-    Width = 1097
-    Height = 201
-    DataSource = DMRaito.dsItens
-    TabOrder = 4
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -12
-    TitleFont.Name = 'Segoe UI'
-    TitleFont.Style = []
-    Columns = <
-      item
-        Expanded = False
-        FieldName = 'codinc'
-        Width = 38
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'id_pedido'
-        Width = 74
-        Visible = True
-      end
-      item
-        ButtonStyle = cbsEllipsis
-        DropDownRows = 10
-        Expanded = False
-        FieldName = 'codigo'
-        Width = 84
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'produto'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'grupo'
-        Width = 112
-        Visible = True
-      end
-      item
-        Alignment = taCenter
-        Expanded = False
-        FieldName = 'qtd'
-        Width = 42
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'unidade'
-        Title.Caption = 'unid.'
-        Width = 43
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'valorunit'
-        Title.Caption = 'val.Unit.'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'percentual1'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'percentual2'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'percentual3'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'marcado'
-        Visible = True
-      end>
-  end
   object panelNav: TPanel
-    Left = 56
-    Top = 577
-    Width = 673
+    Left = 72
+    Top = 611
+    Width = 873
     Height = 33
-    TabOrder = 5
+    TabOrder = 0
     object btnNovo: TSpeedButton
       Left = 171
       Top = 4
@@ -303,6 +154,7 @@ object frmPedido: TfrmPedido
         0FF03333737F37737F373330B00FFFFF0F033337F77F33337F733309030FFFFF
         00333377737FFFFF773333303300000003333337337777777333}
       NumGlyphs = 2
+      OnClick = btnAlterarClick
     end
     object btnExcluir: TSpeedButton
       Left = 324
@@ -324,6 +176,7 @@ object frmPedido: TfrmPedido
         333333377F33333333FF3333C333333330003333733333333777333333333333
         3000333333333333377733333333333333333333333333333333}
       NumGlyphs = 2
+      OnClick = btnExcluirClick
     end
     object btnPesquisa: TSpeedButton
       Left = 417
@@ -349,8 +202,117 @@ object frmPedido: TfrmPedido
       ParentShowHint = False
       ShowHint = True
     end
+    object btnImprimir: TSpeedButton
+      Left = 584
+      Top = 6
+      Width = 97
+      Height = 19
+      Hint = 'Gerar relat'#243'rio para Impressora ou para .PDF'
+      Caption = 'Imprimir'
+      Glyph.Data = {
+        360C0000424D360C000000000000360000002800000020000000200000000100
+        180000000000000C000000000000000000000000000000000000C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00000
+        00000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00000008080
+        80808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000000000C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C00000008080800000
+        00000000808080000000C0C0C0C0C0C0C0C0C0000000C0C0C0C0C0C0000000C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000808080000000C0C0
+        C0808080000000808080000000C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0C000
+        0000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000808080000000C0C0C0C0C0
+        C0808080808080000000808080000000808080808080C0C0C0000000C0C0C0C0
+        C0C0000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000808080000000C0C0C0C0C0C0C0C0
+        C0808080808080808080000000808080808080808080000000C0C0C0C0C0C0C0
+        C0C0C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0000000808080000000C0C0C0C0C0C0808080C0C0
+        C0808080808080808080808080000000808080000000808080808080C0C0C0C0
+        C0C0C0C0C0C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0000000C0C0C0000000C0C0C0C0C0C0808080C0C0C0C0C0
+        C0808080808080808080808080808080000000808080808080808080808080C0
+        C0C0000000C0C0C0C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0000000000000C0C0C0C0C0C0808080C0C0C0C0C0C0FFFF
+        FF80808080808080808080808080808080808000000080808080808080808000
+        0000C0C0C0C0C0C0C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0000000C0C0C0C0C0C0808080C0C0C0C0C0C0FFFFFFC0C0
+        C0FFFFFF80808080808080808080808080808080808000000080808000000080
+        8080808080C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000C0C0C0C0C0C0808080C0C0C0C0C0C0FFFFFFC0C0C0C0C0
+        C0C0C0C0FFFFFF80808080808080808080808080808080808000000080808080
+        8080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000C0C0C0808080C0C0C0C0C0C0FFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0FFFFFF80808080808080808080808080808080808000000080
+        8080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000C0C0C0C0C0C0C0C0C0FFFFFFC0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0FFFFFF80808080808080808080808080808080808000
+        0000000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000C0C0C0C0C0C0FFFFFFC0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF80808080808080808080808080808080
+        8080000000000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000C0C0C0FFFFFFC0C0C0C0C0C0C0C0C0800000C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF80808080808080808080808080
+        8080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000FFFFFFC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0800000C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF80808080808080808080
+        8080808080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000FFFFFFC0C0C0C0C0C0800000C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF80808080808080
+        8080808080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000000000FFFFFFC0C0C0C0C0C0800000C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF80808080
+        8080808080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0000000C0C0C0000000000000FFFFFFC0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FFFFFF80
+        8080808080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        000000C0C0C0000000FFFFFFFFFFFF000000FFFFFFC0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0FF
+        FFFF808080808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000
+        C0C0C0000000FFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFC0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0FFFFFF808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000
+        000000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF000000FFFFFFC0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF000000FFFFFFC0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0808080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000FFFFFF
+        FFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF000000FFFF
+        FFC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C080
+        8080000000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000
+        FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000
+        00FFFFFFC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C080808000
+        0000C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        000000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFF
+        FF000000FFFFFFC0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0808080000000C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0000000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FF000000000000FFFFFFC0C0C0C0C0C0C0C0C0C0C0C0808080000000C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0000000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFF0000
+        00C0C0C0000000000000FFFFFFC0C0C0C0C0C0808080000000C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000C0C0
+        C0000000C0C0C0C0C0C0000000FFFFFF808080000000C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0000000FFFFFFFFFFFFFFFFFF000000C0C0C00000
+        00C0C0C0C0C0C0C0C0C0C0C0C0000000000000C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000FFFFFF000000000000000000C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0000000C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0
+        C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0C0}
+      ParentShowHint = False
+      ShowHint = True
+    end
     object btn1: TBitBtn
-      Left = 568
+      Left = 760
       Top = 3
       Width = 87
       Height = 23
@@ -395,5 +357,188 @@ object frmPedido: TfrmPedido
       ShowHint = True
       TabOrder = 1
     end
+  end
+  object panelTela: TPanel
+    Left = 8
+    Top = 12
+    Width = 1272
+    Height = 593
+    Enabled = False
+    TabOrder = 2
+    object lbl: TLabel
+      Left = 0
+      Top = 16
+      Width = 40
+      Height = 15
+      Caption = 'N'#186' Ped.'
+      FocusControl = dbedtnum_pedido
+    end
+    object lbl1: TLabel
+      Left = 1184
+      Top = 16
+      Width = 65
+      Height = 15
+      Caption = 'data_pedido'
+      FocusControl = dbedtdata_pedido
+    end
+    object lbl2: TLabel
+      Left = 534
+      Top = 16
+      Width = 68
+      Height = 15
+      Caption = 'representada'
+      FocusControl = dbedtrepresentada
+    end
+    object lbl3: TLabel
+      Left = 63
+      Top = 16
+      Width = 35
+      Height = 15
+      Caption = 'cliente'
+      FocusControl = dbedtcliente
+    end
+    object dbgrdItens: TDBGrid
+      Left = 0
+      Top = 328
+      Width = 1233
+      Height = 201
+      DataSource = DMRaito.dsItens
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codinc'
+          Visible = False
+        end
+        item
+          Expanded = False
+          FieldName = 'id_pedido'
+          Title.Caption = 'N'#186' Ped.'
+          Width = 38
+          Visible = True
+        end
+        item
+          ButtonStyle = cbsEllipsis
+          DropDownRows = 10
+          Expanded = False
+          FieldName = 'codigo'
+          Width = 96
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'produto'
+          Width = 449
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'grupo'
+          Width = 64
+          Visible = True
+        end
+        item
+          Alignment = taCenter
+          Expanded = False
+          FieldName = 'qtd'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'unidade'
+          Title.Caption = 'unid.'
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'valorunit'
+          Title.Caption = 'val.Unit.'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'percentual1'
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'percentual2'
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'percentual3'
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'marcado'
+          Visible = True
+        end>
+    end
+    object dbedtnum_pedido: TDBEdit
+      Left = 0
+      Top = 32
+      Width = 57
+      Height = 23
+      DataField = 'num_pedido'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 1
+    end
+    object dbedtdata_pedido: TDBEdit
+      Left = 1184
+      Top = 32
+      Width = 83
+      Height = 23
+      DataField = 'data_pedido'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 2
+    end
+    object dbedtrepresentada: TDBEdit
+      Left = 534
+      Top = 32
+      Width = 203
+      Height = 23
+      DataField = 'representada'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 3
+    end
+    object dbedtcliente: TDBEdit
+      Left = 95
+      Top = 72
+      Width = 433
+      Height = 23
+      DataField = 'cliente'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 4
+    end
+    object lokupcliente: TDBLookupComboBox
+      Left = 63
+      Top = 33
+      Width = 465
+      Height = 21
+      Ctl3D = False
+      DataField = 'cliente'
+      DataSource = DMRaito.dsPedido
+      DropDownRows = 10
+      KeyField = 'idcliente'
+      ListField = 'nomecliente'
+      ListSource = DMRaito.dsCliente
+      ParentCtl3D = False
+      TabOrder = 5
+    end
+  end
+  object BalloonHint1: TBalloonHint
+    Left = 1192
+    Top = 616
   end
 end

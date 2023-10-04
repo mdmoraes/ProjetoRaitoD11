@@ -12,91 +12,6 @@ object frmCadastroClientes: TfrmCadastroClientes
   Font.Style = []
   Position = poMainFormCenter
   TextHeight = 17
-  object lbl: TLabel
-    Left = 8
-    Top = 8
-    Width = 70
-    Height = 17
-    Caption = 'nomecliente'
-    FocusControl = dbedtnomecliente
-  end
-  object lbl2: TLabel
-    Left = 343
-    Top = 8
-    Width = 38
-    Height = 17
-    Caption = 'regiao'
-    FocusControl = dbedtregiao
-  end
-  object lbl1: TLabel
-    Left = 1040
-    Top = 8
-    Width = 77
-    Height = 17
-    Caption = 'datacadastro'
-    FocusControl = dbedtdatacadastro
-  end
-  object lbl3: TLabel
-    Left = 8
-    Top = 56
-    Width = 55
-    Height = 17
-    Caption = 'endereco'
-    FocusControl = dbedtendereco
-  end
-  object lbl4: TLabel
-    Left = 471
-    Top = 56
-    Width = 36
-    Height = 17
-    Caption = 'bairro'
-    FocusControl = dbedtbairro
-  end
-  object dbedtnomecliente: TDBEdit
-    Left = 8
-    Top = 24
-    Width = 329
-    Height = 25
-    DataField = 'nomecliente'
-    DataSource = ds
-    TabOrder = 0
-  end
-  object dbedtregiao: TDBEdit
-    Left = 343
-    Top = 24
-    Width = 122
-    Height = 25
-    DataField = 'regiao'
-    DataSource = ds
-    TabOrder = 1
-  end
-  object dbedtdatacadastro: TDBEdit
-    Left = 1040
-    Top = 24
-    Width = 174
-    Height = 25
-    DataField = 'datacadastro'
-    DataSource = ds
-    TabOrder = 2
-  end
-  object dbedtendereco: TDBEdit
-    Left = 8
-    Top = 72
-    Width = 457
-    Height = 25
-    DataField = 'endereco'
-    DataSource = ds
-    TabOrder = 3
-  end
-  object dbedtbairro: TDBEdit
-    Left = 471
-    Top = 72
-    Width = 194
-    Height = 25
-    DataField = 'bairro'
-    DataSource = ds
-    TabOrder = 4
-  end
   object pnlContainer: TPanel
     Left = 8
     Top = 605
@@ -104,7 +19,7 @@ object frmCadastroClientes: TfrmCadastroClientes
     Height = 49
     Color = clTeal
     ParentBackground = False
-    TabOrder = 5
+    TabOrder = 0
     object pnlConfirma: TPanel
       Left = 107
       Top = 8
@@ -200,8 +115,8 @@ object frmCadastroClientes: TfrmCadastroClientes
       end
     end
     object pnlNav: TPanel
-      Left = 32
-      Top = 8
+      Left = 64
+      Top = 7
       Width = 673
       Height = 33
       TabOrder = 0
@@ -330,7 +245,7 @@ object frmCadastroClientes: TfrmCadastroClientes
         Top = 8
         Width = 144
         Height = 18
-        DataSource = ds
+        DataSource = DMRaito.dsCliente
         VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
         Hints.Strings = (
           'Primeiro'
@@ -343,9 +258,115 @@ object frmCadastroClientes: TfrmCadastroClientes
       end
     end
   end
-  object ds: TDataSource
-    DataSet = DMRaito.FDTableCliente
-    Left = 1048
-    Top = 136
+  object panelTela: TPanel
+    Left = 8
+    Top = 8
+    Width = 1233
+    Height = 577
+    Enabled = False
+    TabOrder = 1
+    object lbl: TLabel
+      Left = 8
+      Top = 8
+      Width = 70
+      Height = 17
+      Caption = 'nomecliente'
+      FocusControl = dbedtnomecliente
+    end
+    object lbl2: TLabel
+      Left = 343
+      Top = 8
+      Width = 38
+      Height = 17
+      Caption = 'regiao'
+      FocusControl = dbedtregiao
+    end
+    object lbl1: TLabel
+      Left = 1040
+      Top = 8
+      Width = 77
+      Height = 17
+      Caption = 'datacadastro'
+      FocusControl = dbedtdatacadastro
+    end
+    object lbl3: TLabel
+      Left = 8
+      Top = 56
+      Width = 55
+      Height = 17
+      Caption = 'endereco'
+      FocusControl = dbedtendereco
+    end
+    object lbl4: TLabel
+      Left = 471
+      Top = 56
+      Width = 36
+      Height = 17
+      Caption = 'bairro'
+      FocusControl = dbedtbairro
+    end
+    object lbl5: TLabel
+      Left = 544
+      Top = 16
+      Width = 48
+      Height = 17
+      Caption = 'idcliente'
+      FocusControl = dbedtidcliente
+    end
+    object dbedtnomecliente: TDBEdit
+      Left = 8
+      Top = 24
+      Width = 329
+      Height = 25
+      DataField = 'nomecliente'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 0
+    end
+    object dbedtregiao: TDBEdit
+      Left = 343
+      Top = 24
+      Width = 122
+      Height = 25
+      DataField = 'regiao'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 1
+    end
+    object dbedtdatacadastro: TDBEdit
+      Left = 1040
+      Top = 24
+      Width = 174
+      Height = 25
+      DataField = 'datacadastro'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 2
+    end
+    object dbedtendereco: TDBEdit
+      Left = 8
+      Top = 72
+      Width = 457
+      Height = 25
+      DataField = 'endereco'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 3
+    end
+    object dbedtbairro: TDBEdit
+      Left = 471
+      Top = 72
+      Width = 194
+      Height = 25
+      DataField = 'bairro'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 4
+    end
+    object dbedtidcliente: TDBEdit
+      Left = 544
+      Top = 32
+      Width = 174
+      Height = 25
+      DataField = 'idcliente'
+      DataSource = DMRaito.dsCliente
+      ReadOnly = True
+      TabOrder = 5
+    end
   end
 end
