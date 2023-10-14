@@ -8,7 +8,11 @@ uses
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB, Vcl.StdCtrls,
   Vcl.Mask, Vcl.ExtCtrls, Vcl.DBCtrls, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  Vcl.Buttons, Vcl.Consts;
+  Vcl.Buttons, Vcl.Consts, VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics,
+  VCL.TMSFNCGraphicsTypes, VCL.TMSFNCGridCell, VCL.TMSFNCGridOptions,
+  VCL.TMSFNCCustomControl, VCL.TMSFNCCustomScrollControl, VCL.TMSFNCGridData,
+  VCL.TMSFNCCustomGrid, VCL.TMSFNCGrid, VCL.TMSFNCCustomComponent,
+  VCL.TMSFNCGridDatabaseAdapter, Vcl.Grids, Vcl.DBGrids;
 
 type
   TfrmCadastroClientes = class(TForm)
@@ -36,12 +40,25 @@ type
     dbedtbairro: TDBEdit;
     lbl5: TLabel;
     dbedtidcliente: TDBEdit;
+    lbl6: TLabel;
+    dbedtcidade: TDBEdit;
+    lbl7: TLabel;
+    dbedtestado: TDBEdit;
+    lbl8: TLabel;
+    dbedtcep: TDBEdit;
+    lbl9: TLabel;
+    dbedtcnpj: TDBEdit;
+    lbl10: TLabel;
+    dbedtinscestadual: TDBEdit;
+    grp1: TGroupBox;
+    dbgrd1: TDBGrid;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
+    procedure dbgrd1DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -135,6 +152,11 @@ begin
 //   pnlConfirma.Visible:= False;
 //  pnlNav.Visible:= True;
 
+end;
+
+procedure TfrmCadastroClientes.dbgrd1DblClick(Sender: TObject);
+begin
+DMRaito.FdTableContatoCliente.Delete;
 end;
 
 end.

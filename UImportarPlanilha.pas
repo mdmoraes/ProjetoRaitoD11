@@ -96,10 +96,10 @@ begin
 //                 //if (s = nil) or (s = '') then
 //
 //                // if length(strGridExcel.Cells[10,I]) = 0 then
-//
+////
                  if (strGridExcel.Cells[10,I] = '') then
-
-                 DMRaito.FdTbImportacao.FieldByName('KG_KM').AsFloat := 0.00 else
+                 DMRaito.FdTbImportacao.FieldByName('KG_KM').AsFloat := 0
+                 else
                  DMRaito.FdTbImportacao.FieldByName('KG_KM').AsFloat := StrToFloat(strGridExcel.Cells[10,I]);
 
 

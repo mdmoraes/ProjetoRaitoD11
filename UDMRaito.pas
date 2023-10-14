@@ -59,10 +59,6 @@ type
     strngfldFdTbImportacaoblindagem: TStringField;
     strngfldFdTbImportacaotemperatura: TStringField;
     strngfldFdTbImportacaocustomp: TStringField;
-    FdTbImportacaokg_km: TSingleField;
-    FdTbImportacaoicms18: TSingleField;
-    FdTbImportacaoicms12: TSingleField;
-    FdTbImportacaoicms7: TSingleField;
     FdTableCadastroProdutos: TFDTable;
     FdTableCadastroProdutosidproduto: TIntegerField;
     strngfldFdTableCadastroProdutoscodigoproduto: TStringField;
@@ -100,26 +96,48 @@ type
     fltfldFdTablePedidototalliquido: TFloatField;
     fltfldFdTablePedidototalbruto: TFloatField;
     strngfldFdTablePedidotipopedido: TStringField;
-    FdTablePedidoidcliente: TIntegerField;
     FdTablePedidostatus: TIntegerField;
     strngfldFdTablePedidonumpedcliente: TStringField;
-    FdTableItens: TFDTable;
-    fdtncfldFdTableItenscodinc: TFDAutoIncField;
-    FdTableItensid_pedido: TIntegerField;
-    strngfldFdTableItenscodigo: TStringField;
-    fltfldFdTableItensqtd: TFloatField;
-    strngfldFdTableItensunidade: TStringField;
-    strngfldFdTableItensproduto: TStringField;
-    fltfldFdTableItensvalorunit: TFloatField;
-    fltfldFdTableItenspercentual1: TFloatField;
-    fltfldFdTableItenspercentual2: TFloatField;
-    fltfldFdTableItenspercentual3: TFloatField;
-    fltfldFdTableItensvalorliquido: TFloatField;
-    strngfldFdTableItensgrupo: TStringField;
+    fdtncfldFdTableItensfdtncfldFdTableItenscodinc: TFDAutoIncField;
+    TableFdTableItensTable_pedido: TIntegerField;
+    TableFdTableItensstrngfldFdTableItenscodigo: TStringField;
+    fltfldFdTableItensfltfldFdTableItensqtd: TFloatField;
+    TableFdTableItensstrngfldFdTableItensunidade: TStringField;
+    TableFdTableItensstrngfldFdTableItensproduto: TStringField;
+    fltfldFdTableItensfltfldFdTableItensvalorunit: TFloatField;
+    fltfldFdTableItensfltfldFdTableItenspercentual1: TFloatField;
+    fltfldFdTableItensfltfldFdTableItenspercentual2: TFloatField;
+    fltfldFdTableItensfltfldFdTableItenspercentual3: TFloatField;
+    fltfldFdTableItensfltfldFdTableItensvalorliquido: TFloatField;
+    TableFdTableItensstrngfldFdTableItensgrupo: TStringField;
     FdTableItensmarcado: TShortintField;
     dsPedido: TDataSource;
     dsItens: TDataSource;
     dsCliente: TDataSource;
+    FdTableTransportadora: TFDTable;
+    fdtncfldFdTableTransportadoraTransportadoraId: TFDAutoIncField;
+    strngfldFdTableTransportadoraNomeTransportadora: TStringField;
+    strngfldFdTableTransportadoraEndereço: TStringField;
+    strngfldFdTableTransportadoraTelefone1: TStringField;
+    strngfldFdTableTransportadoraemail: TStringField;
+    strngfldFdTableTransportadoraUF: TStringField;
+    strngfldFdTableTransportadoraCidade: TStringField;
+    strngfldFdTableTransportadoraContato: TStringField;
+    strngfldFdTableTransportadoraObs: TStringField;
+    strngfldFdTableTransportadoraCep: TStringField;
+    fltfldFdTbImportacaokg_km: TFloatField;
+    fltfldFdTbImportacaoicms18: TFloatField;
+    fltfldFdTbImportacaoicms12: TFloatField;
+    fltfldFdTbImportacaoicms7: TFloatField;
+    FdTableContatoCliente: TFDTable;
+    dsContatoCliente: TDataSource;
+    TableFdTableContatoClienteTipo: TStringField;
+    TableFdTableContatoClienteDadosDoTipo: TStringField;
+    TableFdTableContatoClienteNomeDoContato: TStringField;
+    TableFdTableContatoClienteIdCliente: TIntegerField;
+    TableFdTableContatoClienteContatoId: TIntegerField;
+    FdTableItens: TFDTable;
+    procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -134,5 +152,10 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDMRaito.FdTableContatoClienteBeforePost(DataSet: TDataSet);
+begin
+//     DMRaito.fdtncfldFdTableContatoClienteContatoId.Value:= DMRaito.FDTableClienteidcliente.Value;
+end;
 
 end.

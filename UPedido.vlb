@@ -13,9 +13,6 @@ Coordinates=994,782,62,36
 [panelNav]
 Coordinates=1123,10,69,58
 
-[DMRaito.FdTableItens]
-Coordinates=744,10,143,344
-
 [btnCancelar]
 Coordinates=900,782,84,36
 
@@ -55,4 +52,7 @@ Coordinates=174,463,110,36
 []
 Coordinates=612,188,88,36
 Visible=True
+
+[DMRaito.]
+Coordinates=744,10,143,344
 

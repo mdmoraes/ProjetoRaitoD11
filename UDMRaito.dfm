@@ -1,4 +1,4 @@
-object DMRaito: TDMRaito
+﻿object DMRaito: TDMRaito
   Height = 480
   Width = 720
   object FDConnection1: TFDConnection
@@ -14,6 +14,7 @@ object DMRaito: TDMRaito
   end
   object FDTableCliente: TFDTable
     Active = True
+    Filtered = True
     IndexName = 'IdxCliente'
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
@@ -264,25 +265,17 @@ object DMRaito: TDMRaito
       FieldName = 'customp'
       Size = 10
     end
-    object FdTbImportacaokg_km: TSingleField
-      AutoGenerateValue = arDefault
+    object fltfldFdTbImportacaokg_km: TFloatField
       FieldName = 'kg_km'
-      Origin = 'kg_km'
     end
-    object FdTbImportacaoicms18: TSingleField
-      AutoGenerateValue = arDefault
+    object fltfldFdTbImportacaoicms18: TFloatField
       FieldName = 'icms18'
-      Origin = 'icms18'
     end
-    object FdTbImportacaoicms12: TSingleField
-      AutoGenerateValue = arDefault
+    object fltfldFdTbImportacaoicms12: TFloatField
       FieldName = 'icms12'
-      Origin = 'icms12'
     end
-    object FdTbImportacaoicms7: TSingleField
-      AutoGenerateValue = arDefault
+    object fltfldFdTbImportacaoicms7: TFloatField
       FieldName = 'icms7'
-      Origin = 'icms7'
     end
   end
   object FdTableCadastroProdutos: TFDTable
@@ -482,6 +475,7 @@ object DMRaito: TDMRaito
       Origin = 'totalliquido'
     end
     object fltfldFdTablePedidototalbruto: TFloatField
+      Alignment = taCenter
       AutoGenerateValue = arDefault
       FieldName = 'totalbruto'
       Origin = 'totalbruto'
@@ -491,11 +485,6 @@ object DMRaito: TDMRaito
       FieldName = 'tipopedido'
       Origin = 'tipopedido'
       Size = 15
-    end
-    object FdTablePedidoidcliente: TIntegerField
-      FieldName = 'idcliente'
-      Origin = 'idcliente'
-      Required = True
     end
     object FdTablePedidostatus: TIntegerField
       AutoGenerateValue = arDefault
@@ -514,72 +503,72 @@ object DMRaito: TDMRaito
     IndexFieldNames = 'id_pedido'
     MasterSource = dsPedido
     MasterFields = 'num_pedido'
-    DetailFields = 'id_pedido'
+    DetailFields = 'codinc'
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.itens'
     Left = 272
     Top = 112
-    object fdtncfldFdTableItenscodinc: TFDAutoIncField
+    object fdtncfldFdTableItensfdtncfldFdTableItenscodinc: TFDAutoIncField
       FieldName = 'codinc'
       Origin = 'codinc'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object FdTableItensid_pedido: TIntegerField
+    object TableFdTableItensTable_pedido: TIntegerField
       FieldName = 'id_pedido'
       Origin = 'id_pedido'
       Required = True
     end
-    object strngfldFdTableItenscodigo: TStringField
+    object TableFdTableItensstrngfldFdTableItenscodigo: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'codigo'
       Origin = 'codigo'
       Size = 25
     end
-    object fltfldFdTableItensqtd: TFloatField
+    object fltfldFdTableItensfltfldFdTableItensqtd: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'qtd'
       Origin = 'qtd'
     end
-    object strngfldFdTableItensunidade: TStringField
+    object TableFdTableItensstrngfldFdTableItensunidade: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'unidade'
       Origin = 'unidade'
       Size = 15
     end
-    object strngfldFdTableItensproduto: TStringField
+    object TableFdTableItensstrngfldFdTableItensproduto: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'produto'
       Origin = 'produto'
       Size = 80
     end
-    object fltfldFdTableItensvalorunit: TFloatField
+    object fltfldFdTableItensfltfldFdTableItensvalorunit: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'valorunit'
       Origin = 'valorunit'
     end
-    object fltfldFdTableItenspercentual1: TFloatField
+    object fltfldFdTableItensfltfldFdTableItenspercentual1: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'percentual1'
       Origin = 'percentual1'
     end
-    object fltfldFdTableItenspercentual2: TFloatField
+    object fltfldFdTableItensfltfldFdTableItenspercentual2: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'percentual2'
       Origin = 'percentual2'
     end
-    object fltfldFdTableItenspercentual3: TFloatField
+    object fltfldFdTableItensfltfldFdTableItenspercentual3: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'percentual3'
       Origin = 'percentual3'
     end
-    object fltfldFdTableItensvalorliquido: TFloatField
+    object fltfldFdTableItensfltfldFdTableItensvalorliquido: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'valorliquido'
       Origin = 'valorliquido'
     end
-    object strngfldFdTableItensgrupo: TStringField
+    object TableFdTableItensstrngfldFdTableItensgrupo: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'grupo'
       Origin = 'grupo'
@@ -598,12 +587,130 @@ object DMRaito: TDMRaito
   end
   object dsItens: TDataSource
     DataSet = FdTableItens
-    Left = 352
+    Left = 344
     Top = 120
   end
   object dsCliente: TDataSource
     DataSet = FDTableCliente
     Left = 104
     Top = 16
+  end
+  object FdTableTransportadora: TFDTable
+    Active = True
+    IndexFieldNames = 'TransportadoraId'
+    Connection = FDConnection1
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'dbratio.transportadora'
+    Left = 240
+    Top = 192
+    object fdtncfldFdTableTransportadoraTransportadoraId: TFDAutoIncField
+      FieldName = 'TransportadoraId'
+      Origin = 'TransportadoraId'
+      ReadOnly = True
+    end
+    object strngfldFdTableTransportadoraNomeTransportadora: TStringField
+      FieldName = 'NomeTransportadora'
+      Origin = 'NomeTransportadora'
+      Required = True
+      Size = 80
+    end
+    object strngfldFdTableTransportadoraEndereço: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Endere'#231'o'
+      Origin = '`Endere'#231'o`'
+      Size = 80
+    end
+    object strngfldFdTableTransportadoraTelefone1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Telefone1'
+      Origin = 'Telefone1'
+      Size = 60
+    end
+    object strngfldFdTableTransportadoraemail: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'e-mail'
+      Origin = '`e-mail`'
+      Size = 80
+    end
+    object strngfldFdTableTransportadoraUF: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UF'
+      Origin = 'UF'
+      Size = 2
+    end
+    object strngfldFdTableTransportadoraCidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Cidade'
+      Origin = 'Cidade'
+      Size = 45
+    end
+    object strngfldFdTableTransportadoraContato: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Contato'
+      Origin = 'Contato'
+      Size = 80
+    end
+    object strngfldFdTableTransportadoraObs: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Obs'
+      Origin = 'Obs'
+      Size = 100
+    end
+    object strngfldFdTableTransportadoraCep: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Cep'
+      Origin = 'Cep'
+      Size = 12
+    end
+  end
+  object FdTableContatoCliente: TFDTable
+    Active = True
+    IndexFieldNames = 'IdCliente'
+    ConstraintsEnabled = True
+    MasterSource = dsCliente
+    MasterFields = 'idcliente'
+    Connection = FDConnection1
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'dbratio.contatocliente'
+    Left = 48
+    Top = 296
+    object TableFdTableContatoClienteContatoId: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayWidth = 10
+      FieldName = 'ContatoId'
+      Origin = 'ContatoId'
+    end
+    object TableFdTableContatoClienteIdCliente: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'IdCliente'
+      Origin = 'IdCliente'
+      Required = True
+    end
+    object TableFdTableContatoClienteTipo: TStringField
+      AutoGenerateValue = arDefault
+      DisplayWidth = 30
+      FieldName = 'Tipo'
+      Origin = 'Tipo'
+      Size = 45
+    end
+    object TableFdTableContatoClienteDadosDoTipo: TStringField
+      AutoGenerateValue = arDefault
+      DisplayWidth = 44
+      FieldName = 'DadosDoTipo'
+      Origin = 'DadosDoTipo'
+      Size = 80
+    end
+    object TableFdTableContatoClienteNomeDoContato: TStringField
+      AutoGenerateValue = arDefault
+      DisplayWidth = 26
+      FieldName = 'NomeDoContato'
+      Origin = 'NomeDoContato'
+      Size = 80
+    end
+  end
+  object dsContatoCliente: TDataSource
+    DataSet = FdTableContatoCliente
+    Left = 184
+    Top = 296
   end
 end

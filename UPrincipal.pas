@@ -4,7 +4,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.UITypes, Vcl.Consts;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, System.UITypes, Vcl.Consts,
+  VCL.TMSFNCTypes, VCL.TMSFNCUtils, VCL.TMSFNCGraphics, VCL.TMSFNCGraphicsTypes,
+  VCL.TMSFNCCustomControl, VCL.TMSFNCImage;
 
 type
   TfrmPrincipal = class(TForm)
@@ -16,11 +18,14 @@ type
     MenuSubProdutos: TMenuItem;
     MenuEmitirPedido: TMenuItem;
     MenuSairdoSistema: TMenuItem;
+    MenuTransportadora: TMenuItem;
+    TMSFNCImage1: TTMSFNCImage;
     procedure MenuClienteClick(Sender: TObject);
     procedure MenuSubImportarPlanilhaClick(Sender: TObject);
     procedure MenuSubProdutosClick(Sender: TObject);
     procedure MenuEmitirPedidoClick(Sender: TObject);
     procedure MenuSairdoSistemaClick(Sender: TObject);
+    procedure MenuTransportadoraClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +36,7 @@ var
   frmPrincipal: TfrmPrincipal;
 
 implementation
-uses UCadastroDeClientes, UImportarPlanilha, UCadastroDeProdutos, UPedido;
+uses UCadastroDeClientes, UImportarPlanilha, UCadastroDeProdutos, UPedido, UCadastroTransportadora;
 
 {$R *.dfm}
 
@@ -81,6 +86,18 @@ begin
     finally
     frmCadastroDeProdutos.Free;
     end;
+end;
+
+procedure TfrmPrincipal.MenuTransportadoraClick(Sender: TObject);
+begin
+   try
+    Application.CreateForm(TfrmCadastroTransportadora, frmCadastroTransportadora);
+    frmCadastroTransportadora.ShowModal;
+    finally
+    frmCadastroTransportadora.Free;
+    end;
+
+
 end;
 
 end.

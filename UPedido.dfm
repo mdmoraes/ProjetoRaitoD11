@@ -12,6 +12,22 @@ object frmPedido: TfrmPedido
   Font.Style = []
   Position = poScreenCenter
   TextHeight = 15
+  object lbl7: TLabel
+    Left = 976
+    Top = 611
+    Width = 61
+    Height = 15
+    Caption = 'totalliquido'
+    FocusControl = dbedttotalliquido
+  end
+  object lbl8: TLabel
+    Left = 1160
+    Top = 611
+    Width = 53
+    Height = 15
+    Caption = 'totalbruto'
+    FocusControl = dbedttotalbruto
+  end
   object panelConfirma: TPanel
     Left = 243
     Top = 611
@@ -107,8 +123,8 @@ object frmPedido: TfrmPedido
     end
   end
   object panelNav: TPanel
-    Left = 72
-    Top = 611
+    Left = 40
+    Top = 610
     Width = 873
     Height = 33
     TabOrder = 0
@@ -360,7 +376,7 @@ object frmPedido: TfrmPedido
   end
   object panelTela: TPanel
     Left = 8
-    Top = 12
+    Top = 14
     Width = 1272
     Height = 593
     Enabled = False
@@ -374,7 +390,7 @@ object frmPedido: TfrmPedido
       FocusControl = dbedtnum_pedido
     end
     object lbl1: TLabel
-      Left = 1184
+      Left = 648
       Top = 16
       Width = 65
       Height = 15
@@ -382,8 +398,8 @@ object frmPedido: TfrmPedido
       FocusControl = dbedtdata_pedido
     end
     object lbl2: TLabel
-      Left = 534
-      Top = 16
+      Left = 64
+      Top = 60
       Width = 68
       Height = 15
       Caption = 'representada'
@@ -395,12 +411,139 @@ object frmPedido: TfrmPedido
       Width = 35
       Height = 15
       Caption = 'cliente'
-      FocusControl = dbedtcliente
+    end
+    object lbl4: TLabel
+      Left = 63
+      Top = 105
+      Width = 78
+      Height = 15
+      Caption = 'transportadora'
+      FocusControl = dbedttransportadora
+    end
+    object btn2: TSpeedButton
+      Left = 611
+      Top = 34
+      Width = 23
+      Height = 22
+    end
+    object btnNovoCliente: TSpeedButton
+      Left = 611
+      Top = 33
+      Width = 23
+      Height = 25
+      Hint = 'Cadastrar novo Cliente.'
+      CustomHint = BalloonHint1
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000010000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        777777777777777777777770000007777777777FFFFFF77777770000AAAA0777
+        7777FFFFAAAAF77777770770000007777777F77FFFFFF7777777077777777777
+        7777F7777777777777770777777777779777F77777777777F777077000000779
+        7777F77FFFFFF77F77770000AAAA07999999FFFFAAAAF7FFFFFF077000000779
+        7777F77FFFFFF77F77770777777777779777F77777777777F777077777777777
+        7777F7777777777777770770000007777777F77FFFFFF77777770000AAAA0777
+        7777FFFFAAAAF77777770770000007777777F77FFFFFF7777777077777777777
+        7777F77777777777777777777777777777777777777777777777}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnNovoClienteClick
+    end
+    object btnNovaRepresentada: TSpeedButton
+      Left = 535
+      Top = 74
+      Width = 23
+      Height = 25
+      Hint = 'Cadastrar Nova Representada.'
+      CustomHint = BalloonHint1
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000010000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        777777777777777777777770000007777777777FFFFFF77777770000AAAA0777
+        7777FFFFAAAAF77777770770000007777777F77FFFFFF7777777077777777777
+        7777F7777777777777770777777777779777F77777777777F777077000000779
+        7777F77FFFFFF77F77770000AAAA07999999FFFFAAAAF7FFFFFF077000000779
+        7777F77FFFFFF77F77770777777777779777F77777777777F777077777777777
+        7777F7777777777777770770000007777777F77FFFFFF77777770000AAAA0777
+        7777FFFFAAAAF77777770770000007777777F77FFFFFF7777777077777777777
+        7777F77777777777777777777777777777777777777777777777}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnNovoClick
+    end
+    object btnNovaTransportadora: TSpeedButton
+      Left = 535
+      Top = 119
+      Width = 23
+      Height = 25
+      Hint = 'Cadastrar nova Transportadora.'
+      CustomHint = BalloonHint1
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000010000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        777777777777777777777770000007777777777FFFFFF77777770000AAAA0777
+        7777FFFFAAAAF77777770770000007777777F77FFFFFF7777777077777777777
+        7777F7777777777777770777777777779777F77777777777F777077000000779
+        7777F77FFFFFF77F77770000AAAA07999999FFFFAAAAF7FFFFFF077000000779
+        7777F77FFFFFF77F77770777777777779777F77777777777F777077777777777
+        7777F7777777777777770770000007777777F77FFFFFF77777770000AAAA0777
+        7777FFFFAAAAF77777770770000007777777F77FFFFFF7777777077777777777
+        7777F77777777777777777777777777777777777777777777777}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object lbl9: TLabel
+      Left = 9
+      Top = 152
+      Width = 85
+      Height = 15
+      Caption = 'condicoespagto'
+      FocusControl = dbedtcondicoespagto1
+    end
+    object lbl10: TLabel
+      Left = 153
+      Top = 152
+      Width = 91
+      Height = 15
+      Caption = 'comis.percentual'
+      FocusControl = dbedtcomissaopercentual
+    end
+    object lbl11: TLabel
+      Left = 252
+      Top = 152
+      Width = 76
+      Height = 15
+      Caption = 'comissaovalor'
+      FocusControl = dbedtcomissaovalor1
+    end
+    object lbl12: TLabel
+      Left = 9
+      Top = 208
+      Width = 19
+      Height = 15
+      Caption = 'obs'
+      FocusControl = dbmmoobs
+    end
+    object lbl13: TLabel
+      Left = 353
+      Top = 208
+      Width = 47
+      Height = 15
+      Caption = 'lembrete'
+      FocusControl = dbmmolembrete
     end
     object dbgrdItens: TDBGrid
       Left = 0
-      Top = 328
-      Width = 1233
+      Top = 379
+      Width = 1265
       Height = 201
       DataSource = DMRaito.dsItens
       TabOrder = 0
@@ -409,17 +552,18 @@ object frmPedido: TfrmPedido
       TitleFont.Height = -12
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnDblClick = dbgrdItensDblClick
       Columns = <
         item
           Expanded = False
           FieldName = 'codinc'
-          Visible = False
+          Visible = True
         end
         item
           Expanded = False
           FieldName = 'id_pedido'
           Title.Caption = 'N'#186' Ped.'
-          Width = 38
+          Width = 43
           Visible = True
         end
         item
@@ -439,7 +583,7 @@ object frmPedido: TfrmPedido
         item
           Expanded = False
           FieldName = 'grupo'
-          Width = 64
+          Width = 157
           Visible = True
         end
         item
@@ -452,7 +596,6 @@ object frmPedido: TfrmPedido
           Expanded = False
           FieldName = 'unidade'
           Title.Caption = 'unid.'
-          Width = 64
           Visible = True
         end
         item
@@ -464,19 +607,16 @@ object frmPedido: TfrmPedido
         item
           Expanded = False
           FieldName = 'percentual1'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'percentual2'
-          Width = 64
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'percentual3'
-          Width = 64
           Visible = True
         end
         item
@@ -495,7 +635,7 @@ object frmPedido: TfrmPedido
       TabOrder = 1
     end
     object dbedtdata_pedido: TDBEdit
-      Left = 1184
+      Left = 648
       Top = 32
       Width = 83
       Height = 23
@@ -504,41 +644,135 @@ object frmPedido: TfrmPedido
       TabOrder = 2
     end
     object dbedtrepresentada: TDBEdit
-      Left = 534
-      Top = 32
-      Width = 203
+      Left = 64
+      Top = 76
+      Width = 465
       Height = 23
       DataField = 'representada'
       DataSource = DMRaito.dsPedido
       TabOrder = 3
     end
-    object dbedtcliente: TDBEdit
-      Left = 95
-      Top = 72
-      Width = 433
-      Height = 23
-      DataField = 'cliente'
-      DataSource = DMRaito.dsPedido
-      TabOrder = 4
-    end
     object lokupcliente: TDBLookupComboBox
       Left = 63
       Top = 33
-      Width = 465
+      Width = 538
       Height = 21
       Ctl3D = False
       DataField = 'cliente'
       DataSource = DMRaito.dsPedido
       DropDownRows = 10
-      KeyField = 'idcliente'
+      KeyField = 'nomecliente'
       ListField = 'nomecliente'
       ListSource = DMRaito.dsCliente
       ParentCtl3D = False
+      TabOrder = 4
+    end
+    object dbedttransportadora: TDBEdit
+      Left = 63
+      Top = 121
+      Width = 466
+      Height = 23
+      DataField = 'transportadora'
+      DataSource = DMRaito.dsPedido
       TabOrder = 5
     end
+    object dbrgrptipopedido: TDBRadioGroup
+      Left = 737
+      Top = 16
+      Width = 185
+      Height = 53
+      Hint = 'Definir Tipo de Pedido: Apenas Or'#231'amento ou Venda Efetiva.'
+      CustomHint = BalloonHint1
+      Caption = 'Tipo de Pedido: '
+      Columns = 2
+      DataField = 'tipopedido'
+      DataSource = DMRaito.dsPedido
+      Items.Strings = (
+        'Or'#231'amento'
+        'Venda')
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 6
+      Values.Strings = (
+        'Or'#231'amento'
+        'Venda')
+    end
+    object dbedtcondicoespagto1: TDBEdit
+      Left = 9
+      Top = 173
+      Width = 144
+      Height = 23
+      DataField = 'condicoespagto'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 7
+    end
+    object dbedtcomissaopercentual: TDBEdit
+      Left = 159
+      Top = 173
+      Width = 58
+      Height = 23
+      DataField = 'comissaopercentual'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 8
+    end
+    object dbedtcomissaovalor1: TDBEdit
+      Left = 250
+      Top = 173
+      Width = 97
+      Height = 23
+      DataField = 'comissaovalor'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 9
+    end
+    object dbmmoobs: TDBMemo
+      Left = 9
+      Top = 229
+      Width = 338
+      Height = 89
+      DataField = 'obs'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 10
+    end
+    object dbmmolembrete: TDBMemo
+      Left = 353
+      Top = 229
+      Width = 185
+      Height = 89
+      DataField = 'lembrete'
+      DataSource = DMRaito.dsPedido
+      TabOrder = 11
+    end
+    object rb1: TRadioButton
+      Left = 1016
+      Top = 272
+      Width = 113
+      Height = 17
+      Caption = 'rb1'
+      TabOrder = 12
+    end
+  end
+  object dbedttotalliquido: TDBEdit
+    Left = 976
+    Top = 627
+    Width = 121
+    Height = 23
+    DataField = 'totalliquido'
+    DataSource = DMRaito.dsPedido
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object dbedttotalbruto: TDBEdit
+    Left = 1103
+    Top = 626
+    Width = 154
+    Height = 23
+    DataField = 'totalbruto'
+    DataSource = DMRaito.dsPedido
+    ReadOnly = True
+    TabOrder = 4
   end
   object BalloonHint1: TBalloonHint
-    Left = 1192
-    Top = 616
+    Left = 1152
+    Top = 160
   end
 end

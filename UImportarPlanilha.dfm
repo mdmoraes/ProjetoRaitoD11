@@ -47,14 +47,16 @@ object frmImportarPlanilha: TfrmImportarPlanilha
   object lblRecordCount: TLabel
     Left = 8
     Top = 600
-    Width = 90
-    Height = 17
+    Width = 108
+    Height = 21
     Caption = 'lblRecordCount'
+    Color = 3937500
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
+    Font.Color = clRed
+    Font.Height = -16
     Font.Name = 'Segoe UI'
     Font.Style = []
+    ParentColor = False
     ParentFont = False
   end
   object strGridExcel: TStringGrid
@@ -99,8 +101,8 @@ object frmImportarPlanilha: TfrmImportarPlanilha
     Top = 264
   end
   object ImportExcel: TImportExcel
-    Left = 1000
-    Top = 312
+    Left = 1024
+    Top = 264
   end
   object ds: TDataSource
     DataSet = DMRaito.FdTbImportacao

@@ -29,15 +29,38 @@ type
     dbedtnum_pedido: TDBEdit;
     dbedtdata_pedido: TDBEdit;
     dbedtrepresentada: TDBEdit;
-    dbedtcliente: TDBEdit;
     lokupcliente: TDBLookupComboBox;
     BalloonHint1: TBalloonHint;
+    lbl4: TLabel;
+    dbedttransportadora: TDBEdit;
+    lbl7: TLabel;
+    dbedttotalliquido: TDBEdit;
+    lbl8: TLabel;
+    dbedttotalbruto: TDBEdit;
+    btn2: TSpeedButton;
+    btnNovoCliente: TSpeedButton;
+    btnNovaRepresentada: TSpeedButton;
+    btnNovaTransportadora: TSpeedButton;
+    dbrgrptipopedido: TDBRadioGroup;
+    lbl9: TLabel;
+    dbedtcondicoespagto1: TDBEdit;
+    lbl10: TLabel;
+    dbedtcomissaopercentual: TDBEdit;
+    lbl11: TLabel;
+    dbedtcomissaovalor1: TDBEdit;
+    lbl12: TLabel;
+    dbmmoobs: TDBMemo;
+    lbl13: TLabel;
+    dbmmolembrete: TDBMemo;
+    rb1: TRadioButton;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
+    procedure btnNovoClienteClick(Sender: TObject);
+    procedure dbgrdItensDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,7 +72,7 @@ var
 
 implementation
 
-uses UDMRaito;
+uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos;
 
 
 {$R *.dfm}
@@ -63,13 +86,15 @@ procedure TfrmPedido.btnAlterarClick(Sender: TObject);
 begin
     panelConfirma.Enabled:= True;
     panelNav.Visible:= False;
+    panelTela.Enabled:= True;
     DMRaito.FdTablePedido.Edit;
 end;
 
 procedure TfrmPedido.btnCancelarClick(Sender: TObject);
 begin
-panelConfirma.Enabled:= False;
+    panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
+    panelTela.Enabled:= False;
     DMRaito.FdTablePedido.Cancel;
 end;
 
@@ -87,11 +112,26 @@ end;
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
 begin
     DMRaito.FdTablePedido.Edit;
+//    if (dbrgrptipopedido.Value <> 'Orçamento') or (dbrgrptipopedido.Value <> 'Venda') then
+//    begin
+//      ShowMessage('É obrigatório definir tipo de pedido como Orçamento ou Venda Efetiva !');
+//      Exit;
+//    end
+//    else
+
+    if (dbrgrptipopedido.Value = 'Orçamento') or (dbrgrptipopedido.Value = 'Venda') then
+    begin
     DMRaito.FdTablePedido.Post;
     ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
+    end
+    else
+    ShowMessage('É obrigatório definir tipo de pedido como Orçamento ou Venda Efetiva !');
+
+
+
 end;
 
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
@@ -116,6 +156,26 @@ begin
           finally
           DMRaito.FdTablePedido.EnableControls;
           end;
+end;
+
+procedure TfrmPedido.btnNovoClienteClick(Sender: TObject);
+begin
+ try
+ application.CreateForm(TfrmCadastroClientes, frmCadastroClientes);
+ frmCadastroClientes.ShowModal;
+ finally
+ frmCadastroClientes.Free;
+ end;
+end;
+
+procedure TfrmPedido.dbgrdItensDblClick(Sender: TObject);
+begin
+try
+ application.CreateForm(TFrmPesquisarProdutos, FrmPesquisarProdutos);
+ FrmPesquisarProdutos.ShowModal;
+ finally
+ FrmPesquisarProdutos.Free;
+ end;
 end;
 
 end.

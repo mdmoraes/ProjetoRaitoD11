@@ -128,6 +128,19 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Vcl.Consts.pas"/>
+        <DCCReference Include="UCadastroTransportadora.pas">
+            <Form>frmCadastroTransportadora</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UDefinicaoRelComissao.pas">
+            <Form>FrmRelatorioComissoes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UMensagem.pas"/>
+        <DCCReference Include="UPesquisarProdutos.pas">
+            <Form>FrmPesquisarProdutos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

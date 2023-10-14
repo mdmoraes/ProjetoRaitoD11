@@ -313,6 +313,46 @@ object frmCadastroClientes: TfrmCadastroClientes
       Caption = 'idcliente'
       FocusControl = dbedtidcliente
     end
+    object lbl6: TLabel
+      Left = 8
+      Top = 103
+      Width = 39
+      Height = 17
+      Caption = 'cidade'
+      FocusControl = dbedtcidade
+    end
+    object lbl7: TLabel
+      Left = 343
+      Top = 103
+      Width = 40
+      Height = 17
+      Caption = 'estado'
+      FocusControl = dbedtestado
+    end
+    object lbl8: TLabel
+      Left = 389
+      Top = 103
+      Width = 21
+      Height = 17
+      Caption = 'cep'
+      FocusControl = dbedtcep
+    end
+    object lbl9: TLabel
+      Left = 8
+      Top = 150
+      Width = 24
+      Height = 17
+      Caption = 'cnpj'
+      FocusControl = dbedtcnpj
+    end
+    object lbl10: TLabel
+      Left = 167
+      Top = 151
+      Width = 71
+      Height = 17
+      Caption = 'inscestadual'
+      FocusControl = dbedtinscestadual
+    end
     object dbedtnomecliente: TDBEdit
       Left = 8
       Top = 24
@@ -361,12 +401,106 @@ object frmCadastroClientes: TfrmCadastroClientes
     object dbedtidcliente: TDBEdit
       Left = 544
       Top = 32
-      Width = 174
+      Width = 34
       Height = 25
       DataField = 'idcliente'
       DataSource = DMRaito.dsCliente
       ReadOnly = True
       TabOrder = 5
+    end
+    object dbedtcidade: TDBEdit
+      Left = 8
+      Top = 119
+      Width = 329
+      Height = 25
+      DataField = 'cidade'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 6
+    end
+    object dbedtestado: TDBEdit
+      Left = 343
+      Top = 119
+      Width = 38
+      Height = 25
+      DataField = 'estado'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 7
+    end
+    object dbedtcep: TDBEdit
+      Left = 389
+      Top = 119
+      Width = 97
+      Height = 25
+      DataField = 'cep'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 8
+    end
+    object dbedtcnpj: TDBEdit
+      Left = 8
+      Top = 167
+      Width = 153
+      Height = 25
+      DataField = 'cnpj'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 9
+    end
+    object dbedtinscestadual: TDBEdit
+      Left = 167
+      Top = 167
+      Width = 137
+      Height = 25
+      DataField = 'inscestadual'
+      DataSource = DMRaito.dsCliente
+      TabOrder = 10
+    end
+    object grp1: TGroupBox
+      Left = 8
+      Top = 198
+      Width = 889
+      Height = 219
+      Caption = ' Contatos:'
+      TabOrder = 11
+      object dbgrd1: TDBGrid
+        Left = 3
+        Top = 32
+        Width = 883
+        Height = 177
+        DataSource = DMRaito.dsContatoCliente
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -13
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        OnDblClick = dbgrd1DblClick
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ContatoId'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'IdCliente'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Tipo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DadosDoTipo'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NomeDoContato'
+            Visible = True
+          end>
+      end
     end
   end
 end
