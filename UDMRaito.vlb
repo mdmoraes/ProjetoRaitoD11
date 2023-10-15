@@ -22,9 +22,6 @@ Coordinates=627,221,196,36
 [strngfldFdTablePedidotransportadora]
 Coordinates=655,276,228,36
 
-[strngfldFdTablePedidotipopedido]
-Coordinates=655,331,204,36
-
 [FdTablePedidonum_pedido]
 Coordinates=627,386,172,36
 
@@ -58,9 +55,6 @@ Coordinates=128,1,68,36
 
 [strngfldFDTableClientecnpj]
 Coordinates=627,771,170,36
-
-[fltfldFdTablePedidototalbruto]
-Coordinates=627,826,180,36
 
 [strngfldFdTableTransportadoraCep]
 Coordinates=655,881,216,36
@@ -133,9 +127,6 @@ Coordinates=19,385,68,36
 
 [fltfldFdTableCadastroProdutospvenda]
 Coordinates=937,771,232,36
-
-[strngfldFDTableClienteendereco]
-Coordinates=937,826,200,36
 
 [strngfldFDTableClienteinscestadual]
 Coordinates=937,881,218,36
@@ -326,17 +317,11 @@ Coordinates=421,463,146,36
 [TableFdTableItensstrngfldFdTableItenscodigo]
 Coordinates=937,56,170,36
 
-[fltfldFdTableItensfltfldFdTableItensqtd]
-Coordinates=421,573,132,36
-
 [TableFdTableItensstrngfldFdTableItensunidade]
 Coordinates=937,716,178,36
 
 [TableFdTableItensstrngfldFdTableItensproduto]
 Coordinates=937,1,176,36
-
-[fltfldFdTableItensfltfldFdTableItensvalorunit]
-Coordinates=937,1706,163,36
 
 [fltfldFdTableItensfltfldFdTableItenspercentual1]
 Coordinates=1238,716,181,36
@@ -347,9 +332,24 @@ Coordinates=1238,386,181,36
 [fltfldFdTableItensfltfldFdTableItenspercentual3]
 Coordinates=1238,1266,181,36
 
-[fltfldFdTableItensfltfldFdTableItensvalorliquido]
-Coordinates=937,1761,180,36
-
 [TableFdTableItensstrngfldFdTableItensgrupo]
 Coordinates=1238,1541,165,36
+
+[TableItensqtd]
+Coordinates=421,573,132,36
+
+[TableItensvalorliquido]
+Coordinates=937,1761,180,36
+
+[TableItensvalorunit]
+Coordinates=937,1706,163,36
+
+[TablePedidototalbruto]
+Coordinates=627,826,180,36
+
+[TableClienteendereco]
+Coordinates=937,826,200,36
+
+[TablePedidotipopedido]
+Coordinates=655,331,204,36
 

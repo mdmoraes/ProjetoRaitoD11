@@ -43,7 +43,7 @@
       FieldName = 'datacadastro'
       Origin = 'datacadastro'
     end
-    object strngfldFDTableClienteendereco: TStringField
+    object TableClienteendereco: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'endereco'
       Origin = 'endereco'
@@ -376,6 +376,7 @@
   end
   object FdTablePedido: TFDTable
     Active = True
+    BeforePost = FdTablePedidoBeforePost
     IndexFieldNames = 'num_pedido'
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
@@ -474,13 +475,15 @@
       FieldName = 'totalliquido'
       Origin = 'totalliquido'
     end
-    object fltfldFdTablePedidototalbruto: TFloatField
-      Alignment = taCenter
+    object TablePedidototalbruto: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'totalbruto'
       Origin = 'totalbruto'
+      DisplayFormat = 'R$  ###,###,##0.00;1;_'
+      EditFormat = 'R$  ###,###,##0.00;1;_'
+      currency = True
     end
-    object strngfldFdTablePedidotipopedido: TStringField
+    object TablePedidotipopedido: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'tipopedido'
       Origin = 'tipopedido'
@@ -497,9 +500,23 @@
       Origin = 'numpedcliente'
       Size = 25
     end
+    object TableFdTablePedidoidcliente: TIntegerField
+      FieldName = 'idcliente'
+      Origin = 'idcliente'
+      Required = True
+    end
+    object TablePedidoEnderecoCliente: TStringField
+      FieldName = 'EnderecoCliente'
+      Origin = 'EnderecoCliente'
+      Required = True
+      Size = 80
+    end
   end
   object FdTableItens: TFDTable
     Active = True
+    BeforePost = FdTableItensBeforePost
+    AfterPost = FdTableItensAfterPost
+    OnCalcFields = FdTableItensCalcFields
     IndexFieldNames = 'id_pedido'
     MasterSource = dsPedido
     MasterFields = 'num_pedido'
@@ -526,10 +543,12 @@
       Origin = 'codigo'
       Size = 25
     end
-    object fltfldFdTableItensfltfldFdTableItensqtd: TFloatField
+    object TableItensqtd: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'qtd'
       Origin = 'qtd'
+      Required = True
+      OnValidate = TableItensqtdValidate
     end
     object TableFdTableItensstrngfldFdTableItensunidade: TStringField
       AutoGenerateValue = arDefault
@@ -543,7 +562,7 @@
       Origin = 'produto'
       Size = 80
     end
-    object fltfldFdTableItensfltfldFdTableItensvalorunit: TFloatField
+    object TableItensvalorunit: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'valorunit'
       Origin = 'valorunit'
@@ -563,7 +582,7 @@
       FieldName = 'percentual3'
       Origin = 'percentual3'
     end
-    object fltfldFdTableItensfltfldFdTableItensvalorliquido: TFloatField
+    object TableItensvalorliquido: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'valorliquido'
       Origin = 'valorliquido'
@@ -579,16 +598,22 @@
       FieldName = 'marcado'
       Origin = 'marcado'
     end
+    object TableItensTotal: TFloatField
+      FieldKind = fkCalculated
+      FieldName = 'Total'
+      currency = True
+      Calculated = True
+    end
   end
   object dsPedido: TDataSource
     DataSet = FdTablePedido
     Left = 112
-    Top = 104
+    Top = 96
   end
   object dsItens: TDataSource
     DataSet = FdTableItens
     Left = 344
-    Top = 120
+    Top = 112
   end
   object dsCliente: TDataSource
     DataSet = FDTableCliente
@@ -712,5 +737,206 @@
     DataSet = FdTableContatoCliente
     Left = 184
     Top = 296
+  end
+  object dsTableTransportadora: TDataSource
+    DataSet = FdTableTransportadora
+    Left = 376
+    Top = 200
+  end
+  object FdTableRepresentada: TFDTable
+    Active = True
+    IndexFieldNames = 'idcliente'
+    Connection = FDConnection1
+    ResourceOptions.AssignedValues = [rvEscapeExpand]
+    TableName = 'dbratio.cadastrorepresentada'
+    Left = 336
+    Top = 304
+    object fdtncfldFdTableRepresentadaidcliente: TFDAutoIncField
+      FieldName = 'idcliente'
+      Origin = 'idcliente'
+      ReadOnly = True
+    end
+    object TableFdTableRepresentadanomecliente: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'nomecliente'
+      Origin = 'nomecliente'
+      Size = 70
+    end
+    object TableFdTableRepresentadaregiao: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'regiao'
+      Origin = 'regiao'
+      Size = 25
+    end
+    object dtfldFdTableRepresentadadatacadastro: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'datacadastro'
+      Origin = 'datacadastro'
+    end
+    object TableFdTableRepresentadaendereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'endereco'
+      Origin = 'endereco'
+      Size = 80
+    end
+    object TableFdTableRepresentadabairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'bairro'
+      Origin = 'bairro'
+      Size = 30
+    end
+    object TableFdTableRepresentadacidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      Size = 30
+    end
+    object TableFdTableRepresentadaestado: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'estado'
+      Origin = 'estado'
+      Size = 2
+    end
+    object TableFdTableRepresentadacep: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cep'
+      Origin = 'cep'
+      Size = 10
+    end
+    object TableFdTableRepresentadacomissao: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'comissao'
+      Origin = 'comissao'
+    end
+    object TableFdTableRepresentadatel1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tel1'
+      Origin = 'tel1'
+      Size = 15
+    end
+    object TableFdTableRepresentadatel2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tel2'
+      Origin = 'tel2'
+      Size = 15
+    end
+    object TableFdTableRepresentadatel3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tel3'
+      Origin = 'tel3'
+      Size = 15
+    end
+    object TableFdTableRepresentadatel4: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'tel4'
+      Origin = 'tel4'
+      Size = 15
+    end
+    object TableFdTableRepresentadafax: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'fax'
+      Origin = 'fax'
+      Size = 15
+    end
+    object TableFdTableRepresentadacel1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cel1'
+      Origin = 'cel1'
+      Size = 15
+    end
+    object TableFdTableRepresentadacel2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cel2'
+      Origin = 'cel2'
+      Size = 15
+    end
+    object TableFdTableRepresentadacel3: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cel3'
+      Origin = 'cel3'
+      Size = 15
+    end
+    object TableFdTableRepresentadaradio: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'radio'
+      Origin = 'radio'
+      Size = 30
+    end
+    object TableFdTableRepresentadaid: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'id'
+      Origin = 'id'
+      Size = 30
+    end
+    object TableFdTableRepresentadamsn: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'msn'
+      Origin = 'msn'
+      Size = 60
+    end
+    object TableFdTableRepresentadaskipe: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'skipe'
+      Origin = 'skipe'
+      Size = 60
+    end
+    object TableFdTableRepresentadacontato1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'contato1'
+      Origin = 'contato1'
+      Size = 30
+    end
+    object TableFdTableRepresentadacontato2: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'contato2'
+      Origin = 'contato2'
+      Size = 30
+    end
+    object TableFdTableRepresentadaemail: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email'
+      Origin = 'email'
+      Size = 50
+    end
+    object TableFdTableRepresentadaemailnfe: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'emailnfe'
+      Origin = 'emailnfe'
+      Size = 50
+    end
+    object TableFdTableRepresentadasite: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'site'
+      Origin = 'site'
+      Size = 50
+    end
+    object mfldFdTableRepresentadaobs: TMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'obs'
+      Origin = 'obs'
+      BlobType = ftMemo
+    end
+    object TableFdTableRepresentadacnpj: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cnpj'
+      Origin = 'cnpj'
+      Size = 25
+    end
+    object TableFdTableRepresentadainscestadual: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'inscestadual'
+      Origin = 'inscestadual'
+    end
+    object TableFdTableRepresentadatwitter: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'twitter'
+      Origin = 'twitter'
+      Size = 40
+    end
+  end
+  object dsRepresentada: TDataSource
+    DataSet = FdTableRepresentada
+    Left = 440
+    Top = 304
   end
 end

@@ -11,11 +11,9 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   PrintScale = poPrintToFit
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object btnFechar: TSpeedButton
     Left = 228
@@ -52,6 +50,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
         Width = 159
         Height = 21
         AutoSize = False
+        CharCase = ecUpperCase
         TabOrder = 0
         OnChange = edt1Change
       end
@@ -69,32 +68,15 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       Font.Style = []
       ParentFont = False
       TabOrder = 1
-      object rbPedido: TRadioButton
-        Left = 6
-        Top = 24
-        Width = 67
-        Height = 17
-        Caption = 'Pedido'
-        TabOrder = 0
-        OnClick = rbPedidoClick
-      end
-      object rbRepresentada: TRadioButton
-        Left = 80
-        Top = 24
-        Width = 111
-        Height = 17
-        Caption = 'Representada'
-        TabOrder = 1
-        OnClick = rbRepresentadaClick
-      end
       object rbCliente: TRadioButton
-        Left = 202
-        Top = 25
+        Left = 18
+        Top = 24
         Width = 74
-        Height = 17
+        Height = 15
         Caption = 'Cliente'
-        TabOrder = 2
-        OnClick = rbClienteClick
+        Checked = True
+        TabOrder = 0
+        TabStop = True
       end
     end
   end
@@ -110,7 +92,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       Width = 524
       Height = 303
       Color = 14540253
-      DataSource = DMRatio.DSPedido
+      DataSource = DMRaito.dsPedido
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -121,7 +103,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       Columns = <
         item
           Expanded = False
-          FieldName = 'Num_Pedido'
+          FieldName = 'num_pedido'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -139,7 +121,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
         end
         item
           Expanded = False
-          FieldName = 'Representada'
+          FieldName = 'cliente'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -151,24 +133,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
           Title.Font.Height = -13
           Title.Font.Name = 'MS Sans Serif'
           Title.Font.Style = []
-          Width = 210
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'Cliente'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          Title.Alignment = taCenter
-          Title.Font.Charset = DEFAULT_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -13
-          Title.Font.Name = 'MS Sans Serif'
-          Title.Font.Style = []
-          Width = 240
+          Width = 407
           Visible = True
         end>
     end

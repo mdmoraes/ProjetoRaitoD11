@@ -15,7 +15,10 @@ uses
   UCadastroTransportadora in 'UCadastroTransportadora.pas' {frmCadastroTransportadora},
   UDefinicaoRelComissao in 'UDefinicaoRelComissao.pas' {FrmRelatorioComissoes},
   UMensagem in 'UMensagem.pas',
-  UPesquisarProdutos in 'UPesquisarProdutos.pas' {FrmPesquisarProdutos};
+  UPesquisarProdutos in 'UPesquisarProdutos.pas' {FrmPesquisarProdutos},
+  UPesquisaPedido in 'UPesquisaPedido.pas' {FrmPesquisaPedido},
+  URelatorioPedido in 'URelatorioPedido.pas' {frmRelatorioPedido},
+  UPesquisarClientes in 'UPesquisarClientes.pas' {FrmPesquisarClientes};
 
 {$R *.res}
 
@@ -24,6 +27,7 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
-  Application.CreateForm(TfrmPedido, frmPedido);
+  Application.CreateForm(TfrmRelatorioPedido, frmRelatorioPedido);
+  Application.CreateForm(TFrmPesquisarClientes, FrmPesquisarClientes);
   Application.Run;
 end.

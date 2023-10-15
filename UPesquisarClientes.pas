@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Grids, DBGrids, ExtCtrls, Buttons;
+  Dialogs, StdCtrls, Grids, DBGrids, ExtCtrls, Buttons, Data.DB;
 
 type
   TFrmPesquisarClientes = class(TForm)
@@ -27,7 +27,7 @@ var
 
 implementation
 
-uses UDBRATIO;
+uses UDMRaito;
 
 {$R *.dfm}
 
@@ -38,12 +38,13 @@ end;
 
 procedure TFrmPesquisarClientes.edt1Change(Sender: TObject);
 begin
-    DMRatio.TBCadCliente.IndexName:= ('INomeCliente');
-    DMRatio.TBCadCliente.FindNearest([edt1.Text]);
+    DMRaito.FDTableCliente.IndexName:= ('IdxNomeCliente');
+    DMRaito.FDTableCliente.FindNearest([edt1.Text]);
 end;
 
 procedure TFrmPesquisarClientes.btnFecharClick(Sender: TObject);
 begin
+ // DMRaito.FDTableCliente.IndexName:= '';
   close;
 end;
 

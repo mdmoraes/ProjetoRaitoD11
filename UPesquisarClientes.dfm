@@ -11,10 +11,8 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnShow = FormShow
-  PixelsPerInch = 96
   TextHeight = 13
   object grp1: TGroupBox
     Left = 3
@@ -49,7 +47,7 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       Top = 6
       Width = 467
       Height = 282
-      DataSource = DMRatio.DSCadCliente
+      DataSource = DMRaito.dsCliente
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -60,7 +58,7 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       Columns = <
         item
           Expanded = False
-          FieldName = 'NomeCliente'
+          FieldName = 'nomecliente'
           Visible = True
         end>
     end
@@ -71,15 +69,12 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
     Width = 74
     Height = 25
     Caption = '&Fechar'
+    Default = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
     Font.Name = 'MS Sans Serif'
     Font.Style = []
-    ParentFont = False
-    TabOrder = 2
-    TabStop = False
-    OnClick = btnFecharClick
     Glyph.Data = {
       76010000424D7601000000000000760000002800000020000000100000000100
       04000000000000010000120B0000120B00001000000000000000000000000000
@@ -94,5 +89,9 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       0333337F377777337F333301111111110333337F333333337F33330111111111
       0333337FFFFFFFFF7F3333000000000003333377777777777333}
     NumGlyphs = 2
+    ParentFont = False
+    TabOrder = 2
+    TabStop = False
+    OnClick = btnFecharClick
   end
 end

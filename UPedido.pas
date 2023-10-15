@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons;
+  Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, QuickRpt, qrpBaseCtrls,
+  QRCtrls;
 
 type
   TfrmPedido = class(TForm)
@@ -28,13 +29,9 @@ type
     lbl3: TLabel;
     dbedtnum_pedido: TDBEdit;
     dbedtdata_pedido: TDBEdit;
-    dbedtrepresentada: TDBEdit;
     lokupcliente: TDBLookupComboBox;
     BalloonHint1: TBalloonHint;
     lbl4: TLabel;
-    dbedttransportadora: TDBEdit;
-    lbl7: TLabel;
-    dbedttotalliquido: TDBEdit;
     lbl8: TLabel;
     dbedttotalbruto: TDBEdit;
     btn2: TSpeedButton;
@@ -52,7 +49,10 @@ type
     dbmmoobs: TDBMemo;
     lbl13: TLabel;
     dbmmolembrete: TDBMemo;
-    rb1: TRadioButton;
+    lokupcliente1: TDBLookupComboBox;
+    lokuprepresentada: TDBLookupComboBox;
+    lbl5: TLabel;
+    dbedtidcliente: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -61,6 +61,9 @@ type
     procedure btnGravarClick(Sender: TObject);
     procedure btnNovoClienteClick(Sender: TObject);
     procedure dbgrdItensDblClick(Sender: TObject);
+    procedure lokupclienteClick(Sender: TObject);
+    procedure btnPesquisaClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,7 +75,7 @@ var
 
 implementation
 
-uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos;
+uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos, UPesquisaPedido, URelatorioPedido;
 
 
 {$R *.dfm}
@@ -128,10 +131,34 @@ begin
     panelTela.Enabled:= False;
     end
     else
-    ShowMessage('É obrigatório definir tipo de pedido como Orçamento ou Venda Efetiva !');
+    ShowMessage('É obrigatório definir o tipo de pedido, Orçamento ou Venda Efetiva !');
 
 
 
+end;
+
+procedure TfrmPedido.btnImprimirClick(Sender: TObject);
+//gerar o relatório no QUICK REPORT
+begin
+    try
+      Application.CreateForm(TfrmRelatorioPedido,frmRelatorioPedido);
+     // DMRatio.TBCadCliente.Locate('IdCliente', dbCodCliente.Text, []);
+    //  DMRaito.FdTablePedido.IndexName:= 'idxNumPedido';
+    //  DMRaito.FdTablePedido.SetRange([dbedtnum_pedido.Text],[dbedtnum_pedido.Text]);
+      frmRelatorioPedido.queryRelPedido.ParamByName('NUM_PEDIDO').AsInteger:= StrToInt(dbedtnum_pedido.Text);
+      frmRelatorioPedido.queryRelPedido.Prepare;
+      frmRelatorioPedido.queryRelPedido.Open;
+
+      if DMRaito.TablePedidotipopedido.Value = 'Orçamento' then
+   //   QrOrcamento.QRLblPedido.Caption:= 'Orçtº_Nº';
+
+  //    QrOrcamento.QRExprMemo1.Lines.Text:= dbmemoObs.Text;
+      frmRelatorioPedido.QRPQuickrep1.Preview;
+      frmRelatorioPedido.queryRelPedido.Close;
+     // DMRaito.FdTablePedido.IndexName:='';
+      finally
+      frmRelatorioPedido.Free;
+      end;
 end;
 
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
@@ -168,6 +195,16 @@ begin
  end;
 end;
 
+procedure TfrmPedido.btnPesquisaClick(Sender: TObject);
+begin
+try
+ application.CreateForm(TFrmPesquisaPedido, FrmPesquisaPedido);
+ FrmPesquisaPedido.ShowModal;
+ finally
+ FrmPesquisaPedido.Free;
+ end;
+end;
+
 procedure TfrmPedido.dbgrdItensDblClick(Sender: TObject);
 begin
 try
@@ -176,6 +213,11 @@ try
  finally
  FrmPesquisarProdutos.Free;
  end;
+end;
+
+procedure TfrmPedido.lokupclienteClick(Sender: TObject);
+begin
+    DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
 end;
 
 end.

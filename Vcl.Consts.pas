@@ -1,4 +1,4 @@
-{*******************************************************}
+﻿{*******************************************************}
 {                                                       }
 {            Delphi Visual Component Library            }
 {                                                       }
@@ -134,7 +134,7 @@ resourcestring
   SMsgDlgWarning = 'Atenção';
   SMsgDlgError = 'Erro';
   SMsgDlgInformation = 'Informação';
-  SMsgDlgConfirm = 'Confirme';
+  SMsgDlgConfirm = 'Confirmar';
   SMsgDlgYes = '&Sim';
   SMsgDlgNo = '&Não';
   SMsgDlgOK = 'OK';

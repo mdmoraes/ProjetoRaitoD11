@@ -8,7 +8,7 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
   FireDAC.Phys.MySQLDef, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
   FireDAC.DApt, FireDAC.VCLUI.Wait, FireDAC.Comp.UI, Data.DB,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.Dialogs;
 
 type
   TDMRaito = class(TDataModule)
@@ -20,7 +20,7 @@ type
     strngfldFDTableClientenomecliente: TStringField;
     strngfldFDTableClienteregiao: TStringField;
     FDTableClientedatacadastro: TDateField;
-    strngfldFDTableClienteendereco: TStringField;
+    TableClienteendereco: TStringField;
     strngfldFDTableClientebairro: TStringField;
     strngfldFDTableClientecidade: TStringField;
     strngfldFDTableClienteestado: TStringField;
@@ -94,21 +94,21 @@ type
     mfldFdTablePedidoobs: TMemoField;
     mfldFdTablePedidolembrete: TMemoField;
     fltfldFdTablePedidototalliquido: TFloatField;
-    fltfldFdTablePedidototalbruto: TFloatField;
-    strngfldFdTablePedidotipopedido: TStringField;
+    TablePedidototalbruto: TFloatField;
+    TablePedidotipopedido: TStringField;
     FdTablePedidostatus: TIntegerField;
     strngfldFdTablePedidonumpedcliente: TStringField;
     fdtncfldFdTableItensfdtncfldFdTableItenscodinc: TFDAutoIncField;
     TableFdTableItensTable_pedido: TIntegerField;
     TableFdTableItensstrngfldFdTableItenscodigo: TStringField;
-    fltfldFdTableItensfltfldFdTableItensqtd: TFloatField;
+    TableItensqtd: TFloatField;
     TableFdTableItensstrngfldFdTableItensunidade: TStringField;
     TableFdTableItensstrngfldFdTableItensproduto: TStringField;
-    fltfldFdTableItensfltfldFdTableItensvalorunit: TFloatField;
+    TableItensvalorunit: TFloatField;
     fltfldFdTableItensfltfldFdTableItenspercentual1: TFloatField;
     fltfldFdTableItensfltfldFdTableItenspercentual2: TFloatField;
     fltfldFdTableItensfltfldFdTableItenspercentual3: TFloatField;
-    fltfldFdTableItensfltfldFdTableItensvalorliquido: TFloatField;
+    TableItensvalorliquido: TFloatField;
     TableFdTableItensstrngfldFdTableItensgrupo: TStringField;
     FdTableItensmarcado: TShortintField;
     dsPedido: TDataSource;
@@ -137,7 +137,49 @@ type
     TableFdTableContatoClienteIdCliente: TIntegerField;
     TableFdTableContatoClienteContatoId: TIntegerField;
     FdTableItens: TFDTable;
+    TableItensTotal: TFloatField;
+    dsTableTransportadora: TDataSource;
+    FdTableRepresentada: TFDTable;
+    dsRepresentada: TDataSource;
+    fdtncfldFdTableRepresentadaidcliente: TFDAutoIncField;
+    TableFdTableRepresentadanomecliente: TStringField;
+    TableFdTableRepresentadaregiao: TStringField;
+    dtfldFdTableRepresentadadatacadastro: TDateField;
+    TableFdTableRepresentadaendereco: TStringField;
+    TableFdTableRepresentadabairro: TStringField;
+    TableFdTableRepresentadacidade: TStringField;
+    TableFdTableRepresentadaestado: TStringField;
+    TableFdTableRepresentadacep: TStringField;
+    TableFdTableRepresentadacomissao: TFloatField;
+    TableFdTableRepresentadatel1: TStringField;
+    TableFdTableRepresentadatel2: TStringField;
+    TableFdTableRepresentadatel3: TStringField;
+    TableFdTableRepresentadatel4: TStringField;
+    TableFdTableRepresentadafax: TStringField;
+    TableFdTableRepresentadacel1: TStringField;
+    TableFdTableRepresentadacel2: TStringField;
+    TableFdTableRepresentadacel3: TStringField;
+    TableFdTableRepresentadaradio: TStringField;
+    TableFdTableRepresentadaid: TStringField;
+    TableFdTableRepresentadamsn: TStringField;
+    TableFdTableRepresentadaskipe: TStringField;
+    TableFdTableRepresentadacontato1: TStringField;
+    TableFdTableRepresentadacontato2: TStringField;
+    TableFdTableRepresentadaemail: TStringField;
+    TableFdTableRepresentadaemailnfe: TStringField;
+    TableFdTableRepresentadasite: TStringField;
+    mfldFdTableRepresentadaobs: TMemoField;
+    TableFdTableRepresentadacnpj: TStringField;
+    TableFdTableRepresentadainscestadual: TStringField;
+    TableFdTableRepresentadatwitter: TStringField;
+    TableFdTablePedidoidcliente: TIntegerField;
+    TablePedidoEnderecoCliente: TStringField;
     procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
+    procedure TableItensqtdValidate(Sender: TField);
+    procedure FdTableItensBeforePost(DataSet: TDataSet);
+    procedure FdTableItensCalcFields(DataSet: TDataSet);
+    procedure FdTableItensAfterPost(DataSet: TDataSet);
+    procedure FdTablePedidoBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -156,6 +198,64 @@ implementation
 procedure TDMRaito.FdTableContatoClienteBeforePost(DataSet: TDataSet);
 begin
 //     DMRaito.fdtncfldFdTableContatoClienteContatoId.Value:= DMRaito.FDTableClienteidcliente.Value;
+end;
+
+procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
+var
+total, totalBruto: Double;
+begin
+    DMRaito.FdTableItens.DisableControls;
+    DMRaito.FdTableItens.First;
+    total:= 0;
+    totalBruto:= 0;
+    while not DMRaito.FdTableItens.Eof do
+    begin
+   // totliquido:= totliquido + DMRatio.TBItensTotalBruto.Value;
+    total:= total + DMRaito.TableItensTotal.Value;
+    DMRaito.FdTableItens.Next;
+    end;
+    DMRaito.FdTablePedido.Edit;
+    DMRaito.TablePedidototalbruto.Value:= total;
+  //  DMRatio.TBPedidoTotalliquido.Value:= total;
+    DMRaito.FdTablePedido.Post;
+    DMRaito.FdTableItens.EnableControls;
+
+end;
+
+procedure TDMRaito.FdTableItensBeforePost(DataSet: TDataSet);
+begin
+  if DMRaito.FdTableItens.FieldByName('qtd').AsString = EmptyStr  then
+   begin
+    ShowMessage('O preenchimento da Quantidade é obrigatório !');
+    Abort;
+  end;
+end;
+
+procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
+begin
+DMRaito.TableItensTotal.Value :=
+(DMRaito.TableitensValorUnit.Value * DMRaito.TableItensqtd.Value);
+
+end;
+
+procedure TDMRaito.FdTablePedidoBeforePost(DataSet: TDataSet);
+begin
+DMRaito.TableFdTablePedidoidcliente.Value := DMRaito.FDTableClienteidcliente.Value;
+//ENDEREÇO DO CLIENTE
+DMRaito.TablePedidoEnderecoCliente.Value := DMRaito.TableClienteendereco.Value;
+
+end;
+
+procedure TDMRaito.TableItensqtdValidate(
+  Sender: TField);
+begin
+
+//if DMRaito.FdTableItens.FieldByName('qtd').AsFloat = StrToFloat(EmptyStr)  then
+//   begin
+//    ShowMessage('O preenchimento da Quantidade é obrigatório !');
+//    Abort;
+//  end;
+
 end;
 
 end.

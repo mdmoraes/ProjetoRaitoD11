@@ -141,6 +141,18 @@
             <Form>FrmPesquisarProdutos</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UPesquisaPedido.pas">
+            <Form>FrmPesquisaPedido</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="URelatorioPedido.pas">
+            <Form>frmRelatorioPedido</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UPesquisarClientes.pas">
+            <Form>FrmPesquisarClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -59,6 +59,7 @@ type
     procedure btnAlterarClick(Sender: TObject);
     procedure btnExcluirClick(Sender: TObject);
     procedure dbgrd1DblClick(Sender: TObject);
+    procedure btnPesquisaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,7 +71,7 @@ var
 
 implementation
 
-uses UDMRaito;
+uses UDMRaito, UPesquisarClientes;
 
 {$R *.dfm}
 
@@ -152,6 +153,16 @@ begin
 //   pnlConfirma.Visible:= False;
 //  pnlNav.Visible:= True;
 
+end;
+
+procedure TfrmCadastroClientes.btnPesquisaClick(Sender: TObject);
+begin
+    try
+    Application.CreateForm(TFrmPesquisarClientes, FrmPesquisarClientes);
+    FrmPesquisarClientes.ShowModal;
+    finally
+    FrmPesquisarClientes.Free;
+    end;
 end;
 
 procedure TfrmCadastroClientes.dbgrd1DblClick(Sender: TObject);

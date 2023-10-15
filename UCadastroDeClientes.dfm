@@ -209,6 +209,7 @@ object frmCadastroClientes: TfrmCadastroClientes
         NumGlyphs = 2
         ParentShowHint = False
         ShowHint = True
+        OnClick = btnPesquisaClick
       end
       object btn1: TBitBtn
         Left = 568
