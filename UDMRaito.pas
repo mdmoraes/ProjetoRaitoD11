@@ -178,8 +178,8 @@ type
     FdTableItensLiq1: TFloatField;
     FdTableItensLiq2: TFloatField;
     FdTableItensLiq3: TFloatField;
+    FdTableItensVDesc: TFloatField;
     procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
-    procedure TableItensqtdValidate(Sender: TField);
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FdTablePedidoBeforePost(DataSet: TDataSet);
@@ -206,61 +206,44 @@ end;
 procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
 var
 total, totalBruto: Double;
-begin
-  // if DMRaito.FdTableItens.FieldByName('qtd').AsString = EmptyStr  then//
-
-   if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
-   begin
-    ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
-    Abort;
-   end;
-//   else
-
-    DMRaito.FdTableItens.DisableControls;
-    DMRaito.FdTableItens.First;
-    total:= 0;
-    totalBruto:= 0;
-    while not DMRaito.FdTableItens.Eof do
-    begin
-   // totliquido:= totliquido + DMRatio.TBItensTotalBruto.Value;
-    total:= total + DMRaito.FdTableItensTotal.Value;
-    DMRaito.FdTableItens.Next;
-    end;
-    DMRaito.FdTablePedido.Edit;
-    DMRaito.TablePedidototalbruto.Value:= total;
-  //  DMRatio.TBPedidoTotalliquido.Value:= total;
-    DMRaito.FdTablePedido.Post;
-    DMRaito.FdTableItens.EnableControls;
-
-
-
-end;
+  begin
+     if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
+     begin
+      ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
+      Abort;
+     end;
+      DMRaito.FdTableItens.DisableControls;
+      DMRaito.FdTableItens.First;
+      total:= 0;
+      totalBruto:= 0;
+      while not DMRaito.FdTableItens.Eof do
+      begin
+      total:= total + DMRaito.FdTableItensTotal.Value;
+      DMRaito.FdTableItens.Next;
+      end;
+      DMRaito.FdTableItens.Edit;
+      DMRaito.FdTablePedido.Edit;
+      DMRaito.TablePedidototalbruto.Value:= total;
+      DMRaito.FdTablePedido.Post;
+      DMRaito.FdTableItens.EnableControls;
+  end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
-FdTableItensLiq1.Value:= (DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensp1.Value) /100;
+
+DMRaito.FdTableItensLiq1.Value:=
+(DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensp1.Value) /100 * DMRaito.FdTableItensqtd.Value;
 
 DMRaito.FdTableItensTotal.Value :=
-(DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensqtd.Value - FdTableItensLiq1.Value);
+(DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensqtd.Value - DMRaito.FdTableItensLiq1.Value);
 end;
 
 procedure TDMRaito.FdTablePedidoBeforePost(DataSet: TDataSet);
 begin
+
 DMRaito.TableFdTablePedidoidcliente.Value := DMRaito.FDTableClienteidcliente.Value;
 //ENDEREÇO DO CLIENTE
 DMRaito.TablePedidoEnderecoCliente.Value := DMRaito.TableClienteendereco.Value;
-
-end;
-
-procedure TDMRaito.TableItensqtdValidate(
-  Sender: TField);
-begin
-
-//if DMRaito.FdTableItens.FieldByName('qtd').AsFloat = StrToFloat(EmptyStr)  then
-//   begin
-//    ShowMessage('O preenchimento da Quantidade é obrigatório !');
-//    Abort;
-//  end;
 
 end;
 

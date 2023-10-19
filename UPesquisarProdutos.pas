@@ -77,12 +77,12 @@ procedure TFrmPesquisarProdutos.CopiarProdutos;
 begin
   //DMRaito.FdTableItens.Open;
   DMRaito.FdTableItens.Append;
-  frmPedido.dbgrdItens.Columns.Items[0].Field.Text := dbgrd1.Columns.Items[0].Field.Text;
-  frmPedido.dbgrdItens.Columns.Items[1].Field.Text := dbgrd1.Columns.Items[1].Field.Text;
-  frmPedido.dbgrdItens.Columns.Items[2].Field.Text := dbgrd1.Columns.Items[2].Field.Text;
-  frmPedido.dbgrdItens.Columns.Items[4].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
-  frmPedido.dbgrdItens.Columns.Items[5].Field.Text := dbgrd1.Columns.Items[4].Field.Text;
-  frmPedido.dbgrdItens.SelectedIndex := 3;
+  frmPedido.dbgrdItens.Columns.Items[2].Field.Text := dbgrd1.Columns.Items[0].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[3].Field.Text := dbgrd1.Columns.Items[1].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[4].Field.Text := dbgrd1.Columns.Items[2].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[6].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[7].Field.Text := dbgrd1.Columns.Items[4].Field.Text;
+  frmPedido.dbgrdItens.SelectedIndex := 5;
   //DBGrid1.SelectedIndex := 2;
   btnFechar.Click;
 end;

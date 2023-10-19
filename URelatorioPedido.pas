@@ -78,8 +78,6 @@ type
     qrdbtxtGRUPO: TQRDBText;
     qrdbtxtVALORUNIT: TQRDBText;
     qrdbtxtPERCENTUAL1: TQRDBText;
-    qrdbtxtPERCENTUAL2: TQRDBText;
-    qrdbtxtPERCENTUAL3: TQRDBText;
     qrdbtxtTOTAL: TQRDBText;
     qrlbl20: TQRLabel;
     qrlbl21: TQRLabel;
@@ -88,8 +86,6 @@ type
     qrlbl24: TQRLabel;
     qrlbl25: TQRLabel;
     qrlbl26: TQRLabel;
-    qrlbl27: TQRLabel;
-    qrlbl28: TQRLabel;
     qrlbl29: TQRLabel;
     qrlbl30: TQRLabel;
     QRShape1: TQRShape;
@@ -112,6 +108,11 @@ type
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
     QRDBText3: TQRDBText;
+    QRLabel1: TQRLabel;
+    queryRelPedidoLIQ1: TFloatField;
+    QRDBText4: TQRDBText;
+    queryRelPedidoVDESC: TFloatField;
+    queryRelPedidoTOTALITENS: TFloatField;
   private
     { Private declarations }
   public

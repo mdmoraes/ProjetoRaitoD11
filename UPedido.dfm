@@ -28,7 +28,7 @@ object frmPedido: TfrmPedido
   end
   object panelConfirma: TPanel
     Left = 243
-    Top = 616
+    Top = 615
     Width = 471
     Height = 34
     TabOrder = 1
@@ -121,8 +121,8 @@ object frmPedido: TfrmPedido
     end
   end
   object panelNav: TPanel
-    Left = 40
-    Top = 620
+    Left = 48
+    Top = 615
     Width = 873
     Height = 33
     TabOrder = 0
@@ -445,7 +445,7 @@ object frmPedido: TfrmPedido
       Caption = 'obs'
     end
     object lbl13: TLabel
-      Left = 203
+      Left = 250
       Top = 208
       Width = 47
       Height = 15
@@ -458,14 +458,14 @@ object frmPedido: TfrmPedido
       Height = 15
       Caption = 'idcliente'
       FocusControl = dbedtidcliente
-      Visible = False
     end
     object dbgrdItens: TDBGrid
       Left = 0
-      Top = 379
+      Top = 303
       Width = 1265
       Height = 201
       DataSource = DMRaito.dsItens
+      Options = [dgEditing, dgAlwaysShowEditor, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -474,7 +474,18 @@ object frmPedido: TfrmPedido
       TitleFont.Style = []
       OnCellClick = dbgrdItensCellClick
       OnEditButtonClick = dbgrdItensEditButtonClick
+      OnKeyDown = dbgrdItensKeyDown
       Columns = <
+        item
+          Expanded = False
+          FieldName = 'codinc'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'id_pedido'
+          Visible = True
+        end
         item
           ButtonStyle = cbsEllipsis
           Expanded = False
@@ -490,13 +501,14 @@ object frmPedido: TfrmPedido
         item
           Expanded = False
           FieldName = 'grupo'
-          Width = 203
+          Width = 171
           Visible = True
         end
         item
+          Alignment = taCenter
           Expanded = False
           FieldName = 'qtd'
-          Width = 43
+          Width = 29
           Visible = True
         end
         item
@@ -508,39 +520,34 @@ object frmPedido: TfrmPedido
         item
           Expanded = False
           FieldName = 'vunit'
+          Title.Caption = 'Vr.Unit.'
+          Width = 55
           Visible = True
         end
         item
+          Alignment = taCenter
           Expanded = False
           FieldName = 'p1'
-          Width = 18
+          Title.Caption = 'Desc.%'
+          Width = 45
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Liq1'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'p2'
-          Width = 21
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'p3'
-          Width = 23
+          Title.Caption = 'Vr.Desc.'
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'mc'
+          Width = 28
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Total'
+          Width = 91
           Visible = True
         end>
     end
@@ -666,13 +673,12 @@ object frmPedido: TfrmPedido
       DataField = 'idcliente'
       DataSource = DMRaito.dsPedido
       TabOrder = 10
-      Visible = False
     end
     object dbmmoobs: TDBMemo
       Left = 9
       Top = 229
       Width = 185
-      Height = 132
+      Height = 68
       DataField = 'obs'
       DataSource = DMRaito.dsPedido
       Font.Charset = DEFAULT_CHARSET
@@ -686,10 +692,10 @@ object frmPedido: TfrmPedido
       WantTabs = True
     end
     object dbmmoobs1: TDBMemo
-      Left = 200
+      Left = 250
       Top = 229
       Width = 185
-      Height = 132
+      Height = 68
       DataField = 'lembrete'
       DataSource = DMRaito.dsPedido
       Font.Charset = DEFAULT_CHARSET

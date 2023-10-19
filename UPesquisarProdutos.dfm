@@ -55,7 +55,7 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
       Font.Height = -11
       Font.Name = 'Verdana'
       Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgTitleClick]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick]
       ParentFont = False
       ReadOnly = True
       TabOrder = 0

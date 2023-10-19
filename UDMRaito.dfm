@@ -518,6 +518,7 @@
     Active = True
     AfterPost = FdTableItensAfterPost
     OnCalcFields = FdTableItensCalcFields
+    CachedUpdates = True
     IndexFieldNames = 'id_pedido'
     MasterSource = dsPedido
     MasterFields = 'num_pedido'
@@ -572,6 +573,8 @@
       AutoGenerateValue = arDefault
       FieldName = 'p1'
       Origin = 'p1'
+      DisplayFormat = '#.##%'
+      EditFormat = '#.##%'
     end
     object FdTableItensp2: TFloatField
       AutoGenerateValue = arDefault
@@ -611,6 +614,8 @@
     object FdTableItensLiq1: TFloatField
       FieldKind = fkCalculated
       FieldName = 'Liq1'
+      DisplayFormat = '###,###,##0.000'
+      EditFormat = '###,###,##0.000'
       Calculated = True
     end
     object FdTableItensLiq2: TFloatField
@@ -622,6 +627,11 @@
       FieldKind = fkCalculated
       FieldName = 'Liq3'
       Calculated = True
+    end
+    object FdTableItensVDesc: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'VDesc'
+      Origin = 'VDesc'
     end
   end
   object dsPedido: TDataSource

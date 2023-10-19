@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
   Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, QuickRpt, qrpBaseCtrls,
-  QRCtrls;
+  QRCtrls, Vcl.Consts;
 
 type
   TfrmPedido = class(TForm)
@@ -64,9 +64,10 @@ type
     procedure btnPesquisaClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
     procedure dbgrdItensCellClick(Column: TColumn);
-    procedure dbgrdItensKeyPress(Sender: TObject; var Key: Char);
     procedure ButtonPesquisarProdtoClick(Sender: TObject);
     procedure dbgrdItensEditButtonClick(Sender: TObject);
+    procedure dbgrdItensKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -119,10 +120,11 @@ end;
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
 begin
     DMRaito.FdTablePedido.Edit;
+    DMRaito.FdTableItens.Edit;
     if (dbrgrptipopedido.Value = 'Orçamento') or (dbrgrptipopedido.Value = 'Venda') then
     begin
     DMRaito.FdTablePedido.Post;
-    DMRaito.FdTableItens.Post;
+//    DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
@@ -228,8 +230,6 @@ end;
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
 begin
  try
-//if dbgrdItens.SelectedIndex = 0 then
-
  application.CreateForm(TFrmPesquisarProdutos, FrmPesquisarProdutos);
  FrmPesquisarProdutos.ShowModal;
  finally
@@ -237,13 +237,18 @@ begin
  end;
 end;
 
-procedure TfrmPedido.dbgrdItensKeyPress(Sender: TObject; var Key: Char);
+procedure TfrmPedido.dbgrdItensKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 begin
- // if dbgrdItens.SelectedIndex = 0 then
- // showmessage('olá');
-
-
-
+ if Key = VK_DELETE
+  then begin
+       if MessageDlg('Deseja Excluir este Item selecionado ?',mtConfirmation,[mbYes,mbNo],0)=mrYes
+       then begin
+            DMRaito.FdTableItens.Delete;
+            DMRaito.FdTableItens.ApplyUpdates(0);
+        //    DMRomaneio.cdsRomaneioItem.ApplyUpdates(0);
+       end;
+  end;
 end;
 
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);
