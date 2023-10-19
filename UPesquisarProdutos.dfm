@@ -48,11 +48,14 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
       Width = 838
       Height = 351
       DataSource = dsConsultaProduto
+      DrawingStyle = gdsGradient
+      GradientEndColor = clMoneyGreen
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Verdana'
       Font.Style = []
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgTitleClick]
       ParentFont = False
       ReadOnly = True
       TabOrder = 0
@@ -61,10 +64,12 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnCellClick = dbgrd1CellClick
       OnDblClick = dbgrd1DblClick
       OnEnter = dbgrd1Enter
       Columns = <
         item
+          ButtonStyle = cbsEllipsis
           Expanded = False
           FieldName = 'codigoproduto'
           Width = 177
@@ -107,6 +112,7 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
     Width = 74
     Height = 25
     Caption = '&Fechar'
+    Default = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13

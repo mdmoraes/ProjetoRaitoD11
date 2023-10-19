@@ -1,0 +1,19 @@
+CÓDIGO PARA TESTAR NO IMPORTAR PLANILHA - RAITO
+
+procedure Tfrm_FCContatos.btn_SalvarClick(Sender: TObject);
+begin
+  if (Trim(dbe_Nome.Text) = EmptyStr) then
+  begin
+    TUnt_Gerais.MsgWarning('Campo [Nome] é obrigatório!');
+    dbe_Nome.SelectAll;
+    dbe_Nome.SetFocus;
+    Exit;
+  end;
+
+  with frm_Databases.ds_Contatos.DataSet do
+  begin
+    Post;
+    TUnt_Gerais.MsgInformation('Contato [' + Copy(FieldByName('nome100').AsString, 0, 50) + '] salvo com sucesso.');
+  end;
+  Close;
+end;

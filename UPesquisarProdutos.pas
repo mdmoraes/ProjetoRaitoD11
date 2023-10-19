@@ -23,8 +23,10 @@ type
     procedure rbDescricaoClick(Sender: TObject);
     procedure edt1Change(Sender: TObject);
     procedure dbgrd1Enter(Sender: TObject);
+    procedure dbgrd1CellClick(Column: TColumn);
     procedure dbgrd1DblClick(Sender: TObject);
   private
+    procedure CopiarProdutos;
     { Private declarations }
   public
     { Public declarations }
@@ -61,26 +63,34 @@ begin
     edt1.SetFocus;
 end;
 
+procedure TFrmPesquisarProdutos.dbgrd1CellClick(Column: TColumn);
+begin
+//CopiarProdutos();
+end;
+
 procedure TFrmPesquisarProdutos.dbgrd1DblClick(Sender: TObject);
 begin
-//DMRaito.FdTableItens.Open;
-DMRaito.FdTableItens.Append;
+CopiarProdutos();
+end;
 
-frmPedido.dbgrdItens.Columns.Items[2].Field.Text :=  dbgrd1.Columns.Items[0].Field.Text;
-frmPedido.dbgrdItens.Columns.Items[3].Field.Text :=  dbgrd1.Columns.Items[1].Field.Text;
-frmPedido.dbgrdItens.Columns.Items[4].Field.Text :=  dbgrd1.Columns.Items[2].Field.Text;
-frmPedido.dbgrdItens.Columns.Items[6].Field.Text :=  dbgrd1.Columns.Items[3].Field.Text;
-frmPedido.dbgrdItens.Columns.Items[7].Field.Text :=  dbgrd1.Columns.Items[4].Field.Text;
-frmPedido.dbgrdItens.SelectedIndex := 5;
-//DBGrid1.SelectedIndex := 2;
-btnFechar.Click;
+procedure TFrmPesquisarProdutos.CopiarProdutos;
+begin
+  //DMRaito.FdTableItens.Open;
+  DMRaito.FdTableItens.Append;
+  frmPedido.dbgrdItens.Columns.Items[0].Field.Text := dbgrd1.Columns.Items[0].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[1].Field.Text := dbgrd1.Columns.Items[1].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[2].Field.Text := dbgrd1.Columns.Items[2].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[4].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[5].Field.Text := dbgrd1.Columns.Items[4].Field.Text;
+  frmPedido.dbgrdItens.SelectedIndex := 3;
+  //DBGrid1.SelectedIndex := 2;
+  btnFechar.Click;
 end;
 
 procedure TFrmPesquisarProdutos.dbgrd1Enter(Sender: TObject);
 begin
+//CopiarProdutos();
 
-//frmPedido.dbgrdItens.Columns.Items[2].Field.Text :=  dbgrd1.Columns.Items[0].Field.Text;
-//FrmCadProdutos.dbCodigoProduto.Text:= dbgrd2.Columns.Items[0].Field.Text;
 
 end;
 

@@ -98,19 +98,6 @@ type
     TablePedidotipopedido: TStringField;
     FdTablePedidostatus: TIntegerField;
     strngfldFdTablePedidonumpedcliente: TStringField;
-    fdtncfldFdTableItensfdtncfldFdTableItenscodinc: TFDAutoIncField;
-    TableFdTableItensTable_pedido: TIntegerField;
-    TableFdTableItensstrngfldFdTableItenscodigo: TStringField;
-    TableItensqtd: TFloatField;
-    TableFdTableItensstrngfldFdTableItensunidade: TStringField;
-    TableFdTableItensstrngfldFdTableItensproduto: TStringField;
-    TableItensvalorunit: TFloatField;
-    fltfldFdTableItensfltfldFdTableItenspercentual1: TFloatField;
-    fltfldFdTableItensfltfldFdTableItenspercentual2: TFloatField;
-    fltfldFdTableItensfltfldFdTableItenspercentual3: TFloatField;
-    TableItensvalorliquido: TFloatField;
-    TableFdTableItensstrngfldFdTableItensgrupo: TStringField;
-    FdTableItensmarcado: TShortintField;
     dsPedido: TDataSource;
     dsItens: TDataSource;
     dsCliente: TDataSource;
@@ -131,13 +118,12 @@ type
     fltfldFdTbImportacaoicms7: TFloatField;
     FdTableContatoCliente: TFDTable;
     dsContatoCliente: TDataSource;
-    TableFdTableContatoClienteTipo: TStringField;
-    TableFdTableContatoClienteDadosDoTipo: TStringField;
-    TableFdTableContatoClienteNomeDoContato: TStringField;
-    TableFdTableContatoClienteIdCliente: TIntegerField;
+    FdTableContatoClienteTipo: TStringField;
+    FdTableContatoClienteDadosDoTipo: TStringField;
+    FdTableContatoClienteNomeDoContato: TStringField;
+    FdTableContatoClienteIdCliente: TIntegerField;
     TableFdTableContatoClienteContatoId: TIntegerField;
     FdTableItens: TFDTable;
-    TableItensTotal: TFloatField;
     dsTableTransportadora: TDataSource;
     FdTableRepresentada: TFDTable;
     dsRepresentada: TDataSource;
@@ -174,9 +160,26 @@ type
     TableFdTableRepresentadatwitter: TStringField;
     TableFdTablePedidoidcliente: TIntegerField;
     TablePedidoEnderecoCliente: TStringField;
+    FdTableItenscodinc: TFDAutoIncField;
+    FdTableItensid_pedido: TIntegerField;
+    FdTableItenscodigo: TStringField;
+    FdTableItensqtd: TFloatField;
+    FdTableItensun: TStringField;
+    FdTableItensproduto: TStringField;
+    FdTableItensvunit: TFloatField;
+    FdTableItensp1: TFloatField;
+    FdTableItensp2: TFloatField;
+    FdTableItensp3: TFloatField;
+    FdTableItensvalorliquido: TFloatField;
+    FdTableItensgrupo: TStringField;
+    FdTableItensmc: TShortintField;
+    FdTableItensTotal: TFloatField;
+    dsCadastroDeProdutos: TDataSource;
+    FdTableItensLiq1: TFloatField;
+    FdTableItensLiq2: TFloatField;
+    FdTableItensLiq3: TFloatField;
     procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
     procedure TableItensqtdValidate(Sender: TField);
-    procedure FdTableItensBeforePost(DataSet: TDataSet);
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FdTablePedidoBeforePost(DataSet: TDataSet);
@@ -204,6 +207,15 @@ procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
 var
 total, totalBruto: Double;
 begin
+  // if DMRaito.FdTableItens.FieldByName('qtd').AsString = EmptyStr  then//
+
+   if DMRaito.FdTableItens.FieldByName('qtd').AsFloat < 1  then
+   begin
+    ShowMessage('O preenchimento da Quantidade(>=1) é obrigatório !');
+    Abort;
+   end;
+//   else
+
     DMRaito.FdTableItens.DisableControls;
     DMRaito.FdTableItens.First;
     total:= 0;
@@ -211,7 +223,7 @@ begin
     while not DMRaito.FdTableItens.Eof do
     begin
    // totliquido:= totliquido + DMRatio.TBItensTotalBruto.Value;
-    total:= total + DMRaito.TableItensTotal.Value;
+    total:= total + DMRaito.FdTableItensTotal.Value;
     DMRaito.FdTableItens.Next;
     end;
     DMRaito.FdTablePedido.Edit;
@@ -220,22 +232,16 @@ begin
     DMRaito.FdTablePedido.Post;
     DMRaito.FdTableItens.EnableControls;
 
-end;
 
-procedure TDMRaito.FdTableItensBeforePost(DataSet: TDataSet);
-begin
-  if DMRaito.FdTableItens.FieldByName('qtd').AsString = EmptyStr  then
-   begin
-    ShowMessage('O preenchimento da Quantidade é obrigatório !');
-    Abort;
-  end;
+
 end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
-DMRaito.TableItensTotal.Value :=
-(DMRaito.TableitensValorUnit.Value * DMRaito.TableItensqtd.Value);
+FdTableItensLiq1.Value:= (DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensp1.Value) /100;
 
+DMRaito.FdTableItensTotal.Value :=
+(DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensqtd.Value - FdTableItensLiq1.Value);
 end;
 
 procedure TDMRaito.FdTablePedidoBeforePost(DataSet: TDataSet);

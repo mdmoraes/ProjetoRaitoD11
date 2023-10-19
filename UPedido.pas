@@ -33,7 +33,7 @@ type
     BalloonHint1: TBalloonHint;
     lbl4: TLabel;
     lbl8: TLabel;
-    dbedttotalbruto: TDBEdit;
+    dbedttotaldopedido: TDBEdit;
     btn2: TSpeedButton;
     btnNovoCliente: TSpeedButton;
     btnNovaRepresentada: TSpeedButton;
@@ -46,13 +46,13 @@ type
     lbl11: TLabel;
     dbedtcomissaovalor1: TDBEdit;
     lbl12: TLabel;
-    dbmmoobs: TDBMemo;
     lbl13: TLabel;
-    dbmmolembrete: TDBMemo;
     lokupcliente1: TDBLookupComboBox;
     lokuprepresentada: TDBLookupComboBox;
     lbl5: TLabel;
     dbedtidcliente: TDBEdit;
+    dbmmoobs: TDBMemo;
+    dbmmoobs1: TDBMemo;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -60,10 +60,13 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
     procedure btnNovoClienteClick(Sender: TObject);
-    procedure dbgrdItensDblClick(Sender: TObject);
     procedure lokupclienteClick(Sender: TObject);
     procedure btnPesquisaClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
+    procedure dbgrdItensCellClick(Column: TColumn);
+    procedure dbgrdItensKeyPress(Sender: TObject; var Key: Char);
+    procedure ButtonPesquisarProdtoClick(Sender: TObject);
+    procedure dbgrdItensEditButtonClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -99,6 +102,7 @@ begin
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
     DMRaito.FdTablePedido.Cancel;
+    DMRaito.FdTableItens.Cancel;
 end;
 
 procedure TfrmPedido.btnExcluirClick(Sender: TObject);
@@ -115,23 +119,17 @@ end;
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
 begin
     DMRaito.FdTablePedido.Edit;
-//    if (dbrgrptipopedido.Value <> 'Orçamento') or (dbrgrptipopedido.Value <> 'Venda') then
-//    begin
-//      ShowMessage('É obrigatório definir tipo de pedido como Orçamento ou Venda Efetiva !');
-//      Exit;
-//    end
-//    else
-
     if (dbrgrptipopedido.Value = 'Orçamento') or (dbrgrptipopedido.Value = 'Venda') then
     begin
     DMRaito.FdTablePedido.Post;
+    DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
     end
     else
-    ShowMessage('É obrigatório definir o tipo de pedido, Orçamento ou Venda Efetiva !');
+    ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
 
 
 
@@ -150,7 +148,13 @@ begin
       frmRelatorioPedido.queryRelPedido.Open;
 
       if DMRaito.TablePedidotipopedido.Value = 'Orçamento' then
-   //   QrOrcamento.QRLblPedido.Caption:= 'Orçtº_Nº';
+      frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Orçamento'
+      else
+      frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Venda';
+
+
+      //lbl_Totalizador.Caption := FloatToStr (vQryTotais.FieldByName(''TOTAL'').AsFloat);
+
 
   //    QrOrcamento.QRExprMemo1.Lines.Text:= dbmemoObs.Text;
       frmRelatorioPedido.QRPQuickrep1.Preview;
@@ -205,7 +209,7 @@ try
  end;
 end;
 
-procedure TfrmPedido.dbgrdItensDblClick(Sender: TObject);
+procedure TfrmPedido.ButtonPesquisarProdtoClick(Sender: TObject);
 begin
 try
  application.CreateForm(TFrmPesquisarProdutos, FrmPesquisarProdutos);
@@ -213,6 +217,33 @@ try
  finally
  FrmPesquisarProdutos.Free;
  end;
+end;
+
+procedure TfrmPedido.dbgrdItensCellClick(Column: TColumn);
+begin
+//if dbgrdItens.SelectedIndex = 0 then
+//btnPesquisaClick(nil);
+end;
+
+procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
+begin
+ try
+//if dbgrdItens.SelectedIndex = 0 then
+
+ application.CreateForm(TFrmPesquisarProdutos, FrmPesquisarProdutos);
+ FrmPesquisarProdutos.ShowModal;
+ finally
+ FrmPesquisarProdutos.Free;
+ end;
+end;
+
+procedure TfrmPedido.dbgrdItensKeyPress(Sender: TObject; var Key: Char);
+begin
+ // if dbgrdItens.SelectedIndex = 0 then
+ // showmessage('olá');
+
+
+
 end;
 
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);

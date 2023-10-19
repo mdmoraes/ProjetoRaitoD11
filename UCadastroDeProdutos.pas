@@ -9,7 +9,6 @@ uses
 
 type
   TfrmCadastroDeProdutos = class(TForm)
-    dsCadastroDeProdutos: TDataSource;
     lbl: TLabel;
     dbedtcodigoproduto: TDBEdit;
     lbl1: TLabel;

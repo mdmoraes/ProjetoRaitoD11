@@ -27,7 +27,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
-  Application.CreateForm(TfrmRelatorioPedido, frmRelatorioPedido);
-  Application.CreateForm(TFrmPesquisarClientes, FrmPesquisarClientes);
   Application.Run;
 end.

@@ -60,11 +60,7 @@ type
     TableRelPedidoCODIGO: TStringField;
     TableRelPedidoPRODUTO: TStringField;
     TableRelPedidoGRUPO: TStringField;
-    TableRelPedidoVALORUNIT: TFloatField;
     TableRelPedidoQTD: TFloatField;
-    TableRelPedidoPERCENTUAL1: TFloatField;
-    TableRelPedidoPERCENTUAL2: TFloatField;
-    TableRelPedidoPERCENTUAL3: TFloatField;
     TableRelPedidobairro: TStringField;
     TableRelPedidoendereco: TStringField;
     TableRelPedidocidade: TStringField;
@@ -76,6 +72,15 @@ type
     TableRelPedidoemailnfe_1: TStringField;
     TableRelPedidocnpj: TStringField;
     TableRelPedidoTOTAL: TFloatField;
+    qrdbtxtCODIGO: TQRDBText;
+    qrdbtxtPRODUTO: TQRDBText;
+    qrdbtxtQTD: TQRDBText;
+    qrdbtxtGRUPO: TQRDBText;
+    qrdbtxtVALORUNIT: TQRDBText;
+    qrdbtxtPERCENTUAL1: TQRDBText;
+    qrdbtxtPERCENTUAL2: TQRDBText;
+    qrdbtxtPERCENTUAL3: TQRDBText;
+    qrdbtxtTOTAL: TQRDBText;
     qrlbl20: TQRLabel;
     qrlbl21: TQRLabel;
     qrlbl22: TQRLabel;
@@ -88,17 +93,25 @@ type
     qrlbl29: TQRLabel;
     qrlbl30: TQRLabel;
     QRShape1: TQRShape;
-    qrdbtxtCODIGO: TQRDBText;
-    qrdbtxtPRODUTO: TQRDBText;
-    qrdbtxtQTD: TQRDBText;
-    qrdbtxtGRUPO: TQRDBText;
-    qrdbtxt5: TQRDBText;
-    qrdbtxtVALORUNIT: TQRDBText;
-    qrdbtxtPERCENTUAL1: TQRDBText;
-    qrdbtxtPERCENTUAL2: TQRDBText;
-    qrdbtxtPERCENTUAL3: TQRDBText;
-    qrdbtxt9: TQRDBText;
-    qrdbtxtTOTAL: TQRDBText;
+    QRBand4: TQRBand;
+    qrlbl31: TQRLabel;
+    qrlblObs: TQRLabel;
+    qrlblLembrete: TQRLabel;
+    qrlblTipoDePedido: TQRLabel;
+    qrdbTIPOPEDIDO: TQRDBText;
+    qrdbOBS: TQRDBText;
+    qrdbLEMBRETE: TQRDBText;
+    qrdbtotalbruto: TQRDBText;
+    TableRelPedidoTOTALBRUTO: TFloatField;
+    queryRelPedidoUN: TStringField;
+    queryRelPedidoVUNIT: TFloatField;
+    queryRelPedidoP1: TFloatField;
+    queryRelPedidoP2: TFloatField;
+    queryRelPedidoP3: TFloatField;
+    queryRelPedidoMC: TShortintField;
+    QRDBText1: TQRDBText;
+    QRDBText2: TQRDBText;
+    QRDBText3: TQRDBText;
   private
     { Private declarations }
   public

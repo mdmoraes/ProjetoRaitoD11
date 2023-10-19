@@ -313,6 +313,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 17
       Caption = 'idcliente'
       FocusControl = dbedtidcliente
+      Visible = False
     end
     object lbl6: TLabel
       Left = 8
@@ -353,6 +354,21 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 17
       Caption = 'inscestadual'
       FocusControl = dbedtinscestadual
+    end
+    object LabelContatos: TLabel
+      Left = 8
+      Top = 216
+      Width = 72
+      Height = 21
+      Caption = 'Contatos:'
+      Color = clRed
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 3937500
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentColor = False
+      ParentFont = False
     end
     object dbedtnomecliente: TDBEdit
       Left = 8
@@ -402,12 +418,13 @@ object frmCadastroClientes: TfrmCadastroClientes
     object dbedtidcliente: TDBEdit
       Left = 544
       Top = 32
-      Width = 34
+      Width = 32
       Height = 25
       DataField = 'idcliente'
       DataSource = DMRaito.dsCliente
       ReadOnly = True
       TabOrder = 5
+      Visible = False
     end
     object dbedtcidade: TDBEdit
       Left = 8
@@ -434,16 +451,19 @@ object frmCadastroClientes: TfrmCadastroClientes
       Height = 25
       DataField = 'cep'
       DataSource = DMRaito.dsCliente
+      MaxLength = 9
       TabOrder = 8
     end
     object dbedtcnpj: TDBEdit
       Left = 8
       Top = 167
-      Width = 153
+      Width = 143
       Height = 25
       DataField = 'cnpj'
       DataSource = DMRaito.dsCliente
+      MaxLength = 18
       TabOrder = 9
+      OnExit = dbedtcnpjExit
     end
     object dbedtinscestadual: TDBEdit
       Left = 167
@@ -454,54 +474,48 @@ object frmCadastroClientes: TfrmCadastroClientes
       DataSource = DMRaito.dsCliente
       TabOrder = 10
     end
-    object grp1: TGroupBox
+    object dbgrdContatos: TDBGrid
       Left = 8
-      Top = 198
-      Width = 889
-      Height = 219
-      Caption = ' Contatos:'
+      Top = 240
+      Width = 935
+      Height = 241
+      DataSource = DMRaito.dsContatoCliente
+      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 11
-      object dbgrd1: TDBGrid
-        Left = 3
-        Top = 32
-        Width = 883
-        Height = 177
-        DataSource = DMRaito.dsContatoCliente
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
-        TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -13
-        TitleFont.Name = 'Segoe UI'
-        TitleFont.Style = []
-        OnDblClick = dbgrd1DblClick
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'ContatoId'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'IdCliente'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'Tipo'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'DadosDoTipo'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'NomeDoContato'
-            Visible = True
-          end>
-      end
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -13
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      OnDblClick = dbgrdContatosDblClick
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'ContatoId'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'IdCliente'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Tipo'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'DadosDoTipo'
+          Width = 360
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NomeDoContato'
+          Width = 290
+          Visible = True
+        end>
     end
   end
 end
