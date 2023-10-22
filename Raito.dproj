@@ -58,7 +58,7 @@
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <SanitizedProjectName>Raito</SanitizedProjectName>
-        <Custom_Styles>&quot;Windows10 Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Dark.vsf&quot;</Custom_Styles>
+        <Custom_Styles>&quot;Aqua Light Slate|VCLSTYLE|$(BDSCOMMONDIR)\Styles\AquaLightSlate.vsf&quot;;&quot;Windows10 Dark|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10Dark.vsf&quot;</Custom_Styles>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>soapserver;IndySystem;vclwinx;rbRIDE2228;dclRBADO2228;rbRCL2228;dclRBFireDAC2228;fmx;vclie;DbxCommonDriver;bindengine;vcldb;IndyIPCommon;VCLRESTComponents;FireDACCommonODBC;dclRBE2228;FireDACCommonDriver;rbRest2228;appanalytics;IndyProtocols;vclx;dclRBDBE2228;IndyIPClient;dbxcds;vcledge;vclFireDAC;rbFireDAC2228;bindcompvclwinx;bindcomp;FmxTeeUI;FireDACCommon;IndyCore;RESTBackendComponents;bindcompfmx;bindcompdbx;rbCIDE2228;inetdb;rbRAP2228;rtl;FireDACMySQLDriver;rbDB2228;FireDACSqliteDriver;DbxClientDriver;FireDACADSDriver;Tee;RESTComponents;DBXSqliteDriver;vcl;vclactnband;TeeUI;IndyIPServer;fmxFireDAC;dbexpress;dsnapxml;dsnapcon;soapmidas;adortl;rbCloudSC2228;DBXMySQLDriver;rbBDE2228;VclSmp;inet;rbUSERDesign2228;rbUSER2228;vclimg;vcltouch;FireDACPgDriver;FireDAC;fmxase;inetdbxpress;xmlrtl;tethering;rbADO2228;dbrtl;rbDBE2228;QRWRunDXE11_w64;bindcompvcl;dsnap;fmxdae;TeeDB;rbDAD2228;CloudService;FireDACMSAccDriver;ImportExcel;CustomIPTransport;rbRTL2228;rbIDE2228;fmxobj;bindcompvclsmp;FMXTee;rbDIDE2228;soaprtl;vcldsnap;DBXInterBaseDriver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
@@ -112,10 +112,6 @@
             <Form>frmCadastroClientes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UPrincipal.pas">
-            <Form>frmPrincipal</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="UImportarPlanilha.pas">
             <Form>frmImportarPlanilha</Form>
             <FormType>dfm</FormType>
@@ -153,6 +149,14 @@
         </DCCReference>
         <DCCReference Include="UPesquisarClientes.pas">
             <Form>FrmPesquisarClientes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UPrincipal.pas">
+            <Form>frmPrincipal</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UTelaInicial.pas">
+            <Form>frmTelaInicial</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">

@@ -4,7 +4,6 @@ uses
   Vcl.Forms,
   UDMRaito in 'UDMRaito.pas' {DMRaito: TDataModule},
   UCadastroDeClientes in 'UCadastroDeClientes.pas' {frmCadastroClientes},
-  UPrincipal in 'UPrincipal.pas' {frmPrincipal},
   UImportarPlanilha in 'UImportarPlanilha.pas' {frmImportarPlanilha},
   Rotina in 'Rotina.pas',
   UCadastroDeProdutos in 'UCadastroDeProdutos.pas' {frmCadastroDeProdutos},
@@ -18,7 +17,9 @@ uses
   UPesquisarProdutos in 'UPesquisarProdutos.pas' {FrmPesquisarProdutos},
   UPesquisaPedido in 'UPesquisaPedido.pas' {FrmPesquisaPedido},
   URelatorioPedido in 'URelatorioPedido.pas' {frmRelatorioPedido},
-  UPesquisarClientes in 'UPesquisarClientes.pas' {FrmPesquisarClientes};
+  UPesquisarClientes in 'UPesquisarClientes.pas' {FrmPesquisarClientes},
+  UPrincipal in 'UPrincipal.pas' {frmPrincipal},
+  UTelaInicial in 'UTelaInicial.pas' {frmTelaInicial};
 
 {$R *.res}
 
@@ -27,5 +28,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
+  Application.CreateForm(TfrmPedido, frmPedido);
   Application.Run;
 end.

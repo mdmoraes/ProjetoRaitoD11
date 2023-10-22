@@ -76,28 +76,6 @@ type
     fltfldFdTableCadastroProdutospcusto: TFloatField;
     fltfldFdTableCadastroProdutospvenda: TFloatField;
     FdTableCadastroProdutosmarcado: TIntegerField;
-    FdTablePedido: TFDTable;
-    FdTablePedidonum_pedido: TIntegerField;
-    dtfldFdTablePedidodata_pedido: TDateField;
-    strngfldFdTablePedidorepresentada: TStringField;
-    strngfldFdTablePedidocliente: TStringField;
-    strngfldFdTablePedidotransportadora: TStringField;
-    strngfldFdTablePedidocondicoespagto: TStringField;
-    fltfldFdTablePedidocomissaopercentual: TFloatField;
-    fltfldFdTablePedidocomissaovalor: TFloatField;
-    fltfldFdTablePedidodesc1: TFloatField;
-    fltfldFdTablePedidodesc2: TFloatField;
-    fltfldFdTablePedidodesc3: TFloatField;
-    fltfldFdTablePedidodesc4: TFloatField;
-    fltfldFdTablePedidodesc5: TFloatField;
-    fltfldFdTablePedidodesc6: TFloatField;
-    mfldFdTablePedidoobs: TMemoField;
-    mfldFdTablePedidolembrete: TMemoField;
-    fltfldFdTablePedidototalliquido: TFloatField;
-    TablePedidototalbruto: TFloatField;
-    TablePedidotipopedido: TStringField;
-    FdTablePedidostatus: TIntegerField;
-    strngfldFdTablePedidonumpedcliente: TStringField;
     dsPedido: TDataSource;
     dsItens: TDataSource;
     dsCliente: TDataSource;
@@ -123,7 +101,6 @@ type
     FdTableContatoClienteNomeDoContato: TStringField;
     FdTableContatoClienteIdCliente: TIntegerField;
     TableFdTableContatoClienteContatoId: TIntegerField;
-    FdTableItens: TFDTable;
     dsTableTransportadora: TDataSource;
     FdTableRepresentada: TFDTable;
     dsRepresentada: TDataSource;
@@ -158,31 +135,52 @@ type
     TableFdTableRepresentadacnpj: TStringField;
     TableFdTableRepresentadainscestadual: TStringField;
     TableFdTableRepresentadatwitter: TStringField;
-    TableFdTablePedidoidcliente: TIntegerField;
-    TablePedidoEnderecoCliente: TStringField;
-    FdTableItenscodinc: TFDAutoIncField;
-    FdTableItensid_pedido: TIntegerField;
-    FdTableItenscodigo: TStringField;
-    FdTableItensqtd: TFloatField;
-    FdTableItensun: TStringField;
-    FdTableItensproduto: TStringField;
-    FdTableItensvunit: TFloatField;
-    FdTableItensp1: TFloatField;
-    FdTableItensp2: TFloatField;
-    FdTableItensp3: TFloatField;
-    FdTableItensvalorliquido: TFloatField;
-    FdTableItensgrupo: TStringField;
-    FdTableItensmc: TShortintField;
-    FdTableItensTotal: TFloatField;
     dsCadastroDeProdutos: TDataSource;
-    FdTableItensLiq1: TFloatField;
-    FdTableItensLiq2: TFloatField;
-    FdTableItensLiq3: TFloatField;
-    FdTableItensVDesc: TFloatField;
+    FdTablePedido: TFDTable;
+    FdTablePedidoPedidoId: TFDAutoIncField;
+    FdTablePedidodata_pedido: TDateTimeField;
+    FdTablePedidoRepresentada: TStringField;
+    FdTablePedidoCliente: TStringField;
+    FdTablePedidoTransportadora: TStringField;
+    FdTablePedidoCondicoesPagamento: TStringField;
+    FdTablePedidoComissao: TFloatField;
+    FdTablePedidoVrComissao: TFloatField;
+    FdTablePedidoObs: TStringField;
+    FdTablePedidoLembrete: TStringField;
+    FdTablePedidoTotalBruto: TFloatField;
+    FdTableItens: TFDTable;
+    FdTablePedidoTipoPedido: TStringField;
+    FdTableItensItensId: TFDAutoIncField;
+    FdTableItensCodProd: TStringField;
+    FdTableItensQtd: TIntegerField;
+    FdTableItensDescProduto: TStringField;
+    FdTableItensVrUnit: TFloatField;
+    FdTableItensp1: TFloatField;
+    FdTableItensVrDesc: TFloatField;
+    FdTableItensGrupo: TStringField;
+    FdTableItensmc: TShortintField;
+    FdTableItensUn: TStringField;
+    FdTableItensPedidoId: TIntegerField;
+    FdTableItensTotalItens: TFloatField;
+    FDTableVenda: TFDTable;
+    FDTableItemVenda: TFDTable;
+    DSVenda: TDataSource;
+    DSItemVenda: TDataSource;
+    FDTableVendaidvenda: TFDAutoIncField;
+    FDTableVendadata_venda: TDateField;
+    FDTableItemVendaiditem_venda: TFDAutoIncField;
+    FDTableItemVendaidvenda: TIntegerField;
+    FDTableVendaproduto: TStringField;
+    FDTableVendadescricao: TStringField;
+    FDTableItemVendaproduto: TStringField;
+    FDTableItemVendadescricao: TStringField;
+    FDSchemaAdapter: TFDSchemaAdapter;
+    FdTableItensDesct: TFloatField;
     procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FdTablePedidoBeforePost(DataSet: TDataSet);
+    procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -197,6 +195,13 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDMRaito.FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
+begin
+  DMRaito.FdTablePedido.CommitUpdates();
+  DMRaito.FdTableItens.CommitUpdates();
+
+end;
 
 procedure TDMRaito.FdTableContatoClienteBeforePost(DataSet: TDataSet);
 begin
@@ -218,32 +223,37 @@ total, totalBruto: Double;
       totalBruto:= 0;
       while not DMRaito.FdTableItens.Eof do
       begin
-      total:= total + DMRaito.FdTableItensTotal.Value;
+      total:= total + DMRaito.FdTableItensTotalItens.Value;
       DMRaito.FdTableItens.Next;
+
+
       end;
-      DMRaito.FdTableItens.Edit;
+     // DMRaito.FdTableItens.Edit;
       DMRaito.FdTablePedido.Edit;
-      DMRaito.TablePedidototalbruto.Value:= total;
+      DMRaito.FdTablePedidoTotalBruto.Value:= total;
       DMRaito.FdTablePedido.Post;
       DMRaito.FdTableItens.EnableControls;
+
+
   end;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
 
-DMRaito.FdTableItensLiq1.Value:=
-(DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensp1.Value) /100 * DMRaito.FdTableItensqtd.Value;
-
-DMRaito.FdTableItensTotal.Value :=
-(DMRaito.FdTableItensvunit.Value * DMRaito.FdTableItensqtd.Value - DMRaito.FdTableItensLiq1.Value);
+//DMRaito.FdTableItens.Edit;
+FdTableItensDesct.Value:=
+(DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100;
+//
+DMRaito.FdTableItensTotalItens.Value :=
+(DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value);
 end;
 
 procedure TDMRaito.FdTablePedidoBeforePost(DataSet: TDataSet);
 begin
 
-DMRaito.TableFdTablePedidoidcliente.Value := DMRaito.FDTableClienteidcliente.Value;
+//DMRaito.TableFdTablePedidoidcliente.Value := DMRaito.FDTableClienteidcliente.Value;
 //ENDEREÇO DO CLIENTE
-DMRaito.TablePedidoEnderecoCliente.Value := DMRaito.TableClienteendereco.Value;
+//DMRaito.TablePedidoEnderecoCliente.Value := DMRaito.TableClienteendereco.Value;
 
 end;
 

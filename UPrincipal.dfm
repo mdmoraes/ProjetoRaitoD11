@@ -2,7 +2,7 @@ object frmPrincipal: TfrmPrincipal
   Left = 347
   Top = 270
   Caption = 'TELA PRINCIPAL'
-  ClientHeight = 562
+  ClientHeight = 631
   ClientWidth = 1288
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmPrincipal: TfrmPrincipal
     Left = 0
     Top = 0
     Width = 1288
-    Height = 562
+    Height = 631
     AdaptToStyle = True
     Align = alClient
     ParentDoubleBuffered = False
@@ -12857,10 +12857,8 @@ object frmPrincipal: TfrmPrincipal
     Fill.Kind = gfkNone
     Stroke.Kind = gskNone
     Stroke.Color = 15987699
-    ExplicitLeft = 368
-    ExplicitTop = 56
-    ExplicitWidth = 617
-    ExplicitHeight = 417
+    ExplicitWidth = 1284
+    ExplicitHeight = 630
   end
   object mm1: TMainMenu
     Left = 992
@@ -12883,12 +12881,9 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Importar Planilha'
         OnClick = MenuSubImportarPlanilhaClick
       end
-    end
-    object MenuVendas: TMenuItem
-      Caption = 'Vendas'
-      object MenuEmitirPedido: TMenuItem
-        Caption = 'Emitir Pedido'
-        OnClick = MenuEmitirPedidoClick
+      object SubMenuEmissodePedidos: TMenuItem
+        Caption = 'Emiss'#227'o de Pedidos'
+        OnClick = SubMenuEmissodePedidosClick
       end
     end
     object MenuSairdoSistema: TMenuItem

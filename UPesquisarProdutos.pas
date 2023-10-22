@@ -80,9 +80,10 @@ begin
   frmPedido.dbgrdItens.Columns.Items[2].Field.Text := dbgrd1.Columns.Items[0].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[3].Field.Text := dbgrd1.Columns.Items[1].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[4].Field.Text := dbgrd1.Columns.Items[2].Field.Text;
-  frmPedido.dbgrdItens.Columns.Items[6].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
+  frmPedido.dbgrdItens.Columns.Items[5].Field.Text := dbgrd1.Columns.Items[3].Field.Text;
   frmPedido.dbgrdItens.Columns.Items[7].Field.Text := dbgrd1.Columns.Items[4].Field.Text;
-  frmPedido.dbgrdItens.SelectedIndex := 5;
+  frmPedido.dbgrdItens.Columns.Items[10].Field.Text := dbgrd1.Columns.Items[5].Field.Text;
+  frmPedido.dbgrdItens.SelectedIndex := 6;
   //DBGrid1.SelectedIndex := 2;
   btnFechar.Click;
 end;

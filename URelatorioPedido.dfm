@@ -9813,16 +9813,9 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       'From PEDIDOS A'
       'join ITENS B on B.ID_PEDIDO = A.NUM_PEDIDO'
       'JOIN cadastroclientes C ON A.IDCLIENTE = C.IDCLIENTE'
-      'Where A.NUM_PEDIDO = :NUM_PEDIDO')
+      'Where A.NUM_PEDIDO = 1 -- :NUM_PEDIDO')
     Left = 846
     Top = 225
-    ParamData = <
-      item
-        Name = 'NUM_PEDIDO'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = 9
-      end>
     object TableRelPedidoNUM_PEDIDO: TIntegerField
       FieldName = 'NUM_PEDIDO'
       Origin = 'num_pedido'
@@ -9994,12 +9987,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
     object TableRelPedidoTOTAL: TFloatField
       AutoGenerateValue = arDefault
+      FieldKind = fkCalculated
       FieldName = 'TOTAL'
       Origin = 'TOTAL'
       ProviderFlags = []
       ReadOnly = True
       DisplayFormat = '###,###,##0.00'
       EditFormat = '###,###,##0.00'
+      Calculated = True
     end
     object TableRelPedidoTOTALBRUTO: TFloatField
       AutoGenerateValue = arDefault
@@ -10073,12 +10068,14 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
     object queryRelPedidoTOTALITENS: TFloatField
       AutoGenerateValue = arDefault
+      FieldKind = fkCalculated
       FieldName = 'TOTALITENS'
       Origin = 'TOTALITENS'
       ProviderFlags = []
       ReadOnly = True
       DisplayFormat = '###,###,##0.00'
       EditFormat = '###,###,##0.00'
+      Calculated = True
     end
   end
 end

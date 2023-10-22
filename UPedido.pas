@@ -6,7 +6,9 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.Mask,
   Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, QuickRpt, qrpBaseCtrls,
-  QRCtrls, Vcl.Consts;
+  QRCtrls, Vcl.Consts, Vcl.ActnMan, Math, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.Client, FireDAC.Stan.Param;
 
 type
   TfrmPedido = class(TForm)
@@ -22,7 +24,6 @@ type
     btnGravar: TSpeedButton;
     btnImprimir: TSpeedButton;
     panelTela: TPanel;
-    dbgrdItens: TDBGrid;
     lbl: TLabel;
     lbl1: TLabel;
     lbl2: TLabel;
@@ -49,10 +50,9 @@ type
     lbl13: TLabel;
     lokupcliente1: TDBLookupComboBox;
     lokuprepresentada: TDBLookupComboBox;
-    lbl5: TLabel;
-    dbedtidcliente: TDBEdit;
     dbmmoobs: TDBMemo;
     dbmmoobs1: TDBMemo;
+    dbgrdItens: TDBGrid;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -63,12 +63,17 @@ type
     procedure lokupclienteClick(Sender: TObject);
     procedure btnPesquisaClick(Sender: TObject);
     procedure btnImprimirClick(Sender: TObject);
-    procedure dbgrdItensCellClick(Column: TColumn);
     procedure ButtonPesquisarProdtoClick(Sender: TObject);
     procedure dbgrdItensEditButtonClick(Sender: TObject);
     procedure dbgrdItensKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure dbgrdItensDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure dbgrdItensDblClick(Sender: TObject);
+    procedure dbgrdItensCellClick(Column: TColumn);
+    procedure FormCreate(Sender: TObject);
   private
+   procedure LimparCache(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -133,6 +138,8 @@ begin
     else
     ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
 
+    DMRaito.FDSchemaAdapter.ApplyUpdates(0);
+
 
 
 end;
@@ -145,11 +152,11 @@ begin
      // DMRatio.TBCadCliente.Locate('IdCliente', dbCodCliente.Text, []);
     //  DMRaito.FdTablePedido.IndexName:= 'idxNumPedido';
     //  DMRaito.FdTablePedido.SetRange([dbedtnum_pedido.Text],[dbedtnum_pedido.Text]);
-      frmRelatorioPedido.queryRelPedido.ParamByName('NUM_PEDIDO').AsInteger:= StrToInt(dbedtnum_pedido.Text);
+      frmRelatorioPedido.queryRelPedido.ParamByName('PedidoId').AsInteger:= StrToInt(dbedtnum_pedido.Text);
       frmRelatorioPedido.queryRelPedido.Prepare;
       frmRelatorioPedido.queryRelPedido.Open;
 
-      if DMRaito.TablePedidotipopedido.Value = 'Orçamento' then
+      if DMRaito.FdTablePedidoTipoPedido.Value = 'Orçamento' then
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Orçamento'
       else
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Venda';
@@ -175,20 +182,29 @@ begin
   panelTela.Enabled:= True;
        try
           DMRaito.FdTablePedido.DisableControls;
-          DMRaito.FdTablePedido.IndexName:= 'idxNumPedido';
+          DMRaito.FdTablePedido.IndexName:= 'idxPedido';
           DMRaito.FdTablePedido.First;
           DMRaito.FdTablePedido.Last;
-          if DMRaito.FdTablePedido['num_pedido']<> null then
-          it := DMRaito.FdTablePedido['num_pedido']
+          if DMRaito.FdTablePedido['PedidoId']<> null then
+          it := DMRaito.FdTablePedido['PedidoId']
           else
           it:= 0;
+
+
+//          DMRaito.FdTablePedido.Edit;
           DMRaito.FdTablePedido.Insert;
-          DMRaito.FdTablePedido['num_pedido'] := it + 1;
+          DMRaito.FdTablePedido['PedidoId'] := it + 1;
           DMRaito.FdTablePedido['data_pedido']:= DateToStr(Now);
-          lokupcliente.SetFocus;
+  //        DMRaito.FdTablePedido.Post;
+  //        DMRaito.FdTablePedido.Edit;
+   //       lokupcliente.SetFocus;
           finally
           DMRaito.FdTablePedido.EnableControls;
           end;
+
+          
+
+
 end;
 
 procedure TfrmPedido.btnNovoClienteClick(Sender: TObject);
@@ -223,8 +239,70 @@ end;
 
 procedure TfrmPedido.dbgrdItensCellClick(Column: TColumn);
 begin
-//if dbgrdItens.SelectedIndex = 0 then
-//btnPesquisaClick(nil);
+//    if dbgrdItens.SelectedIndex = 2 then
+//    begin
+//    DMRaito.FdTablePedido.Post;
+//    DMRaito.FdTablePedido.Edit;
+//    end;
+end;
+
+procedure TfrmPedido.dbgrdItensDblClick(Sender: TObject);
+begin
+// if ((Sender as TDBGrid).DataSource.Dataset.IsEmpty) then
+//    Exit;
+//
+//  (Sender as TDBGrid).DataSource.Dataset.Edit;
+//
+//  (Sender as TDBGrid).DataSource.Dataset.FieldByName('mc').AsInteger :=
+//    IfThen((Sender as TDBGrid).DataSource.Dataset.FieldByName('mc').AsInteger = 1, 0, 1);
+//
+//  (Sender as TDBGrid).DataSource.Dataset.Post;
+end;
+
+procedure TfrmPedido.dbgrdItensDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+//var
+//  Check: Integer;
+//  R: TRect;
+begin
+//  inherited;
+//
+//  if ((Sender as TDBGrid).DataSource.Dataset.IsEmpty) then
+//    Exit;
+//
+//  // Desenha um checkbox no dbgrid
+//  if Column.FieldName = 'mc' then
+//  begin
+//    TDBGrid(Sender).Canvas.FillRect(Rect);
+//
+//    if ((Sender as TDBGrid).DataSource.Dataset.FieldByName('mc').AsInteger = 1) then
+//      Check := DFCS_CHECKED
+//    else
+//      Check := 0;
+//
+//    R := Rect;
+//    InflateRect(R, -2, -2); { Diminue o tamanho do CheckBox }
+//    DrawFrameControl(TDBGrid(Sender).Canvas.Handle, R, DFC_BUTTON,
+//      DFCS_BUTTONCHECK or Check);
+//  end;
+
+  //zebrar a grid
+
+//   if not (gdSelected in State) then
+//  begin
+//    if Odd((Sender as TDBGrid).DataSource.DataSet.RecNo) then
+//      (Sender as TDBGrid).Canvas.Brush.Color:= clWhite
+//    else
+//      (Sender as TDBGrid).Canvas.Brush.Color:= $edecd8;       //$00F1F2F3; // leve cinza
+//
+//    // Aplicando prto para a cor da fonte
+//    (Sender as TDBGrid).Canvas.Font.Color:= clBlack;
+//
+//    (Sender as TDBGrid).Canvas.FillRect(Rect);
+//    (Sender as TDBGrid).Canvas.TextOut(Rect.Left + 2, Rect.Top,
+//    Column.Field.DisplayText);
+//  end;
+
 end;
 
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
@@ -251,9 +329,22 @@ begin
   end;
 end;
 
+procedure TfrmPedido.FormCreate(Sender: TObject);
+begin
+//DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
+end;
+
+procedure TfrmPedido.LimparCache(Sender: TObject);
+begin
+  DMRaito.FdTablePedido.CommitUpdates();
+  DMRaito.FdTableItens.CommitUpdates();
+
+
+end;
+
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);
 begin
-    DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
+ //   DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
 end;
 
 end.
