@@ -54,9 +54,9 @@ end;
 
 procedure TFrmPesquisaPedido.edt1Change(Sender: TObject);
 begin
-DMRaito.FdTablePedido.IndexName:= ('idxCliente');
+DMRaito.FdTablePedidos.IndexName:= ('idxCliente');
 //edt1.Text:=UpperCase(edt1.text);
-DMRaito.FdTablePedido.FindNearest([edt1.Text]);
+DMRaito.FdTablePedidos.FindNearest([edt1.Text]);
 edt1.SetFocus;
 end;
 

@@ -92,7 +92,6 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       Width = 524
       Height = 303
       Color = 14540253
-      DataSource = DMRaito.dsPedido
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET

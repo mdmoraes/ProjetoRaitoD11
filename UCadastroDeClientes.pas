@@ -218,35 +218,14 @@ begin
 end;
 
 procedure TfrmCadastroClientes.btnNovoClick(Sender: TObject);
-//  var  it:integer;
 begin
   pnlConfirma.Enabled:= True;
   pnlNav.Visible:= False;
   panelTela.Enabled:= True;
 
-//       try
-//          DMRaito.FDTableCliente.DisableControls;
-//          try
-//          DMRaito.FDTableCliente.IndexName:= 'IdxClienteId';
-//          DMRaito.FDTableCliente.First;
-//          DMRaito.FDTableCliente.Last;
-//
-//          if DMRaito.FDTableCliente['idcliente']<> null then
-//          it := DMRaito.FDTableCliente['idcliente']
-//          else
-//          it:= 0;
           DMRaito.FDTableCliente.Edit;
           DMRaito.FDTableCliente.Append;
-      //    DMRaito.FDTableCliente['idcliente'] := it + 1;
           DMRaito.FDTableCliente['datacadastro']:= DateToStr(Now);
-          
-
-//          finally
-//          DMRaito.FDTableCliente.EnableControls;
-//          end;
-//       finally
-//       end;
-
 end;
 
 procedure TfrmCadastroClientes.btnPesquisaClick(Sender: TObject);

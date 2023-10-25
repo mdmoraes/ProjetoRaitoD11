@@ -481,9 +481,17 @@ object frmCadastroClientes: TfrmCadastroClientes
       Top = 221
       Width = 1185
       Height = 340
-      Color = 16775408
+      Color = clInactiveCaption
       DataSource = DMRaito.dsContatoCliente
+      GradientEndColor = clBlack
+      GradientStartColor = clYellow
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveCaption
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
       Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ParentFont = False
       TabOrder = 11
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -495,13 +503,13 @@ object frmCadastroClientes: TfrmCadastroClientes
         item
           Expanded = False
           FieldName = 'ContatoId'
-          Width = 112
-          Visible = True
+          Width = -1
+          Visible = False
         end
         item
           Expanded = False
           FieldName = 'cadastroclientes_idcliente'
-          Visible = True
+          Visible = False
         end
         item
           Expanded = False

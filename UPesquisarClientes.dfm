@@ -15,8 +15,8 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
   OnShow = FormShow
   TextHeight = 13
   object grp1: TGroupBox
-    Left = 3
-    Top = 2
+    Left = 0
+    Top = 8
     Width = 318
     Height = 53
     Caption = 'Digite as Iniciais do Nome para pesquisa'
@@ -56,6 +56,7 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnDblClick = dbgrd1DblClick
       Columns = <
         item
           Expanded = False

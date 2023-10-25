@@ -8,9 +8,6 @@ Visible=True
 [strngfldFdTbImportacaogrupo]
 Coordinates=627,716,184,36
 
-[dsPedido]
-Coordinates=128,1,68,36
-
 [FdTableTransportadora]
 Coordinates=645,10,150,278
 
@@ -73,4 +70,7 @@ Coordinates=1238,1816,166,36
 
 []
 Coordinates=421,683,152,36
+
+[dsPedidos]
+Coordinates=128,1,68,36
 

@@ -278,7 +278,7 @@ object frmPedido: TfrmPedido
       Top = 8
       Width = 144
       Height = 18
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
       Hints.Strings = (
         'Primeiro'
@@ -483,7 +483,7 @@ object frmPedido: TfrmPedido
       Width = 46
       Height = 23
       DataField = 'PedidoId'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       TabOrder = 0
     end
     object dbedtdata_pedido: TDBEdit
@@ -492,7 +492,7 @@ object frmPedido: TfrmPedido
       Width = 83
       Height = 23
       DataField = 'data_pedido'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       TabOrder = 1
     end
     object dbrgrptipopedido: TDBRadioGroup
@@ -505,7 +505,7 @@ object frmPedido: TfrmPedido
       Caption = 'Tipo de Pedido: '
       Columns = 2
       DataField = 'TipoPedido'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       Items.Strings = (
         'Or'#231'amento'
         'Venda')
@@ -522,7 +522,7 @@ object frmPedido: TfrmPedido
       Width = 144
       Height = 23
       DataField = 'condicoespagto'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       TabOrder = 3
     end
     object dbedtcomissaopercentual: TDBEdit
@@ -531,7 +531,7 @@ object frmPedido: TfrmPedido
       Width = 58
       Height = 23
       DataField = 'Comissao'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       TabOrder = 4
     end
     object dbedtcomissaovalor1: TDBEdit
@@ -540,7 +540,7 @@ object frmPedido: TfrmPedido
       Width = 97
       Height = 23
       DataField = 'comissaovalor'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       TabOrder = 5
     end
     object lokupcliente1: TDBLookupComboBox
@@ -550,7 +550,7 @@ object frmPedido: TfrmPedido
       Height = 21
       Ctl3D = False
       DataField = 'Representada'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       DropDownRows = 10
       KeyField = 'nomecliente'
       ListField = 'nomecliente'
@@ -566,7 +566,7 @@ object frmPedido: TfrmPedido
       Height = 21
       Ctl3D = False
       DataField = 'Transportadora'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       DropDownRows = 10
       KeyField = 'NomeTransportadora'
       ListField = 'NomeTransportadora'
@@ -581,7 +581,7 @@ object frmPedido: TfrmPedido
       Width = 185
       Height = 68
       DataField = 'Obs'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -598,7 +598,7 @@ object frmPedido: TfrmPedido
       Width = 185
       Height = 68
       DataField = 'Lembrete'
-      DataSource = DMRaito.dsPedido
+      DataSource = DMRaito.dsPedidos
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -614,7 +614,14 @@ object frmPedido: TfrmPedido
       Top = 320
       Width = 1233
       Height = 217
+      Color = clInactiveCaption
       DataSource = DMRaito.dsItens
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
       TabOrder = 10
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -627,27 +634,27 @@ object frmPedido: TfrmPedido
       Columns = <
         item
           Expanded = False
-          FieldName = 'ItensId'
+          FieldName = 'ItemId'
           Visible = False
         end
         item
           Expanded = False
-          FieldName = 'PedidoId'
+          FieldName = 'pedidos_PedidoId'
           Visible = False
         end
         item
           ButtonStyle = cbsEllipsis
           Expanded = False
-          FieldName = 'CodProd'
+          FieldName = 'cod_produto'
           Title.Caption = 'C'#243'd. Produto'
           Width = 122
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'DescProduto'
+          FieldName = 'Des_Produto'
           Title.Caption = 'Desc. Produto'
-          Width = 377
+          Width = 310
           Visible = True
         end
         item
@@ -659,34 +666,51 @@ object frmPedido: TfrmPedido
         item
           Expanded = False
           FieldName = 'un'
+          Width = 30
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'qtd'
+          Width = 46
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'vrunit'
           Title.Caption = 'Vr. Unit'
+          Width = 76
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'p1'
+          Width = 45
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'Desct'
-          Title.Caption = 'Vr. Desc'
+          FieldName = 'p2'
+          Width = 43
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'mc'
-          Width = 35
+          FieldName = 'p3'
+          Width = 44
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'liq1'
+          Title.Caption = 'Vr.Desc.'
+          Width = 79
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'icms'
+          Width = 49
           Visible = True
         end
         item
@@ -707,19 +731,19 @@ object frmPedido: TfrmPedido
       Top = 32
       Width = 495
       Height = 23
-      DataField = 'nomecliente'
-      DataSource = DMRaito.dsCliente
+      DataField = 'cliente'
+      DataSource = DMRaito.dsPedidos
       TabOrder = 11
+      OnExit = DBEditClienteExit
     end
-    object DBEdit2: TDBEdit
+    object DBEditIdCliente: TDBEdit
       Left = 728
       Top = 136
       Width = 89
       Height = 23
-      DataField = 'idcliente'
-      DataSource = DMRaito.dsPedido
+      DataField = 'cadastroclientes_idcliente'
+      DataSource = DMRaito.dsPedidos
       TabOrder = 12
-      Visible = False
     end
   end
   object dbedttotaldopedido: TDBEdit
@@ -729,9 +753,9 @@ object frmPedido: TfrmPedido
     Height = 29
     BiDiMode = bdRightToLeft
     DataField = 'TOTALBRUTO'
-    DataSource = DMRaito.dsPedido
+    DataSource = DMRaito.dsPedidos
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clMenuHighlight
     Font.Height = -16
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold]

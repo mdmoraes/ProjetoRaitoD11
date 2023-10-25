@@ -98,11 +98,6 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
           FieldName = 'pvenda'
           Width = 42
           Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'marcado'
-          Visible = True
         end>
     end
   end

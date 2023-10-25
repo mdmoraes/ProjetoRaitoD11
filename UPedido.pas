@@ -54,7 +54,7 @@ type
     dbgrdItens: TDBGrid;
     DBEditCliente: TDBEdit;
     SpeedButton1: TSpeedButton;
-    DBEdit2: TDBEdit;
+    DBEditIdCliente: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -75,6 +75,7 @@ type
     procedure dbgrdItensCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure DBEditClienteExit(Sender: TObject);
   private
    procedure LimparCache(Sender: TObject);
     { Private declarations }
@@ -103,7 +104,7 @@ begin
     panelConfirma.Enabled:= True;
     panelNav.Visible:= False;
     panelTela.Enabled:= True;
-    DMRaito.FdTablePedido.Edit;
+    DMRaito.FdTablePedidos.Edit;
 end;
 
 procedure TfrmPedido.btnCancelarClick(Sender: TObject);
@@ -111,7 +112,7 @@ begin
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
     panelTela.Enabled:= False;
-    DMRaito.FdTablePedido.Cancel;
+    DMRaito.FdTablePedidos.Cancel;
     DMRaito.FdTableItens.Cancel;
 end;
 
@@ -121,18 +122,18 @@ begin
  if MessageDlg('DESEJA EXCLUIR ESSE REGISTRO ?',
     mtConfirmation, [mbYes, mbNo], 0) = mrYes then
   begin
-    DMRaito.FdTablePedido.Delete;
+    DMRaito.FdTablePedidos.Delete;
     ShowMessage('Registro excluído com sucesso!');
   end;
 end;
 
 procedure TfrmPedido.btnGravarClick(Sender: TObject);
 begin
-    DMRaito.FdTablePedido.Edit;
+    DMRaito.FdTablePedidos.Edit;
     DMRaito.FdTableItens.Edit;
     if (dbrgrptipopedido.Value = 'Orçamento') or (dbrgrptipopedido.Value = 'Venda') then
     begin
-    DMRaito.FdTablePedido.Post;
+    DMRaito.FdTablePedidos.Post;
     DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
@@ -143,8 +144,19 @@ begin
     ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
 
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
-    DMRaito.FdTablePedido.EmptyDataSet;
+    DMRaito.FdTablePedidos.EmptyDataSet;
     DMRaito.FdTableItens.EmptyDataSet;
+
+    //VAI PARA O ÚLTIMO REGISTRO
+    DMRaito.FDTablePedidos.Active:= False;
+    DMRaito.FDTablePedidos.Active:= True;
+
+    DMRaito.FdTableItens.Active:= False;
+    DMRaito.FdTableItens.Active:= True;
+
+    DMRaito.FdTablePedidos.IndexName:= 'IdxPedidoId';
+    DMRaito.FdTablePedidos.First;
+    DMRaito.FdTablePedidos.Last;
 
 
 
@@ -163,7 +175,7 @@ begin
       frmRelatorioPedido.queryRelPedido.Prepare;
       frmRelatorioPedido.queryRelPedido.Open;
 
-      if DMRaito.FdTablePedidoTipoPedido.Value = 'Orçamento' then
+      if DMRaito.FdTablePedidosTipoPedido.Value = 'Orçamento' then
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Orçamento'
       else
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Venda';
@@ -182,35 +194,25 @@ begin
 end;
 
 procedure TfrmPedido.btnNovoClick(Sender: TObject);
-var it: Integer;
 begin
   panelConfirma.Enabled:= True;
   panelNav.Visible:= False;
   panelTela.Enabled:= True;
-       try
-          DMRaito.FdTablePedido.DisableControls;
-          DMRaito.FdTablePedido.IndexName:= 'idxPedidoId';
-          DMRaito.FdTablePedido.First;
-          DMRaito.FdTablePedido.Last;
-          if DMRaito.FdTablePedido['PedidoId']<> null then
-          it := DMRaito.FdTablePedido['PedidoId']
-          else
-          it:= 0;
+//       try
+//          DMRaito.FdTablePedido.DisableControls;
+//          DMRaito.FdTablePedido.IndexName:= 'idxPedidoId';
+//          DMRaito.FdTablePedido.First;
+//          DMRaito.FdTablePedido.Last;
+//          if DMRaito.FdTablePedido['PedidoId']<> null then
+//          it := DMRaito.FdTablePedido['PedidoId']
+//          else
+ //         it:= 0;
 
 
-          DMRaito.FdTablePedido.Open();
-          DMRaito.FdTablePedido.Append;
-          DMRaito.FdTablePedido['PedidoId'] := it + 1;
-          DMRaito.FdTablePedido['data_pedido']:= DateToStr(Now);
-  //        DMRaito.FdTablePedido.Post;
-  //        DMRaito.FdTablePedido.Edit;
+          DMRaito.FdTablePedidos.Edit;
+          DMRaito.FdTablePedidos.Append;
+          DMRaito.FdTablePedidos['data_pedido']:= DateToStr(Now);
           DBEditCliente.SetFocus;
-          finally
-          DMRaito.FdTablePedido.EnableControls;
-          end;
-
-          
-
 
 end;
 
@@ -242,6 +244,15 @@ try
  finally
  FrmPesquisarProdutos.Free;
  end;
+end;
+
+procedure TfrmPedido.DBEditClienteExit(Sender: TObject);
+begin
+if DMRaito.FdTablePedidos.State in [dsinsert, dsEdit] then
+          begin
+          DMRaito.FDTablePedidos.Post;
+          DMRaito.FDTablePedidos.Edit;
+          end;
 end;
 
 procedure TfrmPedido.dbgrdItensCellClick(Column: TColumn);
@@ -342,7 +353,7 @@ end;
 
 procedure TfrmPedido.LimparCache(Sender: TObject);
 begin
-  DMRaito.FdTablePedido.CommitUpdates();
+  DMRaito.FdTablePedidos.CommitUpdates();
   DMRaito.FdTableItens.CommitUpdates();
 //  DMRaito.FdTablePedido.EmptyDataSet;
 //  DMRaito.FdTableItens.EmptyDataSet;

@@ -227,7 +227,7 @@ object DMRaito: TDMRaito
   object FdTbImportacao: TFDTable
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
-    TableName = 'tbimportacao'
+    TableName = 'dbratio.tbimportacao'
     Left = 32
     Top = 192
     object FdTbImportacaocodigo: TStringField
@@ -342,8 +342,8 @@ object DMRaito: TDMRaito
       FieldName = 'pvenda'
     end
   end
-  object dsPedido: TDataSource
-    DataSet = FdTablePedido
+  object dsPedidos: TDataSource
+    DataSet = FdTablePedidos
     Left = 120
     Top = 104
   end
@@ -427,7 +427,6 @@ object DMRaito: TDMRaito
       FieldName = 'ContatoId'
       Origin = 'ContatoId'
       ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
     object FdTableContatoClienteContato_IdCliente: TIntegerField
       AutoGenerateValue = arDefault
@@ -453,6 +452,7 @@ object DMRaito: TDMRaito
       Size = 45
     end
     object FdTableContatoClientecadastroclientes_idcliente: TIntegerField
+      AutoGenerateValue = arDefault
       FieldName = 'cadastroclientes_idcliente'
       Origin = 'cadastroclientes_idcliente'
       Required = True
@@ -669,105 +669,108 @@ object DMRaito: TDMRaito
     Left = 352
     Top = 8
   end
-  object FdTablePedido: TFDTable
+  object FdTablePedidos: TFDTable
     Active = True
     AutoCalcFields = False
-    AfterPost = FdTablePedidoAfterPost
+    AfterPost = FdTablePedidosAfterPost
     CachedUpdates = True
     IndexFieldNames = 'PedidoId'
     Connection = FDConnection1
     SchemaAdapter = FDSchemaAdapter
     FetchOptions.AssignedValues = [evDetailCascade]
     ResourceOptions.AssignedValues = [rvEscapeExpand]
-    TableName = 'pedidos'
+    TableName = 'dbratio.pedidos'
     Left = 32
     Top = 104
-    object FdTablePedidoPedidoId: TFDAutoIncField
+    object FdTablePedidosPedidoId: TFDAutoIncField
       FieldName = 'PedidoId'
       Origin = 'PedidoId'
       ProviderFlags = [pfInWhere, pfInKey]
       ReadOnly = True
     end
-    object FdTablePedidodata_pedido: TDateField
+    object FdTablePedidosdata_pedido: TDateField
       AutoGenerateValue = arDefault
       FieldName = 'data_pedido'
       Origin = 'data_pedido'
     end
-    object FdTablePedidorepresentada: TStringField
+    object FdTablePedidosrepresentada: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'representada'
       Origin = 'representada'
       Size = 80
     end
-    object FdTablePedidocliente: TStringField
+    object FdTablePedidoscliente: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'cliente'
       Origin = 'cliente'
       Size = 80
     end
-    object FdTablePedidotransportadora: TStringField
+    object FdTablePedidostransportadora: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'transportadora'
       Origin = 'transportadora'
       Size = 80
     end
-    object FdTablePedidocondicoespagto: TStringField
+    object FdTablePedidoscondicoespagto: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'condicoespagto'
       Origin = 'condicoespagto'
       Size = 25
     end
-    object FdTablePedidocomissao: TFloatField
+    object FdTablePedidoscomissao: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'comissao'
       Origin = 'comissao'
     end
-    object FdTablePedidocomissaovalor: TFloatField
+    object FdTablePedidoscomissaovalor: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'comissaovalor'
       Origin = 'comissaovalor'
     end
-    object FdTablePedidoobs: TStringField
+    object FdTablePedidosobs: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'obs'
       Origin = 'obs'
       Size = 100
     end
-    object FdTablePedidolembrete: TStringField
+    object FdTablePedidoslembrete: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'lembrete'
       Origin = 'lembrete'
       Size = 100
     end
-    object FdTablePedidototalbruto: TFloatField
+    object FdTablePedidostotalbruto: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'totalbruto'
       Origin = 'totalbruto'
+      DisplayFormat = 'R$ #,##0.00'
+      EditFormat = 'R$ #,##0.00'
     end
-    object FdTablePedidotipopedido: TStringField
+    object FdTablePedidostipopedido: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'tipopedido'
       Origin = 'tipopedido'
       Size = 15
     end
-    object FdTablePedidocadastroclientes_idcliente: TIntegerField
-      FieldName = 'cadastroclientes_idcliente'
-      Origin = 'cadastroclientes_idcliente'
-      Required = True
-    end
-    object FdTablePedidoidcliente: TIntegerField
+    object FdTablePedidosidcliente: TIntegerField
       AutoGenerateValue = arDefault
       FieldName = 'idcliente'
       Origin = 'idcliente'
+    end
+    object FdTablePedidoscadastroclientes_idcliente: TIntegerField
+      FieldName = 'cadastroclientes_idcliente'
+      Origin = 'cadastroclientes_idcliente'
+      Required = True
     end
   end
   object FdTableItens: TFDTable
     Active = True
     AutoCalcFields = False
+    AfterPost = FdTableItensAfterPost
     OnCalcFields = FdTableItensCalcFields
     CachedUpdates = True
     IndexFieldNames = 'pedidos_PedidoId'
-    MasterSource = dsPedido
+    MasterSource = dsPedidos
     MasterFields = 'PedidoId'
     DetailFields = 'pedidos_PedidoId'
     Connection = FDConnection1
@@ -783,12 +786,16 @@ object DMRaito: TDMRaito
     object FdTableItensItemId: TFDAutoIncField
       FieldName = 'ItemId'
       Origin = 'ItemId'
-      ReadOnly = True
     end
     object FdTableItensitem_PedidoId: TIntegerField
+      AutoGenerateValue = arDefault
       FieldName = 'item_PedidoId'
       Origin = 'item_PedidoId'
-      Required = True
+    end
+    object FdTableItenspedidos_PedidoId: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'pedidos_PedidoId'
+      Origin = 'pedidos_PedidoId'
     end
     object FdTableItenscod_produto: TStringField
       AutoGenerateValue = arDefault
@@ -823,40 +830,45 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'vrunit'
       Origin = 'vrunit'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
     end
     object FdTableItensp1: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'p1'
       Origin = 'p1'
+      DisplayFormat = '###.00"%"'
+      EditFormat = '###.00"%"'
     end
     object FdTableItensp2: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'p2'
       Origin = 'p2'
+      DisplayFormat = '###.00"%"'
+      EditFormat = '###.00"%"'
     end
     object FdTableItensp3: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'p3'
       Origin = 'p3'
+      DisplayFormat = '###.00"%"'
+      EditFormat = '###.00"%"'
     end
-    object FdTableItensicms: TShortintField
-      AutoGenerateValue = arDefault
-      FieldName = 'icms'
-      Origin = 'icms'
-    end
-    object FdTableItenspedidos_PedidoId: TIntegerField
-      FieldName = 'pedidos_PedidoId'
-      Origin = 'pedidos_PedidoId'
-      Required = True
-    end
-    object FdTableItensDesct: TFloatField
+    object FdTableItensliq1: TFloatField
       FieldKind = fkCalculated
-      FieldName = 'Desct'
+      FieldName = 'liq1'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
       Calculated = True
+    end
+    object FdTableItensicms: TSingleField
+      FieldName = 'icms'
     end
     object FdTableItensTotalItens: TFloatField
       FieldKind = fkCalculated
       FieldName = 'TotalItens'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
       Calculated = True
     end
   end
@@ -928,8 +940,8 @@ object DMRaito: TDMRaito
   end
   object DSVenda: TDataSource
     DataSet = FDTableVenda
-    Left = 112
-    Top = 400
+    Left = 120
+    Top = 392
   end
   object DSItemVenda: TDataSource
     DataSet = FDTableItemVenda
