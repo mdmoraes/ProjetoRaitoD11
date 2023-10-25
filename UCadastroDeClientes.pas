@@ -61,7 +61,10 @@ type
     procedure dbgrdContatosDblClick(Sender: TObject);
     procedure btnPesquisaClick(Sender: TObject);
     procedure dbedtcnpjExit(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure dbedtnomeclienteExit(Sender: TObject);
   private
+  procedure LimparCache(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -186,46 +189,63 @@ end;
 procedure TfrmCadastroClientes.btnGravarClick(Sender: TObject);
 begin
     panelTela.Enabled:= True;
+
     DMRaito.FDTableCliente.Edit;
+    DMRaito.FdTableContatoCliente.Edit;
     DMRaito.FDTableCliente.Post;
+    DMRaito.FdTableContatoCliente.Post;
     ShowMessage('Registro gravado com sucesso.!');
     pnlConfirma.Enabled:= False;
     pnlNav.Visible:= True;
     panelTela.Enabled:= False;
+    DMRaito.FDSchemaAdapter.ApplyUpdates(0);
+
+    DMRaito.FDTableCliente.EmptyDataSet;
+    DMRaito.FdTableContatoCliente.EmptyDataSet;
+
+    DMRaito.FDTableCliente.Active:= False;
+    DMRaito.FDTableCliente.Active:= True;
+
+    DMRaito.FdTableContatoCliente.Active:= False;
+    DMRaito.FdTableContatoCliente.Active:= True;
+
+    //VAI PARA O ÚLTIMO REGISTRO
+    DMRaito.FDTableCliente.IndexName:= 'IdxClienteId';
+    DMRaito.FDTableCliente.First;
+    DMRaito.FDTableCliente.Last;
+
+
 end;
 
 procedure TfrmCadastroClientes.btnNovoClick(Sender: TObject);
-  var  it:integer;
+//  var  it:integer;
 begin
   pnlConfirma.Enabled:= True;
   pnlNav.Visible:= False;
   panelTela.Enabled:= True;
 
-       try      //EVENTO ACUMULADOR DE REGISTROS ...MAMO...
-          DMRaito.FDTableCliente.DisableControls;
-          try
-          DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
-          DMRaito.FDTableCliente.First;
-          DMRaito.FDTableCliente.Last;
+//       try
+//          DMRaito.FDTableCliente.DisableControls;
+//          try
+//          DMRaito.FDTableCliente.IndexName:= 'IdxClienteId';
+//          DMRaito.FDTableCliente.First;
+//          DMRaito.FDTableCliente.Last;
+//
+//          if DMRaito.FDTableCliente['idcliente']<> null then
+//          it := DMRaito.FDTableCliente['idcliente']
+//          else
+//          it:= 0;
+          DMRaito.FDTableCliente.Edit;
+          DMRaito.FDTableCliente.Append;
+      //    DMRaito.FDTableCliente['idcliente'] := it + 1;
+          DMRaito.FDTableCliente['datacadastro']:= DateToStr(Now);
+          
 
-          if DMRaito.FDTableCliente['idcliente']<> null then
-          it := DMRaito.FDTableCliente['idcliente']
-          else
-          it:= 0;
-          DMRaito.FDTableCliente.Insert;
-          DMRaito.FDTableCliente['idcliente'] := it + 1;
-          DMRaito.FDTableCliente['DataCadastro']:= DateToStr(Now);
-
-          dbedtnomecliente.SetFocus;
-
-          finally
-          DMRaito.FDTableCliente.EnableControls;
-          end;
-       finally
-       end;
-
-//   pnlConfirma.Visible:= False;
-//  pnlNav.Visible:= True;
+//          finally
+//          DMRaito.FDTableCliente.EnableControls;
+//          end;
+//       finally
+//       end;
 
 end;
 
@@ -251,9 +271,29 @@ begin
 
 end;
 
+procedure TfrmCadastroClientes.dbedtnomeclienteExit(Sender: TObject);
+begin
+if DMRaito.FDTableCliente.State in [dsinsert, dsEdit] then
+          begin
+          DMRaito.FDTableCliente.Post;
+          end;
+       //   dbedtnomecliente.SetFocus;
+end;
+
 procedure TfrmCadastroClientes.dbgrdContatosDblClick(Sender: TObject);
 begin
 DMRaito.FdTableContatoCliente.Delete;
+end;
+
+procedure TfrmCadastroClientes.FormCreate(Sender: TObject);
+begin
+DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
+end;
+
+procedure TfrmCadastroClientes.LimparCache(Sender: TObject);
+begin
+  DMRaito.FDTableCliente.CommitUpdates();
+  DMRaito.FdTableContatoCliente.CommitUpdates();
 end;
 
 end.

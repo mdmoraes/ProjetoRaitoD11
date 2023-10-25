@@ -47,20 +47,12 @@ type
     qrdbtxt7: TQRDBText;
     qrdbtxtCONDICOESPAGTO: TQRDBText;
     qrdbtxtTRANSPORTADORA: TQRDBText;
-    TableRelPedidoNUM_PEDIDO: TIntegerField;
     dtfldRelPedidoDATA_PEDIDO: TDateField;
     TableRelPedidoCliente: TStringField;
-    TableRelPedidoENDERECOCLIENTE: TStringField;
     TableRelPedidoREPRESENTADA: TStringField;
     TableRelPedidoTRANSPORTADORA: TStringField;
-    TableRelPedidoCONDICOESPAGTO: TStringField;
-    mfldRelPedidoOBS: TMemoField;
-    mfldRelPedidoLEMBRETE: TMemoField;
     TableRelPedidoTIPOPEDIDO: TStringField;
-    TableRelPedidoCODIGO: TStringField;
-    TableRelPedidoPRODUTO: TStringField;
     TableRelPedidoGRUPO: TStringField;
-    TableRelPedidoQTD: TFloatField;
     TableRelPedidobairro: TStringField;
     TableRelPedidoendereco: TStringField;
     TableRelPedidocidade: TStringField;
@@ -100,19 +92,22 @@ type
     qrdbtotalbruto: TQRDBText;
     TableRelPedidoTOTALBRUTO: TFloatField;
     queryRelPedidoUN: TStringField;
-    queryRelPedidoVUNIT: TFloatField;
     queryRelPedidoP1: TFloatField;
-    queryRelPedidoP2: TFloatField;
-    queryRelPedidoP3: TFloatField;
     queryRelPedidoMC: TShortintField;
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
     QRDBText3: TQRDBText;
     QRLabel1: TQRLabel;
-    queryRelPedidoLIQ1: TFloatField;
     QRDBText4: TQRDBText;
-    queryRelPedidoVDESC: TFloatField;
-    queryRelPedidoTOTALITENS: TFloatField;
+    queryRelPedidoPedidoId: TFDAutoIncField;
+    queryRelPedidoCondicoesPagamento: TStringField;
+    queryRelPedidoCodProd: TStringField;
+    queryRelPedidoDescProduto: TStringField;
+    queryRelPedidoVRUNIT: TFloatField;
+    queryRelPedidoVRDESC: TFloatField;
+    queryRelPedidoOBS: TStringField;
+    queryRelPedidoLEMBRETE: TStringField;
+    queryRelPedidoQTD: TIntegerField;
   private
     { Private declarations }
   public

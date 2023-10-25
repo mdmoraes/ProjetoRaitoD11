@@ -30,7 +30,6 @@ type
     lbl3: TLabel;
     dbedtnum_pedido: TDBEdit;
     dbedtdata_pedido: TDBEdit;
-    lokupcliente: TDBLookupComboBox;
     BalloonHint1: TBalloonHint;
     lbl4: TLabel;
     lbl8: TLabel;
@@ -41,7 +40,7 @@ type
     btnNovaTransportadora: TSpeedButton;
     dbrgrptipopedido: TDBRadioGroup;
     lbl9: TLabel;
-    dbedtcondicoespagto1: TDBEdit;
+//    dbedtcondicoespagto1: TDBEdit;
     lbl10: TLabel;
     dbedtcomissaopercentual: TDBEdit;
     lbl11: TLabel;
@@ -53,6 +52,9 @@ type
     dbmmoobs: TDBMemo;
     dbmmoobs1: TDBMemo;
     dbgrdItens: TDBGrid;
+    DBEditCliente: TDBEdit;
+    SpeedButton1: TSpeedButton;
+    DBEdit2: TDBEdit;
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
@@ -72,6 +74,7 @@ type
     procedure dbgrdItensDblClick(Sender: TObject);
     procedure dbgrdItensCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
    procedure LimparCache(Sender: TObject);
     { Private declarations }
@@ -84,7 +87,8 @@ var
 
 implementation
 
-uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos, UPesquisaPedido, URelatorioPedido;
+uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos, UPesquisaPedido,
+ URelatorioPedido, UPesquisarClientes;
 
 
 {$R *.dfm}
@@ -129,7 +133,7 @@ begin
     if (dbrgrptipopedido.Value = 'Orçamento') or (dbrgrptipopedido.Value = 'Venda') then
     begin
     DMRaito.FdTablePedido.Post;
-//    DMRaito.FdTableItens.Post;
+    DMRaito.FdTableItens.Post;
     ShowMessage('Registro gravado com sucesso.!');
     panelConfirma.Enabled:= False;
     panelNav.Visible:= True;
@@ -139,6 +143,9 @@ begin
     ShowMessage('É obrigatório definir o TIPO DE PEDIDO:  Orçamento ou Venda !');
 
     DMRaito.FDSchemaAdapter.ApplyUpdates(0);
+    DMRaito.FdTablePedido.EmptyDataSet;
+    DMRaito.FdTableItens.EmptyDataSet;
+
 
 
 
@@ -182,7 +189,7 @@ begin
   panelTela.Enabled:= True;
        try
           DMRaito.FdTablePedido.DisableControls;
-          DMRaito.FdTablePedido.IndexName:= 'idxPedido';
+          DMRaito.FdTablePedido.IndexName:= 'idxPedidoId';
           DMRaito.FdTablePedido.First;
           DMRaito.FdTablePedido.Last;
           if DMRaito.FdTablePedido['PedidoId']<> null then
@@ -191,13 +198,13 @@ begin
           it:= 0;
 
 
-//          DMRaito.FdTablePedido.Edit;
-          DMRaito.FdTablePedido.Insert;
+          DMRaito.FdTablePedido.Open();
+          DMRaito.FdTablePedido.Append;
           DMRaito.FdTablePedido['PedidoId'] := it + 1;
           DMRaito.FdTablePedido['data_pedido']:= DateToStr(Now);
   //        DMRaito.FdTablePedido.Post;
   //        DMRaito.FdTablePedido.Edit;
-   //       lokupcliente.SetFocus;
+          DBEditCliente.SetFocus;
           finally
           DMRaito.FdTablePedido.EnableControls;
           end;
@@ -324,20 +331,22 @@ begin
        then begin
             DMRaito.FdTableItens.Delete;
             DMRaito.FdTableItens.ApplyUpdates(0);
-        //    DMRomaneio.cdsRomaneioItem.ApplyUpdates(0);
        end;
   end;
 end;
 
 procedure TfrmPedido.FormCreate(Sender: TObject);
 begin
-//DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
+DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
 end;
 
 procedure TfrmPedido.LimparCache(Sender: TObject);
 begin
   DMRaito.FdTablePedido.CommitUpdates();
   DMRaito.FdTableItens.CommitUpdates();
+//  DMRaito.FdTablePedido.EmptyDataSet;
+//  DMRaito.FdTableItens.EmptyDataSet;
+
 
 
 end;
@@ -345,6 +354,16 @@ end;
 procedure TfrmPedido.lokupclienteClick(Sender: TObject);
 begin
  //   DMRaito.FDTableCliente.IndexName:= 'IdxCliente';
+end;
+
+procedure TfrmPedido.SpeedButton1Click(Sender: TObject);
+begin
+ try
+    Application.CreateForm(TFrmPesquisarClientes, FrmPesquisarClientes);
+    FrmPesquisarClientes.ShowModal;
+    finally
+    FrmPesquisarClientes.Free;
+    end;
 end;
 
 end.

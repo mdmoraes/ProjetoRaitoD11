@@ -7788,13 +7788,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtCODIGO: TQRDBText
         Left = 6
         Top = 0
-        Width = 33
+        Width = 31
         Height = 11
         Size.Values = (
           29.104166666666670000
           15.875000000000000000
           0.000000000000000000
-          87.312500000000000000)
+          82.020833333333330000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -7802,7 +7802,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'CODIGO'
+        DataField = 'CodProd'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -8
@@ -7820,13 +7820,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtPRODUTO: TQRDBText
         Left = 68
         Top = 1
-        Width = 41
+        Width = 45
         Height = 11
         Size.Values = (
           29.104166666666670000
           179.916666666666700000
           2.645833333333333000
-          108.479166666666700000)
+          119.062500000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -7834,7 +7834,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'PRODUTO'
+        DataField = 'DescProduto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -8
@@ -7978,15 +7978,15 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 6
       end
       object qrdbtxtTOTAL: TQRDBText
-        Left = 667
-        Top = 1
-        Width = 49
+        Left = 675
+        Top = 2
+        Width = 34
         Height = 11
         Size.Values = (
           29.104166666666670000
-          1764.770833333333000000
-          2.645833333333333000
-          129.645833333333300000)
+          1785.937500000000000000
+          5.291666666666667000
+          89.958333333333330000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -7994,7 +7994,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'TOTALITENS'
+        DataField = 'TotalItens'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -8
@@ -8011,15 +8011,15 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 6
       end
       object QRDBText1: TQRDBText
-        Left = 505
+        Left = 499
         Top = 0
-        Width = 25
+        Width = 31
         Height = 11
         Size.Values = (
           29.104166666666670000
-          1336.145833333333000000
+          1320.270833333333000000
           0.000000000000000000
-          66.145833333333330000)
+          82.020833333333330000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -8027,7 +8027,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'VUNIT'
+        DataField = 'VRUNIT'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -8
@@ -8281,13 +8281,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtNUM_PEDIDO: TQRDBText
         Left = 57
         Top = 30
-        Width = 81
+        Width = 50
         Height = 16
         Size.Values = (
           42.333333333333330000
           150.812500000000000000
           79.375000000000000000
-          214.312500000000000000)
+          132.291666666666700000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -8295,7 +8295,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'NUM_PEDIDO'
+        DataField = 'PedidoId'
         Transparent = False
         ExportAs = exptText
         WrapStyle = BreakOnSpaces
@@ -8333,13 +8333,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrsysdt1: TQRSysData
         Left = 606
         Top = 30
-        Width = 66
+        Width = 114
         Height = 16
         Size.Values = (
           42.333333333333330000
           1603.375000000000000000
           79.375000000000000000
-          174.625000000000000000)
+          301.625000000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -8823,13 +8823,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtCliente2: TQRDBText
         Left = 47
         Top = 76
-        Width = 95
+        Width = 47
         Height = 16
         Size.Values = (
           42.333333333333330000
           124.354166666666700000
           201.083333333333300000
-          251.354166666666700000)
+          124.354166666666700000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -8837,7 +8837,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'ENDERECOCLIENTE'
+        DataField = 'endereco'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -9111,13 +9111,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtCONDICOESPAGTO: TQRDBText
         Left = 99
         Top = 145
-        Width = 96
+        Width = 105
         Height = 17
         Size.Values = (
           44.979166666666670000
           261.937500000000000000
           383.645833333333300000
-          254.000000000000000000)
+          277.812500000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -9125,7 +9125,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'CONDICOESPAGTO'
+        DataField = 'CondicoesPagamento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -9786,9 +9786,8 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
   end
   object queryRelPedido: TFDQuery
-    Active = True
     MasterSource = DMRaito.dsPedido
-    MasterFields = 'num_pedido'
+    MasterFields = 'PedidoId'
     DetailFields = 'NUM_PEDIDO'
     Connection = DMRaito.FDConnection1
     FetchOptions.AssignedValues = [evCache]
@@ -9796,32 +9795,28 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     UpdateOptions.AssignedValues = [uvUpdateMode]
     UpdateOptions.UpdateMode = upWhereAll
     SQL.Strings = (
+      'Select A.PedidoId, A.DATA_PEDIDO, A.Cliente, A.REPRESENTADA,'
       
-        'Select A.NUM_PEDIDO, A.DATA_PEDIDO, A.Cliente, A.ENDERECOCLIENTE' +
-        ', A.REPRESENTADA,'
+        'A.TRANSPORTADORA, A.CondicoesPagamento, A.OBS, A.LEMBRETE, A.TIP' +
+        'OPEDIDO, A.TOTALBRUTO,'
       
-        'A.TRANSPORTADORA, A.CONDICOESPAGTO, A.OBS, A.LEMBRETE, A.TIPOPED' +
-        'IDO, A.TOTALBRUTO,'
-      'B.CODIGO, B.PRODUTO, B.GRUPO, B.UN, B.VUNIT, B.QTD, B.VDESC,'
-      'B.P1, B.P2, B.P3, B.MC, C.bairro, '
+        'B.CodProd, B.DescProduto, B.GRUPO, B.UN, B.VRUNIT, B.QTD, B.VRDE' +
+        'SC,'
+      'B.P1, B.MC, C.bairro, '
       
         'C.endereco, C.cidade, C.estado, C.cep, C.emailnfe, C.inscestadua' +
         'l, C.email, C.emailnfe, C.cnpj,'
-      '(B.VUNIT * B.P1) / 100 * B.QTD AS LIQ1, '
-      '(B.QTD * B.VUNIT) AS TOTAL,'
-      '(B.QTD * B.VUNIT) - (B.VUNIT * B.P1) / 100 * B.QTD AS TOTALITENS'
-      'From PEDIDOS A'
-      'join ITENS B on B.ID_PEDIDO = A.NUM_PEDIDO'
-      'JOIN cadastroclientes C ON A.IDCLIENTE = C.IDCLIENTE'
-      'Where A.NUM_PEDIDO = 1 -- :NUM_PEDIDO')
+      '((B.VRUNIT * B.P1) / 100 * B.QTD) AS LIQ1, -- valor desconto'
+      '-- (B.QTD * B.VRUNIT) AS TOTAL,'
+      
+        '((B.QTD * B.VRUNIT) - (B.VRUNIT * B.P1) / 100 * B.QTD) AS TOTALI' +
+        'TENS'
+      'From PEDIDO A'
+      'join ITENS B on B.PedidoId = A.PedidoId'
+      'JOIN cadastroclientes C ON A.Id_Cliente = C.IDCLIENTE'
+      'Where A.PedidoId = 10 -- :PEDIDOID')
     Left = 846
     Top = 225
-    object TableRelPedidoNUM_PEDIDO: TIntegerField
-      FieldName = 'NUM_PEDIDO'
-      Origin = 'num_pedido'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
     object dtfldRelPedidoDATA_PEDIDO: TDateField
       AutoGenerateValue = arDefault
       FieldName = 'DATA_PEDIDO'
@@ -9830,12 +9825,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     object TableRelPedidoCliente: TStringField
       FieldName = 'Cliente'
       Origin = 'cliente'
-      Required = True
-      Size = 80
-    end
-    object TableRelPedidoENDERECOCLIENTE: TStringField
-      FieldName = 'ENDERECOCLIENTE'
-      Origin = 'EnderecoCliente'
       Required = True
       Size = 80
     end
@@ -9851,45 +9840,11 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       Origin = 'transportadora'
       Size = 80
     end
-    object TableRelPedidoCONDICOESPAGTO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'CONDICOESPAGTO'
-      Origin = 'condicoespagto'
-      Size = 80
-    end
-    object mfldRelPedidoOBS: TMemoField
-      AutoGenerateValue = arDefault
-      FieldName = 'OBS'
-      Origin = 'obs'
-      BlobType = ftMemo
-    end
-    object mfldRelPedidoLEMBRETE: TMemoField
-      AutoGenerateValue = arDefault
-      FieldName = 'LEMBRETE'
-      Origin = 'lembrete'
-      BlobType = ftMemo
-    end
     object TableRelPedidoTIPOPEDIDO: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'TIPOPEDIDO'
       Origin = 'tipopedido'
       Size = 15
-    end
-    object TableRelPedidoCODIGO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'CODIGO'
-      Origin = 'codigo'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 25
-    end
-    object TableRelPedidoPRODUTO: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'PRODUTO'
-      Origin = 'produto'
-      ProviderFlags = []
-      ReadOnly = True
-      Size = 80
     end
     object TableRelPedidoGRUPO: TStringField
       AutoGenerateValue = arDefault
@@ -9898,13 +9853,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ProviderFlags = []
       ReadOnly = True
       Size = 40
-    end
-    object TableRelPedidoQTD: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'QTD'
-      Origin = 'qtd'
-      ProviderFlags = []
-      ReadOnly = True
     end
     object TableRelPedidobairro: TStringField
       AutoGenerateValue = arDefault
@@ -10011,15 +9959,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ReadOnly = True
       Size = 15
     end
-    object queryRelPedidoVUNIT: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'VUNIT'
-      Origin = 'vunit'
-      ProviderFlags = []
-      ReadOnly = True
-      DisplayFormat = '###,###,##0.00'
-      EditFormat = '###,###,##0.00'
-    end
     object queryRelPedidoP1: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'P1'
@@ -10029,20 +9968,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       DisplayFormat = '#.##%'
       EditFormat = '#.##%'
     end
-    object queryRelPedidoP2: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'P2'
-      Origin = 'p2'
-      ProviderFlags = []
-      ReadOnly = True
-    end
-    object queryRelPedidoP3: TFloatField
-      AutoGenerateValue = arDefault
-      FieldName = 'P3'
-      Origin = 'p3'
-      ProviderFlags = []
-      ReadOnly = True
-    end
     object queryRelPedidoMC: TShortintField
       AutoGenerateValue = arDefault
       FieldName = 'MC'
@@ -10050,32 +9975,69 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       ProviderFlags = []
       ReadOnly = True
     end
-    object queryRelPedidoLIQ1: TFloatField
-      FieldKind = fkCalculated
-      FieldName = 'LIQ1'
-      DisplayFormat = '###,###,##0.000'
-      EditFormat = '###,###,##0.000'
-      Calculated = True
+    object queryRelPedidoPedidoId: TFDAutoIncField
+      FieldName = 'PedidoId'
+      Origin = 'PedidoId'
+      ProviderFlags = [pfInWhere, pfInKey]
     end
-    object queryRelPedidoVDESC: TFloatField
+    object queryRelPedidoCondicoesPagamento: TStringField
       AutoGenerateValue = arDefault
-      FieldName = 'VDESC'
-      Origin = 'VDesc'
+      FieldName = 'CondicoesPagamento'
+      Origin = 'CondicoesPagamento'
+      Size = 65
+    end
+    object queryRelPedidoCodProd: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CodProd'
+      Origin = 'CodProd'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 35
+    end
+    object queryRelPedidoDescProduto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'DescProduto'
+      Origin = 'DescProduto'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 80
+    end
+    object queryRelPedidoVRUNIT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'VRUNIT'
+      Origin = 'VrUnit'
       ProviderFlags = []
       ReadOnly = True
       DisplayFormat = '###,###,##0.00'
       EditFormat = '###,###,##0.00'
     end
-    object queryRelPedidoTOTALITENS: TFloatField
+    object queryRelPedidoVRDESC: TFloatField
       AutoGenerateValue = arDefault
-      FieldKind = fkCalculated
-      FieldName = 'TOTALITENS'
-      Origin = 'TOTALITENS'
+      FieldName = 'VRDESC'
+      Origin = 'VrDesc'
       ProviderFlags = []
       ReadOnly = True
       DisplayFormat = '###,###,##0.00'
       EditFormat = '###,###,##0.00'
-      Calculated = True
+    end
+    object queryRelPedidoOBS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'OBS'
+      Origin = 'Obs'
+      Size = 150
+    end
+    object queryRelPedidoLEMBRETE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'LEMBRETE'
+      Origin = 'Lembrete'
+      Size = 145
+    end
+    object queryRelPedidoQTD: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD'
+      Origin = 'Qtd'
+      ProviderFlags = []
+      ReadOnly = True
     end
   end
 end

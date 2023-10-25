@@ -1,0 +1,115 @@
+CREATE TABLE IF NOT EXISTS `dbratio`.`pedidos` (
+  `PedidoId` INT NOT NULL AUTO_INCREMENT,
+  `data_pedido` DATE NULL DEFAULT NULL,
+  `representada` VARCHAR(80) NULL DEFAULT NULL,
+  `cliente` VARCHAR(80) NULL DEFAULT NULL,
+  `transportadora` VARCHAR(80) NULL DEFAULT NULL,
+  `condicoespagto` VARCHAR(25) NULL DEFAULT NULL,
+  `comissao` DOUBLE NULL DEFAULT NULL,
+  `comissaovalor` DOUBLE NULL DEFAULT NULL,
+  `obs` VARCHAR(100) NULL DEFAULT NULL,
+  `lembrete` VARCHAR(100) NULL DEFAULT NULL,
+  `totalbruto` DOUBLE NULL DEFAULT NULL,
+  `tipopedido` VARCHAR(15) NULL DEFAULT NULL,
+  `idcliente` INT NULL DEFAULT NULL,
+  `cadastroclientes_idcliente` INT NOT NULL,
+  PRIMARY KEY (`PedidoId`),
+  INDEX `fk_pedidos_cadastroclientes1_idx` (`cadastroclientes_idcliente` ASC) VISIBLE,
+  CONSTRAINT `fk_pedidos_cadastroclientes1`
+    FOREIGN KEY (`cadastroclientes_idcliente`)
+    REFERENCES `dbratio`.`cadastroclientes` (`idcliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+
+
+------------------------------------
+
+CREATE TABLE IF NOT EXISTS `dbratio`.`itens` (
+  `ItemId` INT NOT NULL AUTO_INCREMENT,
+  `item_PedidoId` INT NOT NULL,
+  `cod_produto` VARCHAR(25) NULL DEFAULT NULL,
+  `Des_Produto` VARCHAR(80) NULL DEFAULT NULL,
+  `grupo` VARCHAR(40) NULL DEFAULT NULL,
+  `un` VARCHAR(15) NULL DEFAULT NULL,
+  `qtd` DOUBLE NULL DEFAULT NULL,
+  `vrunit` DOUBLE NULL DEFAULT NULL,
+  `p1` DOUBLE NULL DEFAULT NULL,
+  `p2` DOUBLE NULL DEFAULT NULL,
+  `p3` DOUBLE NULL DEFAULT NULL,
+  `icms` TINYINT NULL DEFAULT NULL,
+  `pedidos_PedidoId` INT NOT NULL,
+  PRIMARY KEY (`ItemId`),
+  INDEX `fk_itens_pedidos_idx` (`pedidos_PedidoId` ASC) VISIBLE,
+  CONSTRAINT `fk_itens_pedidos`
+    FOREIGN KEY (`pedidos_PedidoId`)
+    REFERENCES `dbratio`.`pedidos` (`PedidoId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+
+---------------------------------
+
+CREATE TABLE IF NOT EXISTS `dbratio`.`cadastroclientes` (
+  `idcliente` INT NOT NULL AUTO_INCREMENT,
+  `nomecliente` VARCHAR(70) NOT NULL,
+  `regiao` VARCHAR(25) NULL DEFAULT NULL,
+  `datacadastro` DATE NULL DEFAULT NULL,
+  `endereco` VARCHAR(80) NULL DEFAULT NULL,
+  `bairro` VARCHAR(30) NULL DEFAULT NULL,
+  `cidade` VARCHAR(30) NULL DEFAULT NULL,
+  `estado` VARCHAR(2) NULL DEFAULT NULL,
+  `cep` VARCHAR(10) NULL DEFAULT NULL,
+  `tel1` VARCHAR(15) NULL DEFAULT NULL,
+  `tel2` VARCHAR(15) NULL DEFAULT NULL,
+  `tel3` VARCHAR(15) NULL DEFAULT NULL,
+  `tel4` VARCHAR(15) NULL DEFAULT NULL,
+  `fax` VARCHAR(15) NULL DEFAULT NULL,
+  `cel1` VARCHAR(15) NULL DEFAULT NULL,
+  `cel2` VARCHAR(15) NULL DEFAULT NULL,
+  `cel3` VARCHAR(15) NULL DEFAULT NULL,
+  `radio` VARCHAR(20) NULL DEFAULT NULL,
+  `idradio` VARCHAR(20) NULL DEFAULT NULL,
+  `msn` VARCHAR(60) NULL DEFAULT NULL,
+  `skipe` VARCHAR(60) NULL DEFAULT NULL,
+  `contato1` VARCHAR(30) NULL DEFAULT NULL,
+  `contato2` VARCHAR(30) NULL DEFAULT NULL,
+  `email` VARCHAR(50) NULL DEFAULT NULL,
+  `emailnfe` VARCHAR(50) NULL DEFAULT NULL,
+  `site` VARCHAR(50) NULL DEFAULT NULL,
+  `obs` LONGTEXT NULL DEFAULT NULL,
+  `cnpj` VARCHAR(25) NULL DEFAULT NULL,
+  `inscestadual` VARCHAR(20) NULL DEFAULT NULL,
+  `twitter` VARCHAR(40) NULL DEFAULT NULL,
+  `transportadora` VARCHAR(60) NULL DEFAULT NULL,
+  `teltransportadora` VARCHAR(15) NULL DEFAULT NULL,
+  PRIMARY KEY (`idcliente`),
+  INDEX `IdxCliente` (`nomecliente` ASC) VISIBLE)
+ENGINE = InnoDB
+AUTO_INCREMENT = 120
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci
+
+-------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `dbratio`.`contatocliente` (
+  `ContatoId` INT NOT NULL AUTO_INCREMENT,
+  `Contato_IdCliente` INT NULL DEFAULT NULL,
+  `Tipo` VARCHAR(45) NULL DEFAULT NULL,
+  `Descricao` VARCHAR(45) NULL DEFAULT NULL,
+  `NomeDoContato` VARCHAR(45) NULL DEFAULT NULL,
+  `cadastroclientes_idcliente` INT NOT NULL,
+  PRIMARY KEY (`ContatoId`),
+  INDEX `fk_contatocliente_cadastroclientes1_idx` (`cadastroclientes_idcliente` ASC) VISIBLE,
+  CONSTRAINT `fk_contatocliente_cadastroclientes1`
+    FOREIGN KEY (`cadastroclientes_idcliente`)
+    REFERENCES `dbratio`.`cadastroclientes` (`idcliente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci

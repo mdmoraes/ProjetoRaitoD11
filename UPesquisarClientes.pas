@@ -38,7 +38,7 @@ end;
 
 procedure TFrmPesquisarClientes.edt1Change(Sender: TObject);
 begin
-    DMRaito.FDTableCliente.IndexName:= ('IdxNomeCliente');
+    DMRaito.FDTableCliente.IndexName:= ('IdxCliente');
     DMRaito.FDTableCliente.FindNearest([edt1.Text]);
 end;
 

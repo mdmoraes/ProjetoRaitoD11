@@ -48,6 +48,7 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       Width = 467
       Height = 282
       DataSource = DMRaito.dsCliente
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -56,6 +57,12 @@ object FrmPesquisarClientes: TFrmPesquisarClientes
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
       Columns = <
+        item
+          Expanded = False
+          FieldName = 'idcliente'
+          Width = 45
+          Visible = True
+        end
         item
           Expanded = False
           FieldName = 'nomecliente'

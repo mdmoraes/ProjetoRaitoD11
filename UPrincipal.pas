@@ -19,7 +19,6 @@ type
     procedure MenuClienteClick(Sender: TObject);
     procedure MenuSubImportarPlanilhaClick(Sender: TObject);
     procedure MenuSubProdutosClick(Sender: TObject);
-   // procedure MenuEmitirPedidoClick(Sender: TObject);
     procedure MenuSairdoSistemaClick(Sender: TObject);
     procedure MenuTransportadoraClick(Sender: TObject);
     procedure SubMenuEmissodePedidosClick(Sender: TObject);
@@ -42,15 +41,7 @@ begin
  frmCadastroClientes.Free;
  end;
 end;
-//procedure TfrmPrincipal.MenuEmitirPedidoClick(Sender: TObject);
-//begin
-//    try
-//    Application.CreateForm(TfrmPedido, frmPedido);
-//    frmPedido.ShowModal;
-//    finally
-//    frmPedido.Free;
-//    end;
-//end;
+
 procedure TfrmPrincipal.MenuSairdoSistemaClick(Sender: TObject);
 begin
  if MessageDlg('Confirma sair do Sistema ?',mtConfirmation, [mbYes, mbNo], 0)= mrYes then
@@ -86,14 +77,15 @@ begin
     end;
 
 end;
+
 procedure TfrmPrincipal.SubMenuEmissodePedidosClick(Sender: TObject);
 begin
-    //try
-    //Application.CreateForm(TfrmPedido, frmPedido);
+    try
+    Application.CreateForm(TfrmPedido, frmPedido);
     frmPedido.ShowModal;
-    //finally
-   //frmPedido.Free;
-   //end;
+    finally
+   frmPedido.Free;
+   end;
 end;
 
 end.

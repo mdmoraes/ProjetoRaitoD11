@@ -11,6 +11,7 @@ object frmCadastroClientes: TfrmCadastroClientes
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poMainFormCenter
+  OnCreate = FormCreate
   TextHeight = 17
   object pnlContainer: TPanel
     Left = 8
@@ -357,7 +358,7 @@ object frmCadastroClientes: TfrmCadastroClientes
     end
     object LabelContatos: TLabel
       Left = 8
-      Top = 216
+      Top = 197
       Width = 72
       Height = 21
       Caption = 'Contatos:'
@@ -375,9 +376,11 @@ object frmCadastroClientes: TfrmCadastroClientes
       Top = 24
       Width = 329
       Height = 25
+      CharCase = ecUpperCase
       DataField = 'nomecliente'
       DataSource = DMRaito.dsCliente
       TabOrder = 0
+      OnExit = dbedtnomeclienteExit
     end
     object dbedtregiao: TDBEdit
       Left = 343
@@ -418,13 +421,11 @@ object frmCadastroClientes: TfrmCadastroClientes
     object dbedtidcliente: TDBEdit
       Left = 544
       Top = 32
-      Width = 32
+      Width = 48
       Height = 25
       DataField = 'idcliente'
       DataSource = DMRaito.dsCliente
-      ReadOnly = True
       TabOrder = 5
-      Visible = False
     end
     object dbedtcidade: TDBEdit
       Left = 8
@@ -440,6 +441,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       Top = 119
       Width = 38
       Height = 25
+      CharCase = ecUpperCase
       DataField = 'estado'
       DataSource = DMRaito.dsCliente
       TabOrder = 7
@@ -476,9 +478,10 @@ object frmCadastroClientes: TfrmCadastroClientes
     end
     object dbgrdContatos: TDBGrid
       Left = 8
-      Top = 240
-      Width = 935
-      Height = 241
+      Top = 221
+      Width = 1185
+      Height = 340
+      Color = 16775408
       DataSource = DMRaito.dsContatoCliente
       Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       TabOrder = 11
@@ -492,21 +495,25 @@ object frmCadastroClientes: TfrmCadastroClientes
         item
           Expanded = False
           FieldName = 'ContatoId'
+          Width = 112
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'IdCliente'
+          FieldName = 'cadastroclientes_idcliente'
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Tipo'
+          PickList.Strings = (
+            'TELEFONE'
+            'CELULAR')
           Visible = True
         end
         item
           Expanded = False
-          FieldName = 'DadosDoTipo'
+          FieldName = 'Descricao'
           Width = 360
           Visible = True
         end

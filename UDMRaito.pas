@@ -16,38 +16,6 @@ type
     FDTableCliente: TFDTable;
     FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
-    FDTableClienteidcliente: TIntegerField;
-    strngfldFDTableClientenomecliente: TStringField;
-    strngfldFDTableClienteregiao: TStringField;
-    FDTableClientedatacadastro: TDateField;
-    TableClienteendereco: TStringField;
-    strngfldFDTableClientebairro: TStringField;
-    strngfldFDTableClientecidade: TStringField;
-    strngfldFDTableClienteestado: TStringField;
-    strngfldFDTableClientecep: TStringField;
-    strngfldFDTableClientetel1: TStringField;
-    strngfldFDTableClientetel2: TStringField;
-    strngfldFDTableClientetel3: TStringField;
-    strngfldFDTableClientetel4: TStringField;
-    strngfldFDTableClientefax: TStringField;
-    strngfldFDTableClientecel1: TStringField;
-    strngfldFDTableClientecel2: TStringField;
-    strngfldFDTableClientecel3: TStringField;
-    strngfldFDTableClienteradio: TStringField;
-    strngfldFDTableClienteidradio: TStringField;
-    strngfldFDTableClientemsn: TStringField;
-    strngfldFDTableClienteskipe: TStringField;
-    strngfldFDTableClientecontato1: TStringField;
-    strngfldFDTableClientecontato2: TStringField;
-    strngfldFDTableClienteemail: TStringField;
-    strngfldFDTableClienteemailnfe: TStringField;
-    strngfldFDTableClientesite: TStringField;
-    FDTableClienteobs: TMemoField;
-    strngfldFDTableClientecnpj: TStringField;
-    strngfldFDTableClienteinscestadual: TStringField;
-    strngfldFDTableClientetwitter: TStringField;
-    strngfldFDTableClientetransportadora: TStringField;
-    strngfldFDTableClienteteltransportadora: TStringField;
     FdTbImportacao: TFDTable;
     FdTbImportacaocodigo: TStringField;
     strngfldFdTbImportacaodescricao: TStringField;
@@ -60,47 +28,16 @@ type
     strngfldFdTbImportacaotemperatura: TStringField;
     strngfldFdTbImportacaocustomp: TStringField;
     FdTableCadastroProdutos: TFDTable;
-    FdTableCadastroProdutosidproduto: TIntegerField;
-    strngfldFdTableCadastroProdutoscodigoproduto: TStringField;
-    strngfldFdTableCadastroProdutoscodauxiliar: TStringField;
-    fltfldFdTableCadastroProdutoscodbarra: TFloatField;
-    strngfldFdTableCadastroProdutosncm: TStringField;
-    strngfldFdTableCadastroProdutosunidade: TStringField;
-    strngfldFdTableCadastroProdutosdescricao: TStringField;
-    strngfldFdTableCadastroProdutosgrupo: TStringField;
-    strngfldFdTableCadastroProdutosrepresentada: TStringField;
-    fltfldFdTableCadastroProdutosipi: TFloatField;
-    fltfldFdTableCadastroProdutosicm: TFloatField;
-    strngfldFdTableCadastroProdutoscst: TStringField;
-    fltfldFdTableCadastroProdutospeso: TFloatField;
-    fltfldFdTableCadastroProdutospcusto: TFloatField;
-    fltfldFdTableCadastroProdutospvenda: TFloatField;
-    FdTableCadastroProdutosmarcado: TIntegerField;
     dsPedido: TDataSource;
     dsItens: TDataSource;
     dsCliente: TDataSource;
     FdTableTransportadora: TFDTable;
-    fdtncfldFdTableTransportadoraTransportadoraId: TFDAutoIncField;
-    strngfldFdTableTransportadoraNomeTransportadora: TStringField;
-    strngfldFdTableTransportadoraEndereço: TStringField;
-    strngfldFdTableTransportadoraTelefone1: TStringField;
-    strngfldFdTableTransportadoraemail: TStringField;
-    strngfldFdTableTransportadoraUF: TStringField;
-    strngfldFdTableTransportadoraCidade: TStringField;
-    strngfldFdTableTransportadoraContato: TStringField;
-    strngfldFdTableTransportadoraObs: TStringField;
-    strngfldFdTableTransportadoraCep: TStringField;
     fltfldFdTbImportacaokg_km: TFloatField;
     fltfldFdTbImportacaoicms18: TFloatField;
     fltfldFdTbImportacaoicms12: TFloatField;
     fltfldFdTbImportacaoicms7: TFloatField;
     FdTableContatoCliente: TFDTable;
     dsContatoCliente: TDataSource;
-    FdTableContatoClienteTipo: TStringField;
-    FdTableContatoClienteDadosDoTipo: TStringField;
-    FdTableContatoClienteNomeDoContato: TStringField;
-    FdTableContatoClienteIdCliente: TIntegerField;
-    TableFdTableContatoClienteContatoId: TIntegerField;
     dsTableTransportadora: TDataSource;
     FdTableRepresentada: TFDTable;
     dsRepresentada: TDataSource;
@@ -137,31 +74,7 @@ type
     TableFdTableRepresentadatwitter: TStringField;
     dsCadastroDeProdutos: TDataSource;
     FdTablePedido: TFDTable;
-    FdTablePedidoPedidoId: TFDAutoIncField;
-    FdTablePedidodata_pedido: TDateTimeField;
-    FdTablePedidoRepresentada: TStringField;
-    FdTablePedidoCliente: TStringField;
-    FdTablePedidoTransportadora: TStringField;
-    FdTablePedidoCondicoesPagamento: TStringField;
-    FdTablePedidoComissao: TFloatField;
-    FdTablePedidoVrComissao: TFloatField;
-    FdTablePedidoObs: TStringField;
-    FdTablePedidoLembrete: TStringField;
-    FdTablePedidoTotalBruto: TFloatField;
     FdTableItens: TFDTable;
-    FdTablePedidoTipoPedido: TStringField;
-    FdTableItensItensId: TFDAutoIncField;
-    FdTableItensCodProd: TStringField;
-    FdTableItensQtd: TIntegerField;
-    FdTableItensDescProduto: TStringField;
-    FdTableItensVrUnit: TFloatField;
-    FdTableItensp1: TFloatField;
-    FdTableItensVrDesc: TFloatField;
-    FdTableItensGrupo: TStringField;
-    FdTableItensmc: TShortintField;
-    FdTableItensUn: TStringField;
-    FdTableItensPedidoId: TIntegerField;
-    FdTableItensTotalItens: TFloatField;
     FDTableVenda: TFDTable;
     FDTableItemVenda: TFDTable;
     DSVenda: TDataSource;
@@ -175,12 +88,104 @@ type
     FDTableItemVendaproduto: TStringField;
     FDTableItemVendadescricao: TStringField;
     FDSchemaAdapter: TFDSchemaAdapter;
+    FdTablePedidoPedidoId: TFDAutoIncField;
+    FdTablePedidodata_pedido: TDateField;
+    FdTablePedidorepresentada: TStringField;
+    FdTablePedidocliente: TStringField;
+    FdTablePedidotransportadora: TStringField;
+    FdTablePedidocondicoespagto: TStringField;
+    FdTablePedidocomissao: TFloatField;
+    FdTablePedidocomissaovalor: TFloatField;
+    FdTablePedidoobs: TStringField;
+    FdTablePedidolembrete: TStringField;
+    FdTablePedidototalbruto: TFloatField;
+    FdTablePedidotipopedido: TStringField;
+    FdTablePedidocadastroclientes_idcliente: TIntegerField;
+    FdTablePedidoidcliente: TIntegerField;
+    FdTableContatoClienteContatoId: TFDAutoIncField;
+    FdTableContatoClienteContato_IdCliente: TIntegerField;
+    FdTableContatoClienteTipo: TStringField;
+    FdTableContatoClienteDescricao: TStringField;
+    FdTableContatoClienteNomeDoContato: TStringField;
+    FdTableContatoClientecadastroclientes_idcliente: TIntegerField;
+    FdTableCadastroProdutosidproduto: TFDAutoIncField;
+    FdTableCadastroProdutoscodigoproduto: TStringField;
+    FdTableCadastroProdutosdescricao: TStringField;
+    FdTableCadastroProdutosgrupo: TStringField;
+    FdTableCadastroProdutoscodauxiliar: TStringField;
+    FdTableCadastroProdutoscodbarra: TFloatField;
+    FdTableCadastroProdutosncm: TStringField;
+    FdTableCadastroProdutosunidade: TStringField;
+    FdTableCadastroProdutossubgrupo: TStringField;
+    FdTableCadastroProdutosrepresentada: TStringField;
+    FdTableCadastroProdutosipi: TFloatField;
+    FdTableCadastroProdutosicms: TStringField;
+    FdTableCadastroProdutospeso: TFloatField;
+    FdTableCadastroProdutospvenda: TFloatField;
+    FdTableTransportadoraTransportadoraId: TFDAutoIncField;
+    FdTableTransportadoraNomeTransportadora: TStringField;
+    FdTableTransportadoraEndereco: TStringField;
+    FdTableTransportadoraTelefone: TStringField;
+    FdTableTransportadoraemail: TStringField;
+    FdTableTransportadoraContato: TStringField;
+    FdTableTransportadoraCidade: TStringField;
+    FdTableTransportadoraUF: TStringField;
+    FdTableTransportadoraCep: TStringField;
+    FdTableTransportadoraObs: TStringField;
+    FDTableClienteidcliente: TFDAutoIncField;
+    FDTableClientenomecliente: TStringField;
+    FDTableClienteregiao: TStringField;
+    FDTableClientedatacadastro: TDateField;
+    FDTableClienteendereco: TStringField;
+    FDTableClientebairro: TStringField;
+    FDTableClientecidade: TStringField;
+    FDTableClienteestado: TStringField;
+    FDTableClientecep: TStringField;
+    FDTableClientetel1: TStringField;
+    FDTableClientetel2: TStringField;
+    FDTableClientetel3: TStringField;
+    FDTableClientetel4: TStringField;
+    FDTableClientefax: TStringField;
+    FDTableClientecel1: TStringField;
+    FDTableClientecel2: TStringField;
+    FDTableClientecel3: TStringField;
+    FDTableClienteradio: TStringField;
+    FDTableClienteidradio: TStringField;
+    FDTableClientemsn: TStringField;
+    FDTableClienteskipe: TStringField;
+    FDTableClientecontato1: TStringField;
+    FDTableClientecontato2: TStringField;
+    FDTableClienteemail: TStringField;
+    FDTableClienteemailnfe: TStringField;
+    FDTableClientesite: TStringField;
+    FDTableClienteobs: TMemoField;
+    FDTableClientecnpj: TStringField;
+    FDTableClienteinscestadual: TStringField;
+    FDTableClientetwitter: TStringField;
+    FDTableClientetransportadora: TStringField;
+    FDTableClienteteltransportadora: TStringField;
+    FdTableItensItemId: TFDAutoIncField;
+    FdTableItensitem_PedidoId: TIntegerField;
+    FdTableItenscod_produto: TStringField;
+    FdTableItensDes_Produto: TStringField;
+    FdTableItensgrupo: TStringField;
+    FdTableItensun: TStringField;
+    FdTableItensqtd: TFloatField;
+    FdTableItensvrunit: TFloatField;
+    FdTableItensp1: TFloatField;
+    FdTableItensp2: TFloatField;
+    FdTableItensp3: TFloatField;
+    FdTableItensicms: TShortintField;
+    FdTableItenspedidos_PedidoId: TIntegerField;
     FdTableItensDesct: TFloatField;
+    FdTableItensTotalItens: TFloatField;
     procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FdTablePedidoBeforePost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
+    procedure FdTablePedidoAfterPost(DataSet: TDataSet);
+    procedure FDTableClienteBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -203,6 +208,14 @@ begin
 
 end;
 
+procedure TDMRaito.FDTableClienteBeforePost(DataSet: TDataSet);
+begin
+
+//gravar master antes. mm
+//DMRaito.FDTableCliente.Edit;
+//DMRaito.FDTableCliente.Post;
+end;
+
 procedure TDMRaito.FdTableContatoClienteBeforePost(DataSet: TDataSet);
 begin
 //     DMRaito.fdtncfldFdTableContatoClienteContatoId.Value:= DMRaito.FDTableClienteidcliente.Value;
@@ -223,7 +236,7 @@ total, totalBruto: Double;
       totalBruto:= 0;
       while not DMRaito.FdTableItens.Eof do
       begin
-      total:= total + DMRaito.FdTableItensTotalItens.Value;
+   //   total:= total + DMRaito.FdTableItensTotalItens.Value;
       DMRaito.FdTableItens.Next;
 
 
@@ -239,19 +252,23 @@ total, totalBruto: Double;
 
 procedure TDMRaito.FdTableItensCalcFields(DataSet: TDataSet);
 begin
-
-//DMRaito.FdTableItens.Edit;
+DMRaito.FdTableItens.Edit;
 FdTableItensDesct.Value:=
-(DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100;
+(DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensp1.Value) /100 * DMRaito.FdTableItensqtd.Value;
 //
 DMRaito.FdTableItensTotalItens.Value :=
-(DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value);
+(DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value - FdTableItensDesct.Value);
+end;
+
+procedure TDMRaito.FdTablePedidoAfterPost(DataSet: TDataSet);
+begin
+//DMRaito.FdTablePedido.Edit;
+//DMRaito.FdTablePedidoId_Cliente.Value := DMRaito.FDTableClienteidcliente.Value;
 end;
 
 procedure TDMRaito.FdTablePedidoBeforePost(DataSet: TDataSet);
 begin
 
-//DMRaito.TableFdTablePedidoidcliente.Value := DMRaito.FDTableClienteidcliente.Value;
 //ENDEREÇO DO CLIENTE
 //DMRaito.TablePedidoEnderecoCliente.Value := DMRaito.TableClienteendereco.Value;
 
