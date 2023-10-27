@@ -159,6 +159,7 @@
             <Form>frmTelaInicial</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <None Include="Raito.todo"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

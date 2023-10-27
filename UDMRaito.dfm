@@ -358,6 +358,7 @@ object DMRaito: TDMRaito
     Top = 16
   end
   object FdTableTransportadora: TFDTable
+    Active = True
     IndexFieldNames = 'TransportadoraId'
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
@@ -366,44 +367,61 @@ object DMRaito: TDMRaito
     Top = 192
     object FdTableTransportadoraTransportadoraId: TFDAutoIncField
       FieldName = 'TransportadoraId'
-      ReadOnly = True
+      Origin = 'TransportadoraId'
     end
     object FdTableTransportadoraNomeTransportadora: TStringField
       FieldName = 'NomeTransportadora'
+      Origin = 'NomeTransportadora'
       Required = True
       Size = 80
     end
     object FdTableTransportadoraEndereco: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Endereco'
+      Origin = 'Endereco'
       Size = 80
     end
     object FdTableTransportadoraTelefone: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Telefone'
+      Origin = 'Telefone'
       Size = 30
     end
     object FdTableTransportadoraemail: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'e-mail'
+      Origin = '`e-mail`'
       Size = 80
     end
     object FdTableTransportadoraContato: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Contato'
+      Origin = 'Contato'
       Size = 45
     end
     object FdTableTransportadoraCidade: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Cidade'
+      Origin = 'Cidade'
       Size = 45
     end
     object FdTableTransportadoraUF: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'UF'
+      Origin = 'UF'
       FixedChar = True
       Size = 2
     end
     object FdTableTransportadoraCep: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Cep'
+      Origin = 'Cep'
       Size = 10
     end
     object FdTableTransportadoraObs: TStringField
+      AutoGenerateValue = arDefault
       FieldName = 'Obs'
+      Origin = 'Obs'
       Size = 80
     end
   end
@@ -427,6 +445,7 @@ object DMRaito: TDMRaito
       FieldName = 'ContatoId'
       Origin = 'ContatoId'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object FdTableContatoClienteContato_IdCliente: TIntegerField
       AutoGenerateValue = arDefault
@@ -786,6 +805,7 @@ object DMRaito: TDMRaito
     object FdTableItensItemId: TFDAutoIncField
       FieldName = 'ItemId'
       Origin = 'ItemId'
+      ReadOnly = True
     end
     object FdTableItensitem_PedidoId: TIntegerField
       AutoGenerateValue = arDefault
@@ -832,6 +852,7 @@ object DMRaito: TDMRaito
       Origin = 'vrunit'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
+      currency = True
     end
     object FdTableItensp1: TFloatField
       AutoGenerateValue = arDefault
@@ -859,6 +880,7 @@ object DMRaito: TDMRaito
       FieldName = 'liq1'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
+      currency = True
       Calculated = True
     end
     object FdTableItensicms: TSingleField
@@ -869,6 +891,7 @@ object DMRaito: TDMRaito
       FieldName = 'TotalItens'
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
+      currency = True
       Calculated = True
     end
   end

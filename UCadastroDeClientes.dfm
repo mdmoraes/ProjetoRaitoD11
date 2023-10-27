@@ -486,7 +486,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       GradientEndColor = clBlack
       GradientStartColor = clYellow
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clInactiveCaption
+      Font.Color = clBlack
       Font.Height = -13
       Font.Name = 'Segoe UI'
       Font.Style = []
@@ -503,7 +503,6 @@ object frmCadastroClientes: TfrmCadastroClientes
         item
           Expanded = False
           FieldName = 'ContatoId'
-          Width = -1
           Visible = False
         end
         item

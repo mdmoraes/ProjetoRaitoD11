@@ -12,6 +12,7 @@ object frmPedido: TfrmPedido
   Font.Style = []
   Position = poMainFormCenter
   OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 15
   object lbl8: TLabel
     Left = 1057
@@ -565,7 +566,7 @@ object frmPedido: TfrmPedido
       Width = 466
       Height = 21
       Ctl3D = False
-      DataField = 'Transportadora'
+      DataField = 'transportadora'
       DataSource = DMRaito.dsPedidos
       DropDownRows = 10
       KeyField = 'NomeTransportadora'
@@ -616,11 +617,13 @@ object frmPedido: TfrmPedido
       Height = 217
       Color = clInactiveCaption
       DataSource = DMRaito.dsItens
+      FixedColor = clMoneyGreen
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -12
       Font.Name = 'Segoe UI'
       Font.Style = []
+      Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ParentFont = False
       TabOrder = 10
       TitleFont.Charset = DEFAULT_CHARSET
@@ -635,81 +638,159 @@ object frmPedido: TfrmPedido
         item
           Expanded = False
           FieldName = 'ItemId'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Visible = False
         end
         item
           Expanded = False
           FieldName = 'pedidos_PedidoId'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Visible = False
         end
         item
           ButtonStyle = cbsEllipsis
           Expanded = False
           FieldName = 'cod_produto'
+          Title.Alignment = taCenter
           Title.Caption = 'C'#243'd. Produto'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 122
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Des_Produto'
+          Title.Alignment = taCenter
           Title.Caption = 'Desc. Produto'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 310
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'grupo'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 196
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'un'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 30
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'qtd'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 46
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'vrunit'
+          Title.Alignment = taCenter
           Title.Caption = 'Vr. Unit'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 76
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'p1'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 45
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'p2'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 43
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'p3'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 44
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'liq1'
+          Title.Alignment = taCenter
           Title.Caption = 'Vr.Desc.'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 79
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'icms'
+          Title.Alignment = taCenter
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 49
           Visible = True
         end
@@ -721,7 +802,13 @@ object frmPedido: TfrmPedido
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]
+          Title.Alignment = taCenter
           Title.Caption = 'Total Itens'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clTeal
+          Title.Font.Height = -12
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
           Width = 109
           Visible = True
         end>

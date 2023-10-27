@@ -15,19 +15,11 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
   PrintScale = poPrintToFit
   OnShow = FormShow
   TextHeight = 13
-  object btnFechar: TSpeedButton
-    Left = 228
-    Top = 382
-    Width = 72
-    Height = 22
-    Caption = 'Fechar'
-    OnClick = btnFecharClick
-  end
   object pnl1: TPanel
     Left = 2
     Top = 2
     Width = 532
-    Height = 57
+    Height = 71
     BevelInner = bvLowered
     BevelOuter = bvSpace
     TabOrder = 0
@@ -59,7 +51,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       Left = 194
       Top = 4
       Width = 297
-      Height = 48
+      Height = 50
       Caption = 'Pesquisar por:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -69,14 +61,24 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       ParentFont = False
       TabOrder = 1
       object rbCliente: TRadioButton
-        Left = 18
+        Left = 170
         Top = 24
         Width = 74
         Height = 15
         Caption = 'Cliente'
-        Checked = True
         TabOrder = 0
+        OnClick = rbClienteClick
+      end
+      object rbPedido: TRadioButton
+        Left = 17
+        Top = 24
+        Width = 112
+        Height = 15
+        Caption = 'N'#186' do Pedido'
+        Checked = True
+        TabOrder = 1
         TabStop = True
+        OnClick = rbPedidoClick
       end
     end
   end
@@ -88,10 +90,12 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
     TabOrder = 1
     object dbgrd1: TDBGrid
       Left = 4
-      Top = 5
+      Top = 11
       Width = 524
-      Height = 303
+      Height = 291
       Color = 14540253
+      DataSource = DMRaito.dsPedidos
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -102,7 +106,7 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
       Columns = <
         item
           Expanded = False
-          FieldName = 'num_pedido'
+          FieldName = 'PedidoId'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -136,5 +140,13 @@ object FrmPesquisaPedido: TFrmPesquisaPedido
           Visible = True
         end>
     end
+  end
+  object ButtonGradientFechar: TButtonGradient
+    Left = 213
+    Top = 381
+    Caption = 'Fechar'
+    Default = True
+    TabOrder = 2
+    OnClick = ButtonGradientFecharClick
   end
 end

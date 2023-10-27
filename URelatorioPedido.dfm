@@ -7788,13 +7788,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtCODIGO: TQRDBText
         Left = 6
         Top = 0
-        Width = 31
+        Width = 45
         Height = 11
         Size.Values = (
           29.104166666666670000
           15.875000000000000000
           0.000000000000000000
-          82.020833333333330000)
+          119.062500000000000000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -7802,7 +7802,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'CodProd'
+        DataField = 'Cod_Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -8
@@ -7834,7 +7834,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'DescProduto'
+        DataField = 'Des_Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -8
@@ -8046,13 +8046,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object QRDBText2: TQRDBText
         Left = 633
         Top = 1
-        Width = 16
+        Width = 25
         Height = 15
         Size.Values = (
           39.687500000000000000
           1674.812500000000000000
           2.645833333333333000
-          42.333333333333330000)
+          66.145833333333330000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -8060,7 +8060,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'MC'
+        DataField = 'ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -9111,13 +9111,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       object qrdbtxtCONDICOESPAGTO: TQRDBText
         Left = 99
         Top = 145
-        Width = 105
+        Width = 79
         Height = 17
         Size.Values = (
           44.979166666666670000
           261.937500000000000000
           383.645833333333300000
-          277.812500000000000000)
+          209.020833333333300000)
         XLColumn = 0
         XLNumFormat = nfGeneral
         ActiveInPreview = False
@@ -9125,7 +9125,7 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         AlignToBand = False
         Color = clWhite
         DataSet = queryRelPedido
-        DataField = 'CondicoesPagamento'
+        DataField = 'CondicoesPagto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -9173,13 +9173,13 @@ object frmRelatorioPedido: TfrmRelatorioPedido
         FontSize = 8
       end
       object qrdbtxtemail: TQRDBText
-        Left = 64
+        Left = 57
         Top = 191
         Width = 25
         Height = 17
         Size.Values = (
           44.979166666666670000
-          169.333333333333300000
+          150.812500000000000000
           505.354166666666700000
           66.145833333333330000)
         XLColumn = 0
@@ -9786,7 +9786,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
   end
   object queryRelPedido: TFDQuery
-    Active = True
     MasterFields = 'PedidoId'
     DetailFields = 'NUM_PEDIDO'
     Connection = DMRaito.FDConnection1
@@ -9802,20 +9801,242 @@ object frmRelatorioPedido: TfrmRelatorioPedido
       
         'B.Cod_Produto, B.Des_Produto, B.GRUPO, B.UN, B.VRUNIT, B.QTD,  -' +
         '- B.VRDESC,'
-      'B.P1, B.P2, B.P3, B.ICMS, C.bairro, '
+      'B.P1, B.P2, B.P3, B.ICMS,'
+      'C.bairro, '
       
         'C.endereco, C.cidade, C.estado, C.cep, C.emailnfe, C.inscestadua' +
-        'l, C.email, C.emailnfe, C.cnpj'
-      '-- ((B.VRUNIT * B.P1) / 100 * B.QTD) AS LIQ1, -- valor desconto'
+        'l, C.email, C.emailnfe, C.cnpj,'
+      '((B.VRUNIT * B.P1) / 100 * B.QTD) AS LIQ1, -- valor desconto'
       '-- (B.QTD * B.VRUNIT) AS TOTAL,'
       
-        '-- ((B.QTD * B.VRUNIT) - (B.VRUNIT * B.P1) / 100 * B.QTD) AS TOT' +
-        'ALITENS'
+        '((B.QTD * B.VRUNIT) - (B.VRUNIT * B.P1) / 100 * B.QTD) AS TOTALI' +
+        'TENS'
       'From PEDIDOS A'
       'join ITENS B on B.pedidos_PedidoId = A.PedidoId'
-      'JOIN cadastroclientes C ON A.IdCliente = C.IDCLIENTE'
-      'Where A.PedidoId = 1 -- :PEDIDOID')
+      
+        'JOIN cadastroclientes C ON A.cadastroclientes_idcliente = C.IDCL' +
+        'IENTE'
+      'Where A.PedidoId = :PEDIDOID')
     Left = 846
     Top = 225
+    ParamData = <
+      item
+        Name = 'PEDIDOID'
+        ArrayType = atArray
+        ArraySize = 2
+        DataType = ftInteger
+        ParamType = ptInput
+      end>
+    object queryRelPedidoPedidoId: TFDAutoIncField
+      FieldName = 'PedidoId'
+      Origin = 'PedidoId'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object queryRelPedidoDATA_PEDIDO: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'DATA_PEDIDO'
+      Origin = 'data_pedido'
+    end
+    object queryRelPedidoCliente: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Cliente'
+      Origin = 'cliente'
+      Size = 80
+    end
+    object queryRelPedidoREPRESENTADA: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'REPRESENTADA'
+      Origin = 'representada'
+      Size = 80
+    end
+    object queryRelPedidoTRANSPORTADORA: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'TRANSPORTADORA'
+      Origin = 'transportadora'
+      Size = 80
+    end
+    object queryRelPedidoCondicoesPagto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'CondicoesPagto'
+      Origin = 'condicoespagto'
+      Size = 25
+    end
+    object queryRelPedidoOBS: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'OBS'
+      Origin = 'obs'
+      Size = 100
+    end
+    object queryRelPedidoLEMBRETE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'LEMBRETE'
+      Origin = 'lembrete'
+      Size = 100
+    end
+    object queryRelPedidoTIPOPEDIDO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'TIPOPEDIDO'
+      Origin = 'tipopedido'
+      Size = 15
+    end
+    object queryRelPedidoTOTALBRUTO: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'TOTALBRUTO'
+      Origin = 'totalbruto'
+    end
+    object queryRelPedidoCod_Produto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Cod_Produto'
+      Origin = 'cod_produto'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
+    end
+    object queryRelPedidoDes_Produto: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Des_Produto'
+      Origin = 'Des_Produto'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 80
+    end
+    object queryRelPedidoGRUPO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'GRUPO'
+      Origin = 'grupo'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 40
+    end
+    object queryRelPedidoUN: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UN'
+      Origin = 'un'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 15
+    end
+    object queryRelPedidoVRUNIT: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'VRUNIT'
+      Origin = 'vrunit'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidoQTD: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD'
+      Origin = 'qtd'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidoP1: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'P1'
+      Origin = 'p1'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidoP2: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'P2'
+      Origin = 'p2'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidoP3: TFloatField
+      AutoGenerateValue = arDefault
+      FieldName = 'P3'
+      Origin = 'p3'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidoICMS: TSingleField
+      AutoGenerateValue = arDefault
+      FieldName = 'ICMS'
+      Origin = 'icms'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidobairro: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'bairro'
+      Origin = 'bairro'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object queryRelPedidoendereco: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'endereco'
+      Origin = 'endereco'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 80
+    end
+    object queryRelPedidocidade: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cidade'
+      Origin = 'cidade'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object queryRelPedidoestado: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'estado'
+      Origin = 'estado'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 2
+    end
+    object queryRelPedidocep: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cep'
+      Origin = 'cep'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 10
+    end
+    object queryRelPedidoemailnfe: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'emailnfe'
+      Origin = 'emailnfe'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object queryRelPedidoinscestadual: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'inscestadual'
+      Origin = 'inscestadual'
+      ProviderFlags = []
+      ReadOnly = True
+    end
+    object queryRelPedidoemail: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'email'
+      Origin = 'email'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object queryRelPedidoemailnfe_1: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'emailnfe_1'
+      Origin = 'emailnfe'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object queryRelPedidocnpj: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cnpj'
+      Origin = 'cnpj'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 25
+    end
   end
 end

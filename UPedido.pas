@@ -71,11 +71,11 @@ type
       Shift: TShiftState);
     procedure dbgrdItensDrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure dbgrdItensDblClick(Sender: TObject);
     procedure dbgrdItensCellClick(Column: TColumn);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure DBEditClienteExit(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
    procedure LimparCache(Sender: TObject);
     { Private declarations }
@@ -169,25 +169,19 @@ begin
     try
       Application.CreateForm(TfrmRelatorioPedido,frmRelatorioPedido);
      // DMRatio.TBCadCliente.Locate('IdCliente', dbCodCliente.Text, []);
-    //  DMRaito.FdTablePedido.IndexName:= 'idxNumPedido';
-    //  DMRaito.FdTablePedido.SetRange([dbedtnum_pedido.Text],[dbedtnum_pedido.Text]);
-      frmRelatorioPedido.queryRelPedido.ParamByName('PedidoId').AsInteger:= StrToInt(dbedtnum_pedido.Text);
-      frmRelatorioPedido.queryRelPedido.Prepare;
-      frmRelatorioPedido.queryRelPedido.Open;
+
+    frmRelatorioPedido.queryRelPedido.Close;
+    frmRelatorioPedido.queryRelPedido.Params.ClearValues();
+    frmRelatorioPedido.queryRelPedido.Params[0].AsInteger := DMRaito.FdTablePedidosPedidoId.Value;      //StrToInt(dbedtnum_pedido.Text);
+    frmRelatorioPedido.queryRelPedido.Prepare;
+    frmRelatorioPedido.queryRelPedido.Open();
 
       if DMRaito.FdTablePedidosTipoPedido.Value = 'Orçamento' then
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Orçamento'
       else
       frmRelatorioPedido.qrdbTIPOPEDIDO.Caption:= 'Venda';
-
-
-      //lbl_Totalizador.Caption := FloatToStr (vQryTotais.FieldByName(''TOTAL'').AsFloat);
-
-
-  //    QrOrcamento.QRExprMemo1.Lines.Text:= dbmemoObs.Text;
       frmRelatorioPedido.QRPQuickrep1.Preview;
       frmRelatorioPedido.queryRelPedido.Close;
-     // DMRaito.FdTablePedido.IndexName:='';
       finally
       frmRelatorioPedido.Free;
       end;
@@ -264,62 +258,28 @@ begin
 //    end;
 end;
 
-procedure TfrmPedido.dbgrdItensDblClick(Sender: TObject);
-begin
-// if ((Sender as TDBGrid).DataSource.Dataset.IsEmpty) then
-//    Exit;
-//
-//  (Sender as TDBGrid).DataSource.Dataset.Edit;
-//
-//  (Sender as TDBGrid).DataSource.Dataset.FieldByName('mc').AsInteger :=
-//    IfThen((Sender as TDBGrid).DataSource.Dataset.FieldByName('mc').AsInteger = 1, 0, 1);
-//
-//  (Sender as TDBGrid).DataSource.Dataset.Post;
-end;
-
 procedure TfrmPedido.dbgrdItensDrawColumnCell(Sender: TObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-//var
-//  Check: Integer;
-//  R: TRect;
+var
+  Check: Integer;
+  R: TRect;
 begin
-//  inherited;
-//
-//  if ((Sender as TDBGrid).DataSource.Dataset.IsEmpty) then
-//    Exit;
-//
-//  // Desenha um checkbox no dbgrid
-//  if Column.FieldName = 'mc' then
-//  begin
-//    TDBGrid(Sender).Canvas.FillRect(Rect);
-//
-//    if ((Sender as TDBGrid).DataSource.Dataset.FieldByName('mc').AsInteger = 1) then
-//      Check := DFCS_CHECKED
-//    else
-//      Check := 0;
-//
-//    R := Rect;
-//    InflateRect(R, -2, -2); { Diminue o tamanho do CheckBox }
-//    DrawFrameControl(TDBGrid(Sender).Canvas.Handle, R, DFC_BUTTON,
-//      DFCS_BUTTONCHECK or Check);
-//  end;
-
   //zebrar a grid
 
-//   if not (gdSelected in State) then
-//  begin
-//    if Odd((Sender as TDBGrid).DataSource.DataSet.RecNo) then
-//      (Sender as TDBGrid).Canvas.Brush.Color:= clWhite
-//    else
-//      (Sender as TDBGrid).Canvas.Brush.Color:= $edecd8;       //$00F1F2F3; // leve cinza
-//
-//    // Aplicando prto para a cor da fonte
-//    (Sender as TDBGrid).Canvas.Font.Color:= clBlack;
-//
-//    (Sender as TDBGrid).Canvas.FillRect(Rect);
-//    (Sender as TDBGrid).Canvas.TextOut(Rect.Left + 2, Rect.Top,
-//    Column.Field.DisplayText);
-//  end;
+   if not (gdSelected in State) then
+  begin
+    if Odd((Sender as TDBGrid).DataSource.DataSet.RecNo) then
+      (Sender as TDBGrid).Canvas.Brush.Color:= clWhite
+    else
+      (Sender as TDBGrid).Canvas.Brush.Color:= $edecd8;       //$00F1F2F3; // leve cinza
+
+    // Aplicando prto para a cor da fonte
+    (Sender as TDBGrid).Canvas.Font.Color:= clBlack;
+
+    (Sender as TDBGrid).Canvas.FillRect(Rect);
+    (Sender as TDBGrid).Canvas.TextOut(Rect.Left + 2, Rect.Top,
+    Column.Field.DisplayText);
+  end;
 
 end;
 
@@ -349,6 +309,19 @@ end;
 procedure TfrmPedido.FormCreate(Sender: TObject);
 begin
 DMRaito.FDSchemaAdapter.AfterApplyUpdate := LimparCache;
+end;
+
+procedure TfrmPedido.FormShow(Sender: TObject);
+begin
+    DMRaito.FDTablePedidos.Active:= False;
+    DMRaito.FDTablePedidos.Active:= True;
+
+    DMRaito.FdTableItens.Active:= False;
+    DMRaito.FdTableItens.Active:= True;
+
+    DMRaito.FdTablePedidos.IndexName:= '';
+    DMRaito.FdTablePedidos.First;
+    DMRaito.FdTablePedidos.Last;
 end;
 
 procedure TfrmPedido.LimparCache(Sender: TObject);

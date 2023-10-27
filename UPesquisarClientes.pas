@@ -12,11 +12,12 @@ type
     edt1: TEdit;
     pnl1: TPanel;
     dbgrd1: TDBGrid;
-    btnFechar: TBitBtn;
+    ButtonFechar: TButton;
     procedure FormShow(Sender: TObject);
     procedure edt1Change(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
     procedure dbgrd1DblClick(Sender: TObject);
+    procedure ButtonFecharClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,6 +36,11 @@ uses UDMRaito, UPedido;
 procedure TFrmPesquisarClientes.FormShow(Sender: TObject);
 begin
     edt1.SetFocus;
+end;
+
+procedure TFrmPesquisarClientes.ButtonFecharClick(Sender: TObject);
+begin
+Close;
 end;
 
 procedure TFrmPesquisarClientes.dbgrd1DblClick(Sender: TObject);

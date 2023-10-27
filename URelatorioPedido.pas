@@ -78,6 +78,36 @@ type
     QRDBText3: TQRDBText;
     QRLabel1: TQRLabel;
     QRDBText4: TQRDBText;
+    queryRelPedidoPedidoId: TFDAutoIncField;
+    queryRelPedidoDATA_PEDIDO: TDateField;
+    queryRelPedidoCliente: TStringField;
+    queryRelPedidoREPRESENTADA: TStringField;
+    queryRelPedidoTRANSPORTADORA: TStringField;
+    queryRelPedidoCondicoesPagto: TStringField;
+    queryRelPedidoOBS: TStringField;
+    queryRelPedidoLEMBRETE: TStringField;
+    queryRelPedidoTIPOPEDIDO: TStringField;
+    queryRelPedidoTOTALBRUTO: TFloatField;
+    queryRelPedidoCod_Produto: TStringField;
+    queryRelPedidoDes_Produto: TStringField;
+    queryRelPedidoGRUPO: TStringField;
+    queryRelPedidoUN: TStringField;
+    queryRelPedidoVRUNIT: TFloatField;
+    queryRelPedidoQTD: TFloatField;
+    queryRelPedidoP1: TFloatField;
+    queryRelPedidoP2: TFloatField;
+    queryRelPedidoP3: TFloatField;
+    queryRelPedidoICMS: TSingleField;
+    queryRelPedidobairro: TStringField;
+    queryRelPedidoendereco: TStringField;
+    queryRelPedidocidade: TStringField;
+    queryRelPedidoestado: TStringField;
+    queryRelPedidocep: TStringField;
+    queryRelPedidoemailnfe: TStringField;
+    queryRelPedidoinscestadual: TStringField;
+    queryRelPedidoemail: TStringField;
+    queryRelPedidoemailnfe_1: TStringField;
+    queryRelPedidocnpj: TStringField;
   private
     { Private declarations }
   public

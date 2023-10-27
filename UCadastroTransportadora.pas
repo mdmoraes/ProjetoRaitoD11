@@ -18,7 +18,7 @@ type
     lbl3: TLabel;
     dbedtEndereo: TDBEdit;
     lbl4: TLabel;
-    dbedtTelefone1: TDBEdit;
+    //dbedtTelefone1: TDBEdit;
     lbl5: TLabel;
     dbedtemail: TDBEdit;
     lbl6: TLabel;
