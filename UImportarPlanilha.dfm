@@ -11,9 +11,10 @@ object frmImportarPlanilha: TfrmImportarPlanilha
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poDesigned
+  OnCreate = FormCreate
   TextHeight = 15
   object btnImportar: TSpeedButton
-    Left = 1208
+    Left = 1223
     Top = 24
     Width = 57
     Height = 22
@@ -21,7 +22,7 @@ object frmImportarPlanilha: TfrmImportarPlanilha
     OnClick = btnImportarClick
   end
   object btnSalvar: TSpeedButton
-    Left = 1208
+    Left = 1223
     Top = 96
     Width = 57
     Height = 22
@@ -29,8 +30,8 @@ object frmImportarPlanilha: TfrmImportarPlanilha
     OnClick = btnSalvarClick
   end
   object btnFechar: TSpeedButton
-    Left = 1208
-    Top = 563
+    Left = 1215
+    Top = 619
     Width = 57
     Height = 22
     Caption = 'Fechar'
@@ -62,10 +63,11 @@ object frmImportarPlanilha: TfrmImportarPlanilha
   object strGridExcel: TStringGrid
     Left = 8
     Top = 8
-    Width = 1169
+    Width = 1201
     Height = 329
     ColCount = 13
     FixedCols = 0
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goAlwaysShowEditor, goFixedRowDefAlign]
     TabOrder = 0
     RowHeights = (
       24
@@ -77,9 +79,9 @@ object frmImportarPlanilha: TfrmImportarPlanilha
   object dbgrdGrid: TDBGrid
     Left = 8
     Top = 360
-    Width = 1169
+    Width = 1201
     Height = 225
-    DataSource = ds
+    DataSource = DMRaito.dsImportacao
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText

@@ -112,6 +112,17 @@ begin
 end ;
 
 
+function ApenasNumerosStr(pStr:String): String;
+Var
+I: Integer;
+begin
+  Result := '';
+  For I := 1 To Length(pStr) do
+   If pStr[I] In ['1','2','3','4','5','6','7','8','9','0'] Then
+     Result := Result + pStr[I];
+end;
+
+
 
 end.
 

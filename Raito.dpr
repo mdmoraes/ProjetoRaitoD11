@@ -5,7 +5,6 @@ uses
   UDMRaito in 'UDMRaito.pas' {DMRaito: TDataModule},
   UCadastroDeClientes in 'UCadastroDeClientes.pas' {frmCadastroClientes},
   UImportarPlanilha in 'UImportarPlanilha.pas' {frmImportarPlanilha},
-  Rotina in 'Rotina.pas',
   UCadastroDeProdutos in 'UCadastroDeProdutos.pas' {frmCadastroDeProdutos},
   UPedido in 'UPedido.pas' {frmPedido},
   Vcl.Themes,
@@ -13,13 +12,16 @@ uses
   Vcl.Consts in 'Vcl.Consts.pas',
   UCadastroTransportadora in 'UCadastroTransportadora.pas' {frmCadastroTransportadora},
   UDefinicaoRelComissao in 'UDefinicaoRelComissao.pas' {FrmRelatorioComissoes},
-  UMensagem in 'UMensagem.pas',
   UPesquisarProdutos in 'UPesquisarProdutos.pas' {FrmPesquisarProdutos},
   UPesquisaPedido in 'UPesquisaPedido.pas' {FrmPesquisaPedido},
   URelatorioPedido in 'URelatorioPedido.pas' {frmRelatorioPedido},
   UPesquisarClientes in 'UPesquisarClientes.pas' {FrmPesquisarClientes},
   UPrincipal in 'UPrincipal.pas' {frmPrincipal},
-  UTelaInicial in 'UTelaInicial.pas' {frmTelaInicial};
+  UTelaInicial in 'UTelaInicial.pas' {frmTelaInicial},
+  UPesquisarTransportadora in 'UPesquisarTransportadora.pas' {frmPesquisarTransportadora},
+  UMensagem in 'UMensagem.pas',
+  Ucic_cgc in 'Ucic_cgc.pas',
+  Rotina in 'Rotina.pas';
 
 {$R *.res}
 

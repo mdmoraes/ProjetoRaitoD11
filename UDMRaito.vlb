@@ -56,20 +56,8 @@ Coordinates=1238,1431,187,36
 [strngfldFdTbImportacaoisolacao]
 Coordinates=1238,1486,199,36
 
-[fltfldFdTbImportacaoicms18]
-Coordinates=1238,1651,174,36
-
-[fltfldFdTbImportacaoicms12]
-Coordinates=1238,1706,174,36
-
-[fltfldFdTbImportacaokg_km]
-Coordinates=1238,1761,170,36
-
-[fltfldFdTbImportacaoicms7]
-Coordinates=1238,1816,166,36
-
 []
-Coordinates=421,683,152,36
+Coordinates=1238,1816,166,36
 
 [dsPedidos]
 Coordinates=128,1,68,36

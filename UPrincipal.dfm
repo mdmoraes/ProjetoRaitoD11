@@ -12891,4 +12891,8 @@ object frmPrincipal: TfrmPrincipal
       OnClick = MenuSairdoSistemaClick
     end
   end
+  object BalloonHint1: TBalloonHint
+    Left = 1008
+    Top = 248
+  end
 end

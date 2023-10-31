@@ -9,38 +9,6 @@ uses
 
 type
   TfrmCadastroDeProdutos = class(TForm)
-    lbl: TLabel;
-    dbedtcodigoproduto: TDBEdit;
-    lbl1: TLabel;
-    dbedtcodbarra: TDBEdit;
-    lbl2: TLabel;
-    dbedtcodauxiliar: TDBEdit;
-    lbl3: TLabel;
-    dbedtncm: TDBEdit;
-    lbl4: TLabel;
-    dbedtunidade: TDBEdit;
-    lbl5: TLabel;
-    dbedtdescricao: TDBEdit;
-    lbl7: TLabel;
-    dbedtrepresentada: TDBEdit;
-    lbl8: TLabel;
-    dbedtipi: TDBEdit;
-    lbl9: TLabel;
-    dbedticm: TDBEdit;
-    lbl10: TLabel;
-    dbedtcst: TDBEdit;
-    lbl11: TLabel;
-    dbedtpeso: TDBEdit;
-    lbl12: TLabel;
-    dbedtpcusto: TDBEdit;
-    lbl13: TLabel;
-    dbedtpvenda: TDBEdit;
-    lbl14: TLabel;
-    dbedtmarcado: TDBEdit;
-    lbl15: TLabel;
-    lbl16: TLabel;
-    dbedtidproduto: TDBEdit;
-    dbcbbgrupo: TDBComboBox;
     pnlContainer: TPanel;
     pnlConfirma: TPanel;
     btnCancelar: TSpeedButton;
@@ -52,8 +20,42 @@ type
     btnPesquisa: TSpeedButton;
     btn1: TBitBtn;
     dbnv1: TDBNavigator;
+    panelTela: TPanel;
+    lbl: TLabel;
+    dbedtcodigoproduto: TDBEdit;
+    lbl1: TLabel;
+    dbedtcodbarra: TDBEdit;
+    lbl2: TLabel;
+    dbedtcodauxiliar: TDBEdit;
+    lbl16: TLabel;
+    dbedtidproduto: TDBEdit;
+    lbl3: TLabel;
+    lbl4: TLabel;
+    lbl5: TLabel;
+    lbl7: TLabel;
+    lbl8: TLabel;
+    lbl9: TLabel;
+    lbl10: TLabel;
+    lbl11: TLabel;
+    lbl12: TLabel;
+    lbl13: TLabel;
+    lbl14: TLabel;
+    lbl15: TLabel;
     lbl151: TLabel;
+    dbedtncm: TDBEdit;
+    dbedtunidade: TDBEdit;
+    dbedtdescricao: TDBEdit;
+    dbedtrepresentada: TDBEdit;
+    dbedtipi: TDBEdit;
+    dbedticm: TDBEdit;
+    dbedtcst: TDBEdit;
+    dbedtpeso: TDBEdit;
+    dbedtpcusto: TDBEdit;
+    dbedtpvenda: TDBEdit;
+    dbedtmarcado: TDBEdit;
+    dbcbbgrupo: TDBComboBox;
     dbcbbgrupo1: TDBComboBox;
+    SpeedButton1: TSpeedButton;
     procedure btnNovoClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnGravarClick(Sender: TObject);
@@ -71,7 +73,7 @@ var
 
 implementation
 
-uses UDMRaito;
+uses UDMRaito, UPrincipal;
 
 {$R *.dfm}
 

@@ -76,6 +76,7 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'cep'
       Origin = 'cep'
+      EditMask = '00000\-999;1;_'
       Size = 10
     end
     object FDTableClientetel1: TStringField
@@ -188,6 +189,7 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'cnpj'
       Origin = 'cnpj'
+      EditMask = '00.000.000/0000-00;1;_'
       Size = 25
     end
     object FDTableClienteinscestadual: TStringField
@@ -213,6 +215,13 @@ object DMRaito: TDMRaito
       Origin = 'teltransportadora'
       Size = 15
     end
+    object FDTableClientecpf: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'cpf'
+      Origin = 'cpf'
+      EditMask = '000.000.000-00;1;_'
+      Size = 15
+    end
   end
   object FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Provider = 'Forms'
@@ -225,6 +234,7 @@ object DMRaito: TDMRaito
     Top = 104
   end
   object FdTbImportacao: TFDTable
+    Active = True
     Connection = FDConnection1
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.tbimportacao'
@@ -269,17 +279,25 @@ object DMRaito: TDMRaito
       FieldName = 'customp'
       Size = 10
     end
-    object fltfldFdTbImportacaokg_km: TFloatField
+    object FdTbImportacaokg_km: TFloatField
+      AutoGenerateValue = arDefault
       FieldName = 'kg_km'
+      Origin = 'kg_km'
     end
-    object fltfldFdTbImportacaoicms18: TFloatField
+    object FdTbImportacaoicms18: TFloatField
+      AutoGenerateValue = arDefault
       FieldName = 'icms18'
+      Origin = 'icms18'
     end
-    object fltfldFdTbImportacaoicms12: TFloatField
+    object FdTbImportacaoicms12: TFloatField
+      AutoGenerateValue = arDefault
       FieldName = 'icms12'
+      Origin = 'icms12'
     end
-    object fltfldFdTbImportacaoicms7: TFloatField
+    object FdTbImportacaoicms7: TFloatField
+      AutoGenerateValue = arDefault
       FieldName = 'icms7'
+      Origin = 'icms7'
     end
   end
   object FdTableCadastroProdutos: TFDTable
@@ -340,6 +358,8 @@ object DMRaito: TDMRaito
     end
     object FdTableCadastroProdutospvenda: TFloatField
       FieldName = 'pvenda'
+      DisplayFormat = '#,0.00'
+      EditFormat = '#,0.00'
     end
   end
   object dsPedidos: TDataSource
@@ -368,6 +388,7 @@ object DMRaito: TDMRaito
     object FdTableTransportadoraTransportadoraId: TFDAutoIncField
       FieldName = 'TransportadoraId'
       Origin = 'TransportadoraId'
+      ReadOnly = True
     end
     object FdTableTransportadoraNomeTransportadora: TStringField
       FieldName = 'NomeTransportadora'
@@ -416,6 +437,7 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'Cep'
       Origin = 'Cep'
+      EditMask = '00000\-999;1;_'
       Size = 10
     end
     object FdTableTransportadoraObs: TStringField
@@ -691,7 +713,6 @@ object DMRaito: TDMRaito
   object FdTablePedidos: TFDTable
     Active = True
     AutoCalcFields = False
-    AfterPost = FdTablePedidosAfterPost
     CachedUpdates = True
     IndexFieldNames = 'PedidoId'
     Connection = FDConnection1
@@ -975,5 +996,9 @@ object DMRaito: TDMRaito
     AfterApplyUpdate = FDSchemaAdapterAfterApplyUpdate
     Left = 576
     Top = 312
+  end
+  object dsImportacao: TDataSource
+    Left = 112
+    Top = 192
   end
 end

@@ -3,7 +3,7 @@ object frmCadastroClientes: TfrmCadastroClientes
   Top = 0
   Caption = 'Cadastro de Clientes'
   ClientHeight = 662
-  ClientWidth = 1288
+  ClientWidth = 1250
   Color = clGradientInactiveCaption
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -124,7 +124,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       object btnNovo: TSpeedButton
         Left = 171
         Top = 4
-        Width = 73
+        Width = 69
         Height = 25
         Caption = 'Novo'
         Glyph.Data = {
@@ -341,7 +341,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       FocusControl = dbedtcep
     end
     object lbl9: TLabel
-      Left = 8
+      Left = 128
       Top = 150
       Width = 24
       Height = 17
@@ -349,7 +349,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       FocusControl = dbedtcnpj
     end
     object lbl10: TLabel
-      Left = 167
+      Left = 271
       Top = 151
       Width = 71
       Height = 17
@@ -358,7 +358,7 @@ object frmCadastroClientes: TfrmCadastroClientes
     end
     object LabelContatos: TLabel
       Left = 8
-      Top = 197
+      Top = 301
       Width = 72
       Height = 21
       Caption = 'Contatos:'
@@ -370,6 +370,14 @@ object frmCadastroClientes: TfrmCadastroClientes
       Font.Style = [fsBold]
       ParentColor = False
       ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 8
+      Top = 150
+      Width = 18
+      Height = 17
+      Caption = 'cpf'
+      FocusControl = DBEditcpf
     end
     object dbedtnomecliente: TDBEdit
       Left = 8
@@ -457,9 +465,9 @@ object frmCadastroClientes: TfrmCadastroClientes
       TabOrder = 8
     end
     object dbedtcnpj: TDBEdit
-      Left = 8
+      Left = 128
       Top = 167
-      Width = 143
+      Width = 135
       Height = 25
       DataField = 'cnpj'
       DataSource = DMRaito.dsCliente
@@ -468,7 +476,7 @@ object frmCadastroClientes: TfrmCadastroClientes
       OnExit = dbedtcnpjExit
     end
     object dbedtinscestadual: TDBEdit
-      Left = 167
+      Left = 271
       Top = 167
       Width = 137
       Height = 25
@@ -478,9 +486,9 @@ object frmCadastroClientes: TfrmCadastroClientes
     end
     object dbgrdContatos: TDBGrid
       Left = 8
-      Top = 221
+      Top = 328
       Width = 1185
-      Height = 340
+      Height = 233
       Color = clInactiveCaption
       DataSource = DMRaito.dsContatoCliente
       GradientEndColor = clBlack
@@ -498,7 +506,10 @@ object frmCadastroClientes: TfrmCadastroClientes
       TitleFont.Height = -13
       TitleFont.Name = 'Segoe UI'
       TitleFont.Style = []
+      OnColEnter = dbgrdContatosColEnter
+      OnColExit = dbgrdContatosColExit
       OnDblClick = dbgrdContatosDblClick
+      OnKeyDown = dbgrdContatosKeyDown
       Columns = <
         item
           Expanded = False
@@ -516,20 +527,32 @@ object frmCadastroClientes: TfrmCadastroClientes
           PickList.Strings = (
             'TELEFONE'
             'CELULAR')
+          Width = 135
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'Descricao'
-          Width = 360
+          Width = 309
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'NomeDoContato'
-          Width = 290
+          Width = 367
           Visible = True
         end>
+    end
+    object DBEditcpf: TDBEdit
+      Left = 8
+      Top = 167
+      Width = 113
+      Height = 25
+      DataField = 'cpf'
+      DataSource = DMRaito.dsCliente
+      MaxLength = 14
+      TabOrder = 12
+      OnExit = DBEditcpfExit
     end
   end
 end

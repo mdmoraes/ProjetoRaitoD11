@@ -76,8 +76,6 @@ type
     QRDBText1: TQRDBText;
     QRDBText2: TQRDBText;
     QRDBText3: TQRDBText;
-    QRLabel1: TQRLabel;
-    QRDBText4: TQRDBText;
     queryRelPedidoPedidoId: TFDAutoIncField;
     queryRelPedidoDATA_PEDIDO: TDateField;
     queryRelPedidoCliente: TStringField;
@@ -108,6 +106,8 @@ type
     queryRelPedidoemail: TStringField;
     queryRelPedidoemailnfe_1: TStringField;
     queryRelPedidocnpj: TStringField;
+    queryRelPedidoLIQ1: TFloatField;
+    queryRelPedidoTOTALITENS: TFloatField;
   private
     { Private declarations }
   public

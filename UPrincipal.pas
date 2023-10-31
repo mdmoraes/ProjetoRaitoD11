@@ -16,6 +16,7 @@ type
     MenuTransportadora: TMenuItem;
     TMSFNCImage1: TTMSFNCImage;
     SubMenuEmissodePedidos: TMenuItem;
+    BalloonHint1: TBalloonHint;
     procedure MenuClienteClick(Sender: TObject);
     procedure MenuSubImportarPlanilhaClick(Sender: TObject);
     procedure MenuSubProdutosClick(Sender: TObject);

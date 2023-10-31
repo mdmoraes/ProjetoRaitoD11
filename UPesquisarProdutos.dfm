@@ -19,7 +19,7 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
     Top = 2
     Width = 276
     Height = 53
-    Caption = 'Digite as Iniciais do C'#243'digo para pesquisa'
+    Caption = 'Digite as Iniciais do Item para pesquisa'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -55,7 +55,7 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
       Font.Height = -11
       Font.Name = 'Verdana'
       Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgTitleClick]
       ParentFont = False
       ReadOnly = True
       TabOrder = 0
@@ -72,31 +72,31 @@ object FrmPesquisarProdutos: TFrmPesquisarProdutos
           ButtonStyle = cbsEllipsis
           Expanded = False
           FieldName = 'codigoproduto'
-          Width = 177
+          Width = 149
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'descricao'
-          Width = 284
+          Width = 337
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'grupo'
-          Width = 99
+          Width = 133
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'unidade'
-          Width = 48
+          Width = 43
           Visible = True
         end
         item
           Expanded = False
           FieldName = 'pvenda'
-          Width = 42
+          Width = 59
           Visible = True
         end>
     end

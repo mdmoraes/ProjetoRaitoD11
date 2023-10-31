@@ -4,7 +4,7 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
   Caption = 'Cadastro de Produtos'
   ClientHeight = 662
   ClientWidth = 1288
-  Color = clTeal
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -12
@@ -12,285 +12,14 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
   Font.Style = []
   Position = poScreenCenter
   TextHeight = 15
-  object lbl: TLabel
-    Left = 8
-    Top = 8
-    Width = 80
-    Height = 15
-    Caption = 'codigoproduto'
-    FocusControl = dbedtcodigoproduto
-  end
-  object lbl1: TLabel
-    Left = 127
-    Top = 8
-    Width = 47
-    Height = 15
-    Caption = 'codbarra'
-    FocusControl = dbedtcodbarra
-  end
-  object lbl2: TLabel
-    Left = 287
-    Top = 8
-    Width = 58
-    Height = 15
-    Caption = 'codauxiliar'
-    FocusControl = dbedtcodauxiliar
-  end
-  object lbl3: TLabel
-    Left = 8
-    Top = 56
-    Width = 24
-    Height = 15
-    Caption = 'ncm'
-    FocusControl = dbedtncm
-  end
-  object lbl4: TLabel
-    Left = 111
-    Top = 56
-    Width = 43
-    Height = 15
-    Caption = 'unidade'
-    FocusControl = dbedtunidade
-  end
-  object lbl5: TLabel
-    Left = 160
-    Top = 56
-    Width = 50
-    Height = 15
-    Caption = 'descricao'
-    FocusControl = dbedtdescricao
-  end
-  object lbl7: TLabel
-    Left = 8
-    Top = 96
-    Width = 68
-    Height = 15
-    Caption = 'representada'
-    FocusControl = dbedtrepresentada
-  end
-  object lbl8: TLabel
-    Left = 399
-    Top = 101
-    Width = 13
-    Height = 15
-    Caption = 'ipi'
-    FocusControl = dbedtipi
-  end
-  object lbl9: TLabel
-    Left = 559
-    Top = 101
-    Width = 20
-    Height = 15
-    Caption = 'icm'
-    FocusControl = dbedticm
-  end
-  object lbl10: TLabel
-    Left = 719
-    Top = 101
-    Width = 15
-    Height = 15
-    Caption = 'cst'
-    FocusControl = dbedtcst
-  end
-  object lbl11: TLabel
-    Left = 328
-    Top = 145
-    Width = 25
-    Height = 15
-    Caption = 'peso'
-    FocusControl = dbedtpeso
-  end
-  object lbl12: TLabel
-    Left = 8
-    Top = 141
-    Width = 36
-    Height = 15
-    Caption = 'pcusto'
-    FocusControl = dbedtpcusto
-  end
-  object lbl13: TLabel
-    Left = 168
-    Top = 141
-    Width = 39
-    Height = 15
-    Caption = 'pvenda'
-    FocusControl = dbedtpvenda
-  end
-  object lbl14: TLabel
-    Left = 488
-    Top = 146
-    Width = 47
-    Height = 15
-    Caption = 'marcado'
-    FocusControl = dbedtmarcado
-  end
-  object lbl15: TLabel
-    Left = 655
-    Top = 53
-    Width = 32
-    Height = 15
-    Caption = 'grupo'
-  end
-  object lbl16: TLabel
-    Left = 432
-    Top = 8
-    Width = 53
-    Height = 15
-    Caption = 'idproduto'
-    FocusControl = dbedtidproduto
-  end
-  object lbl151: TLabel
-    Left = 873
-    Top = 53
-    Width = 57
-    Height = 15
-    Caption = 'Sub-grupo'
-  end
-  object dbedtcodigoproduto: TDBEdit
-    Left = 8
-    Top = 24
-    Width = 113
-    Height = 23
-    DataField = 'codigoproduto'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 0
-  end
-  object dbedtcodbarra: TDBEdit
-    Left = 127
-    Top = 24
-    Width = 154
-    Height = 23
-    DataField = 'codbarra'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 1
-  end
-  object dbedtcodauxiliar: TDBEdit
-    Left = 287
-    Top = 24
-    Width = 111
-    Height = 23
-    DataField = 'codauxiliar'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 2
-  end
-  object dbedtncm: TDBEdit
-    Left = 8
-    Top = 72
-    Width = 97
-    Height = 23
-    DataField = 'ncm'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 3
-  end
-  object dbedtunidade: TDBEdit
-    Left = 111
-    Top = 72
-    Width = 43
-    Height = 23
-    DataField = 'unidade'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 4
-  end
-  object dbedtdescricao: TDBEdit
-    Left = 160
-    Top = 72
-    Width = 489
-    Height = 23
-    DataField = 'descricao'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 5
-  end
-  object dbedtrepresentada: TDBEdit
-    Left = 8
-    Top = 112
-    Width = 385
-    Height = 23
-    DataField = 'representada'
-    TabOrder = 6
-  end
-  object dbedtipi: TDBEdit
-    Left = 399
-    Top = 117
-    Width = 154
-    Height = 23
-    DataField = 'ipi'
-    TabOrder = 7
-  end
-  object dbedticm: TDBEdit
-    Left = 559
-    Top = 117
-    Width = 154
-    Height = 23
-    DataField = 'icm'
-    TabOrder = 8
-  end
-  object dbedtcst: TDBEdit
-    Left = 719
-    Top = 117
-    Width = 304
-    Height = 23
-    DataField = 'cst'
-    TabOrder = 9
-  end
-  object dbedtpeso: TDBEdit
-    Left = 328
-    Top = 161
-    Width = 154
-    Height = 23
-    DataField = 'peso'
-    TabOrder = 10
-  end
-  object dbedtpcusto: TDBEdit
-    Left = 8
-    Top = 157
-    Width = 154
-    Height = 23
-    DataField = 'pcusto'
-    TabOrder = 11
-  end
-  object dbedtpvenda: TDBEdit
-    Left = 168
-    Top = 162
-    Width = 154
-    Height = 23
-    DataField = 'pvenda'
-    TabOrder = 12
-  end
-  object dbedtmarcado: TDBEdit
-    Left = 488
-    Top = 162
-    Width = 154
-    Height = 23
-    DataField = 'marcado'
-    TabOrder = 13
-  end
-  object dbedtidproduto: TDBEdit
-    Left = 432
-    Top = 24
-    Width = 53
-    Height = 23
-    DataField = 'idproduto'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    TabOrder = 14
-  end
-  object dbcbbgrupo: TDBComboBox
-    Left = 655
-    Top = 72
-    Width = 212
-    Height = 23
-    DataField = 'grupo'
-    DataSource = DMRaito.dsCadastroDeProdutos
-    DropDownCount = 12
-    TabOrder = 15
-  end
   object pnlContainer: TPanel
     Left = 8
     Top = 576
-    Width = 761
+    Width = 1081
     Height = 49
     Color = clTeal
     ParentBackground = False
-    TabOrder = 16
+    TabOrder = 0
     object pnlConfirma: TPanel
       Left = 152
       Top = 9
@@ -388,7 +117,7 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
     object pnlNav: TPanel
       Left = 40
       Top = 9
-      Width = 673
+      Width = 983
       Height = 33
       TabOrder = 0
       object btnNovo: TSpeedButton
@@ -460,10 +189,36 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
       object btnPesquisa: TSpeedButton
         Left = 415
         Top = 3
-        Width = 87
+        Width = 154
         Height = 25
-        Hint = 'Pesquisa Clientes'
-        Caption = 'Pesquisa'
+        Hint = 'Pesquisa Produtos j'#225'  cadastrados'
+        CustomHint = frmPrincipal.BalloonHint1
+        Caption = 'Pesquisar Cadastrados'
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          0400000000000001000000000000000000001000000000000000000000000000
+          80000080000000808000800000008000800080800000C0C0C000808080000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333300
+          3333333333333333FF333333333330EC033333333333333FE7F3330000000ECC
+          00333333FFFFFFFE77FF33033330ECC330333333F8888FE7788F330FFF0ECC3F
+          30333333F333FE77838F3300003CC3FF30333333FFFF8778338F303E30003FFF
+          3033333F8E8FFF83338F0FE3E303FFFF303333F3E8E8F833338F0EFE3E03FFFF
+          303333FE3E8EF833338F0FEFE303FFFF303333F3E3E8F833338F30FEF03FFFFF
+          3033333F3E3F8333338F330003FFFFFF30333333FFF83333338F330FFFFFFF00
+          00333333F3333333FFFF330FFFFFFF3F03333333F333333383F3330FFFFFFF30
+          33333333F33333338F3333000000000333333333FFFFFFFFF333}
+        NumGlyphs = 2
+        ParentShowHint = False
+        ShowHint = True
+      end
+      object SpeedButton1: TSpeedButton
+        Left = 632
+        Top = 7
+        Width = 158
+        Height = 21
+        Hint = 'Pesquisar Produtos a serem Cadastrados'
+        CustomHint = frmPrincipal.BalloonHint1
+        Caption = 'Pesquisar para Cadastro'
         Glyph.Data = {
           76010000424D7601000000000000760000002800000020000000100000000100
           0400000000000001000000000000000000001000000000000000000000000000
@@ -482,7 +237,7 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
         ShowHint = True
       end
       object btn1: TBitBtn
-        Left = 568
+        Left = 888
         Top = 3
         Width = 87
         Height = 23
@@ -516,6 +271,7 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
         Top = 8
         Width = 144
         Height = 18
+        DataSource = DMRaito.dsCadastroDeProdutos
         VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
         Hints.Strings = (
           'Primeiro'
@@ -528,13 +284,293 @@ object frmCadastroDeProdutos: TfrmCadastroDeProdutos
       end
     end
   end
-  object dbcbbgrupo1: TDBComboBox
-    Left = 873
-    Top = 74
-    Width = 216
-    Height = 23
-    DataField = 'grupo'
-    DropDownCount = 12
-    TabOrder = 17
+  object panelTela: TPanel
+    Left = 8
+    Top = 8
+    Width = 1272
+    Height = 529
+    Enabled = False
+    TabOrder = 1
+    object lbl: TLabel
+      Left = 8
+      Top = 8
+      Width = 80
+      Height = 15
+      Caption = 'codigoproduto'
+      FocusControl = dbedtcodigoproduto
+    end
+    object lbl1: TLabel
+      Left = 127
+      Top = 8
+      Width = 47
+      Height = 15
+      Caption = 'codbarra'
+      FocusControl = dbedtcodbarra
+    end
+    object lbl2: TLabel
+      Left = 287
+      Top = 8
+      Width = 58
+      Height = 15
+      Caption = 'codauxiliar'
+      FocusControl = dbedtcodauxiliar
+    end
+    object lbl16: TLabel
+      Left = 432
+      Top = 8
+      Width = 53
+      Height = 15
+      Caption = 'idproduto'
+      FocusControl = dbedtidproduto
+    end
+    object lbl3: TLabel
+      Left = 8
+      Top = 56
+      Width = 24
+      Height = 15
+      Caption = 'ncm'
+      FocusControl = dbedtncm
+    end
+    object lbl4: TLabel
+      Left = 111
+      Top = 56
+      Width = 43
+      Height = 15
+      Caption = 'unidade'
+      FocusControl = dbedtunidade
+    end
+    object lbl5: TLabel
+      Left = 160
+      Top = 56
+      Width = 50
+      Height = 15
+      Caption = 'descricao'
+      FocusControl = dbedtdescricao
+    end
+    object lbl7: TLabel
+      Left = 8
+      Top = 96
+      Width = 68
+      Height = 15
+      Caption = 'representada'
+      FocusControl = dbedtrepresentada
+    end
+    object lbl8: TLabel
+      Left = 399
+      Top = 101
+      Width = 13
+      Height = 15
+      Caption = 'ipi'
+      FocusControl = dbedtipi
+    end
+    object lbl9: TLabel
+      Left = 559
+      Top = 101
+      Width = 20
+      Height = 15
+      Caption = 'icm'
+      FocusControl = dbedticm
+    end
+    object lbl10: TLabel
+      Left = 719
+      Top = 101
+      Width = 15
+      Height = 15
+      Caption = 'cst'
+      FocusControl = dbedtcst
+    end
+    object lbl11: TLabel
+      Left = 328
+      Top = 145
+      Width = 25
+      Height = 15
+      Caption = 'peso'
+      FocusControl = dbedtpeso
+    end
+    object lbl12: TLabel
+      Left = 8
+      Top = 141
+      Width = 36
+      Height = 15
+      Caption = 'pcusto'
+      FocusControl = dbedtpcusto
+    end
+    object lbl13: TLabel
+      Left = 168
+      Top = 141
+      Width = 39
+      Height = 15
+      Caption = 'pvenda'
+      FocusControl = dbedtpvenda
+    end
+    object lbl14: TLabel
+      Left = 488
+      Top = 146
+      Width = 47
+      Height = 15
+      Caption = 'marcado'
+      FocusControl = dbedtmarcado
+    end
+    object lbl15: TLabel
+      Left = 655
+      Top = 53
+      Width = 32
+      Height = 15
+      Caption = 'grupo'
+    end
+    object lbl151: TLabel
+      Left = 873
+      Top = 53
+      Width = 57
+      Height = 15
+      CustomHint = frmPrincipal.BalloonHint1
+      Caption = 'Sub-grupo'
+    end
+    object dbedtcodigoproduto: TDBEdit
+      Left = 8
+      Top = 24
+      Width = 113
+      Height = 23
+      DataField = 'codigoproduto'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 0
+    end
+    object dbedtcodbarra: TDBEdit
+      Left = 127
+      Top = 24
+      Width = 154
+      Height = 23
+      DataField = 'codbarra'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 1
+    end
+    object dbedtcodauxiliar: TDBEdit
+      Left = 287
+      Top = 24
+      Width = 111
+      Height = 23
+      DataField = 'codauxiliar'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 2
+    end
+    object dbedtidproduto: TDBEdit
+      Left = 432
+      Top = 24
+      Width = 53
+      Height = 23
+      DataField = 'idproduto'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 3
+    end
+    object dbedtncm: TDBEdit
+      Left = 8
+      Top = 72
+      Width = 97
+      Height = 23
+      DataField = 'ncm'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 4
+    end
+    object dbedtunidade: TDBEdit
+      Left = 111
+      Top = 72
+      Width = 43
+      Height = 23
+      DataField = 'unidade'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 5
+    end
+    object dbedtdescricao: TDBEdit
+      Left = 160
+      Top = 72
+      Width = 489
+      Height = 23
+      DataField = 'descricao'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      TabOrder = 6
+    end
+    object dbedtrepresentada: TDBEdit
+      Left = 8
+      Top = 112
+      Width = 385
+      Height = 23
+      DataField = 'representada'
+      TabOrder = 7
+    end
+    object dbedtipi: TDBEdit
+      Left = 399
+      Top = 117
+      Width = 154
+      Height = 23
+      DataField = 'ipi'
+      TabOrder = 8
+    end
+    object dbedticm: TDBEdit
+      Left = 559
+      Top = 117
+      Width = 154
+      Height = 23
+      DataField = 'icm'
+      TabOrder = 9
+    end
+    object dbedtcst: TDBEdit
+      Left = 719
+      Top = 117
+      Width = 304
+      Height = 23
+      DataField = 'cst'
+      TabOrder = 10
+    end
+    object dbedtpeso: TDBEdit
+      Left = 328
+      Top = 161
+      Width = 154
+      Height = 23
+      DataField = 'peso'
+      TabOrder = 11
+    end
+    object dbedtpcusto: TDBEdit
+      Left = 8
+      Top = 157
+      Width = 154
+      Height = 23
+      DataField = 'pcusto'
+      TabOrder = 12
+    end
+    object dbedtpvenda: TDBEdit
+      Left = 168
+      Top = 162
+      Width = 154
+      Height = 23
+      DataField = 'pvenda'
+      TabOrder = 13
+    end
+    object dbedtmarcado: TDBEdit
+      Left = 488
+      Top = 162
+      Width = 154
+      Height = 23
+      DataField = 'marcado'
+      TabOrder = 14
+    end
+    object dbcbbgrupo: TDBComboBox
+      Left = 655
+      Top = 72
+      Width = 212
+      Height = 23
+      DataField = 'grupo'
+      DataSource = DMRaito.dsCadastroDeProdutos
+      DropDownCount = 12
+      TabOrder = 15
+    end
+    object dbcbbgrupo1: TDBComboBox
+      Left = 873
+      Top = 74
+      Width = 216
+      Height = 23
+      DataField = 'grupo'
+      DropDownCount = 12
+      TabOrder = 16
+    end
   end
 end

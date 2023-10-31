@@ -725,6 +725,7 @@ object frmPedido: TfrmPedido
           FieldName = 'vrunit'
           Title.Alignment = taCenter
           Title.Caption = 'Vr. Unit'
+          Title.Color = clHighlightText
           Title.Font.Charset = DEFAULT_CHARSET
           Title.Font.Color = clTeal
           Title.Font.Height = -12
@@ -798,7 +799,7 @@ object frmPedido: TfrmPedido
           Expanded = False
           FieldName = 'TotalItens'
           Font.Charset = DEFAULT_CHARSET
-          Font.Color = 25600
+          Font.Color = 9109504
           Font.Height = -12
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold]

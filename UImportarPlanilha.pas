@@ -27,6 +27,7 @@ type
     procedure btnImportarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure DeleteAll(const DataSet: TDataSet);
+    procedure FormCreate(Sender: TObject);
     private
     procedure DeletarTodosOsRegistros(const DataSet: TDataSet);
     { Private declarations }
@@ -39,7 +40,7 @@ var
 
 implementation
 
-uses UDMRaito;
+uses UDMRaito, Rotina;
 
 {$R *.dfm}
 
@@ -68,7 +69,7 @@ begin
 
      //  DMRatio.tblTabelaImportacao.Active := True;
 
-       //DeleteAll(DMRaito.FdTbImportacao);
+       DeleteAll(DMRaito.FdTbImportacao);
 
     try
 
@@ -92,35 +93,35 @@ begin
                  DMRaito.FdTbImportacao.FieldByName('Temperatura').AsString := strGridExcel.Cells[8,I];
                  DMRaito.FdTbImportacao.FieldByName('CustoMP').AsString := strGridExcel.Cells[9,I];
 
-//
-//                 //if (s = nil) or (s = '') then
-//
-//                // if length(strGridExcel.Cells[10,I]) = 0 then
-////
-                 if (strGridExcel.Cells[10,I] = '') then
-                 DMRaito.FdTbImportacao.FieldByName('KG_KM').AsFloat := 0
-                 else
-                 DMRaito.FdTbImportacao.FieldByName('KG_KM').AsFloat := StrToFloat(strGridExcel.Cells[10,I]);
+               //  if (s = nil) or (s = '') then
+               //  MessageBox.Show("empty string");
 
 
-              //   DMRaito.FdTbImportacao.FieldByName('ICMS18').AsCurrency := StrToCurr(strGridExcel.Cells[11,I]);
-             //    DMRaito.FdTbImportacao.FieldByName('ICMS12').AsFloat := StrToFloat(strGridExcel.Cells[12,I]);
-              //   DMRaito.FdTbImportacao.FieldByName('ICMS7').AsFloat := StrToFloat(strGridExcel.Cells[13,I]);
+                 if (strGridExcel.Cells[10,I]) = '' then
+                 DMRaito.FdTbImportacao.FieldByName('KG_KM').Value := 0 else
+                 DMRaito.FdTbImportacao.FieldByName('KG_KM').Value := StrToFloat(strGridExcel.Cells[10,I]);
+
+                 DMRaito.FdTbImportacao.FieldByName('ICMS18').Value := StrToFloat(strGridExcel.Cells[11,I]);
+                 DMRaito.FdTbImportacao.FieldByName('ICMS12').Value := StrToFloat(strGridExcel.Cells[12,I]);
+                 DMRaito.FdTbImportacao.FieldByName('ICMS7').Value := StrToFloat(strGridExcel.Cells[13,I]);
 
              DMRaito.FdTbImportacao.Post;
              end;
     except
           on E: Exception do
           begin
-          ShowMessage('Houve Erro na planilha importada : ' + E.Message );
+          ShowMessage('Houve Erro na importação da planilha! : ' + E.Message );
           Close;
           end;
     end;
 
-            DMRaito.FdTbImportacao.Active := False;
-            DMRaito.FdTbImportacao.Active := True;
+
              DMRaito.FdTbImportacao.EnableControls;
+
              ShowMessage('Planilha importada com sucesso!');
+
+//            DMRaito.FdTbImportacao.Active := False;
+//            DMRaito.FdTbImportacao.Active := True;
              lblRecordCount.Caption := 'Total de Registros importados: ' + IntToStr(DMRaito.FdTbImportacao.RecordCount);
 
 end;
@@ -128,6 +129,12 @@ end;
 procedure TfrmImportarPlanilha.DeleteAll(const DataSet: TDataSet);
 begin
   //DeletarTodosOsRegistros(DataSet)
+end;
+
+procedure TfrmImportarPlanilha.FormCreate(Sender: TObject);
+begin
+   DMRaito.FdTbImportacao.Active := False;
+   DMRaito.FdTbImportacao.Active := True;
 end;
 
 procedure TfrmImportarPlanilha.DeletarTodosOsRegistros(const DataSet: TDataSet);

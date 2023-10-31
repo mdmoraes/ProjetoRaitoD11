@@ -10,6 +10,7 @@ object frmCadastroTransportadora: TfrmCadastroTransportadora
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OnCreate = FormCreate
   TextHeight = 15
   object panelTela: TPanel
     Left = 8
@@ -45,10 +46,10 @@ object frmCadastroTransportadora: TfrmCadastroTransportadora
     object lbl4: TLabel
       Left = 8
       Top = 96
-      Width = 50
+      Width = 44
       Height = 15
-      Caption = 'Telefone1'
-      FocusControl = dbedtTelefone1
+      Caption = 'Telefone'
+      FocusControl = dbedtTelefone
     end
     object lbl5: TLabel
       Left = 8
@@ -120,16 +121,16 @@ object frmCadastroTransportadora: TfrmCadastroTransportadora
       Top = 64
       Width = 697
       Height = 23
-      DataField = 'Endere'#231'o'
+      DataField = 'Endereco'
       DataSource = dsTransportadora
       TabOrder = 2
     end
-    object dbedtTelefone1: TDBEdit
+    object dbedtTelefone: TDBEdit
       Left = 8
       Top = 112
-      Width = 608
+      Width = 606
       Height = 23
-      DataField = 'Telefone1'
+      DataField = 'Telefone'
       DataSource = dsTransportadora
       TabOrder = 3
     end
@@ -163,10 +164,11 @@ object frmCadastroTransportadora: TfrmCadastroTransportadora
     object dbedtCep: TDBEdit
       Left = 72
       Top = 240
-      Width = 184
+      Width = 128
       Height = 23
       DataField = 'Cep'
       DataSource = dsTransportadora
+      MaxLength = 9
       TabOrder = 7
     end
     object dbedtContato: TDBEdit
@@ -358,6 +360,7 @@ object frmCadastroTransportadora: TfrmCadastroTransportadora
           333333377F33333333FF3333C333333330003333733333333777333333333333
           3000333333333333377733333333333333333333333333333333}
         NumGlyphs = 2
+        OnClick = btnExcluirClick
       end
       object btnPesquisa: TSpeedButton
         Left = 415
@@ -382,6 +385,7 @@ object frmCadastroTransportadora: TfrmCadastroTransportadora
         NumGlyphs = 2
         ParentShowHint = False
         ShowHint = True
+        OnClick = btnPesquisaClick
       end
       object btn1: TBitBtn
         Left = 568

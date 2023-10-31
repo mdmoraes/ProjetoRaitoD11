@@ -32,10 +32,6 @@ type
     dsItens: TDataSource;
     dsCliente: TDataSource;
     FdTableTransportadora: TFDTable;
-    fltfldFdTbImportacaokg_km: TFloatField;
-    fltfldFdTbImportacaoicms18: TFloatField;
-    fltfldFdTbImportacaoicms12: TFloatField;
-    fltfldFdTbImportacaoicms7: TFloatField;
     FdTableContatoCliente: TFDTable;
     dsContatoCliente: TDataSource;
     dsTableTransportadora: TDataSource;
@@ -179,12 +175,15 @@ type
     FdTableTransportadoraUF: TStringField;
     FdTableTransportadoraCep: TStringField;
     FdTableTransportadoraObs: TStringField;
-    procedure FdTableContatoClienteBeforePost(DataSet: TDataSet);
+    FDTableClientecpf: TStringField;
+    dsImportacao: TDataSource;
+    FdTbImportacaoicms18: TFloatField;
+    FdTbImportacaoicms12: TFloatField;
+    FdTbImportacaoicms7: TFloatField;
+    FdTbImportacaokg_km: TFloatField;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
-    procedure FdTablePedidoBeforePost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);
-    procedure FdTablePedidosAfterPost(DataSet: TDataSet);
     procedure FDTableClienteBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
@@ -214,11 +213,6 @@ begin
 //gravar master antes. mm
 //DMRaito.FDTableCliente.Edit;
 //DMRaito.FDTableCliente.Post;
-end;
-
-procedure TDMRaito.FdTableContatoClienteBeforePost(DataSet: TDataSet);
-begin
-//     DMRaito.fdtncfldFdTableContatoClienteContatoId.Value:= DMRaito.FDTableClienteidcliente.Value;
 end;
 
 procedure TDMRaito.FdTableItensAfterPost(DataSet: TDataSet);
@@ -258,20 +252,6 @@ DMRaito.FdTableItensliq1.Value:=
 ////
 DMRaito.FdTableItensTotalItens.Value :=
 ((DMRaito.FdTableItensVrUnit.Value * DMRaito.FdTableItensqtd.Value - DMRaito.FdTableItensliq1.Value));
-end;
-
-procedure TDMRaito.FdTablePedidosAfterPost(DataSet: TDataSet);
-begin
-//DMRaito.FdTablePedido.Edit;
-//DMRaito.FdTablePedidoId_Cliente.Value := DMRaito.FDTableClienteidcliente.Value;
-end;
-
-procedure TDMRaito.FdTablePedidoBeforePost(DataSet: TDataSet);
-begin
-
-//ENDEREÇO DO CLIENTE
-//DMRaito.TablePedidoEnderecoCliente.Value := DMRaito.TableClienteendereco.Value;
-
 end;
 
 end.

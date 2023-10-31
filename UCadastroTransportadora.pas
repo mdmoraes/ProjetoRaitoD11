@@ -18,7 +18,7 @@ type
     lbl3: TLabel;
     dbedtEndereo: TDBEdit;
     lbl4: TLabel;
-    //dbedtTelefone1: TDBEdit;
+    dbedtTelefone: TDBEdit;
     lbl5: TLabel;
     dbedtemail: TDBEdit;
     lbl6: TLabel;
@@ -43,11 +43,12 @@ type
     btn1: TBitBtn;
     dbnv1: TDBNavigator;
 
-
-
     procedure btnNovoClick(Sender: TObject);
     procedure btn1Click(Sender: TObject);
     procedure btnAlterarClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+    procedure btnPesquisaClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,7 +60,7 @@ var
 
 implementation
 
-uses UDMRaito;
+uses UDMRaito, UPesquisarTransportadora;
 
 {$R *.dfm}
 
@@ -76,37 +77,42 @@ begin
     DMRaito.FdTableTransportadora.Edit;
 end;
 
-procedure TfrmCadastroTransportadora.btnNovoClick(Sender: TObject);
-  var  it:integer;
+procedure TfrmCadastroTransportadora.btnExcluirClick(Sender: TObject);
 begin
+if MessageDlg('DESEJA EXCLUIR ESSE REGISTRO ?',
+    mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    DMRaito.FdTableTransportadora.Delete;
+    ShowMessage('Registro excluído com sucesso.!');
+  end;
+end;
 
+procedure TfrmCadastroTransportadora.btnNovoClick(Sender: TObject);
+begin
   panelConfirma.Enabled:= True;
   panelNav.Visible:= False;
   panelTela.Enabled:= True;
 
-       try      //EVENTO ACUMULADOR DE REGISTROS ...MAMO...
-          DMRaito.FdTableTransportadora.DisableControls;
-          try
-          DMRaito.FdTableTransportadora.IndexName:= 'idxNomeTransportadora';
-          DMRaito.FdTableTransportadora.First;
-          DMRaito.FdTableTransportadora.Last;
+  DMRaito.FdTableTransportadora.Edit;
+  DMRaito.FdTableTransportadora.Append;
 
-          if DMRaito.FdTableTransportadora['TransportadoraId']<> null then
-          it := DMRaito.FdTableTransportadora['TransportadoraId']
-          else
-          it:= 0;
-          DMRaito.FdTableTransportadora.Insert;
-          DMRaito.FdTableTransportadora['TransportadoraId'] := it + 1;
-        //  DMRaito.FDTableCliente['DataCadastro']:= DateToStr(Now);
+end;
 
-          dbedtNomeTransportadora.SetFocus;
+procedure TfrmCadastroTransportadora.btnPesquisaClick(Sender: TObject);
+begin
+    try
+    Application.CreateForm(TfrmPesquisarTransportadora, frmPesquisarTransportadora);
+    frmPesquisarTransportadora.ShowModal;
+    finally
+    frmPesquisarTransportadora.Free;
+    end;
 
-          finally
-          DMRaito.FdTableTransportadora.EnableControls;
-          end;
-       finally
+//idxNomeTransportadora
+end;
 
-       end;
+procedure TfrmCadastroTransportadora.FormCreate(Sender: TObject);
+begin
+DMRaito.FdTableTransportadora.IndexName:= ('idxNomeTransportadora');
 end;
 
 end.
