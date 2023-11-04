@@ -164,6 +164,10 @@
         <DCCReference Include="UMensagem.pas"/>
         <DCCReference Include="Ucic_cgc.pas"/>
         <DCCReference Include="Rotina.pas"/>
+        <DCCReference Include="UTabelaFixaImportada.pas">
+            <Form>frmTabelaFixaImportada</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="Raito.todo"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

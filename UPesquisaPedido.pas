@@ -53,6 +53,7 @@ end;
 procedure TFrmPesquisaPedido.rbClienteClick(Sender: TObject);
 begin
  DMRaito.FdTablePedidos.IndexName:= ('idxPedidoCliente');
+ edt1.SetFocus;
 end;
 
 procedure TFrmPesquisaPedido.rbPedidoClick(Sender: TObject);

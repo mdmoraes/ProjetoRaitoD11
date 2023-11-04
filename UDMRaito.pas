@@ -181,6 +181,7 @@ type
     FdTbImportacaoicms12: TFloatField;
     FdTbImportacaoicms7: TFloatField;
     FdTbImportacaokg_km: TFloatField;
+    FdTbImportacaodaterecebida: TDateField;
     procedure FdTableItensCalcFields(DataSet: TDataSet);
     procedure FdTableItensAfterPost(DataSet: TDataSet);
     procedure FDSchemaAdapterAfterApplyUpdate(Sender: TObject);

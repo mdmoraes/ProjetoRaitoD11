@@ -21,7 +21,8 @@ uses
   UPesquisarTransportadora in 'UPesquisarTransportadora.pas' {frmPesquisarTransportadora},
   UMensagem in 'UMensagem.pas',
   Ucic_cgc in 'Ucic_cgc.pas',
-  Rotina in 'Rotina.pas';
+  Rotina in 'Rotina.pas',
+  UTabelaFixaImportada in 'UTabelaFixaImportada.pas' {frmTabelaFixaImportada};
 
 {$R *.res}
 

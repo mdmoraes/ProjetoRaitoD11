@@ -12885,6 +12885,10 @@ object frmPrincipal: TfrmPrincipal
         Caption = 'Emiss'#227'o de Pedidos'
         OnClick = SubMenuEmissodePedidosClick
       end
+      object subMenuPlanilhaFixa: TMenuItem
+        Caption = 'Planilha Fixa'
+        OnClick = subMenuPlanilhaFixaClick
+      end
     end
     object MenuSairdoSistema: TMenuItem
       Caption = 'Sair do Sistema'
@@ -12894,5 +12898,10 @@ object frmPrincipal: TfrmPrincipal
   object BalloonHint1: TBalloonHint
     Left = 1008
     Top = 248
+  end
+  object JvFormAutoSize1: TJvFormAutoSize
+    Active = True
+    Left = 1062
+    Top = 390
   end
 end

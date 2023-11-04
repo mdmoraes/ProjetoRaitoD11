@@ -9731,7 +9731,6 @@ object frmRelatorioPedido: TfrmRelatorioPedido
     end
   end
   object queryRelPedido: TFDQuery
-    Active = True
     MasterFields = 'PedidoId'
     DetailFields = 'NUM_PEDIDO'
     Connection = DMRaito.FDConnection1

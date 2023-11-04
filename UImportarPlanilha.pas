@@ -120,9 +120,9 @@ begin
 
              ShowMessage('Planilha importada com sucesso!');
 
-//            DMRaito.FdTbImportacao.Active := False;
-//            DMRaito.FdTbImportacao.Active := True;
-             lblRecordCount.Caption := 'Total de Registros importados: ' + IntToStr(DMRaito.FdTbImportacao.RecordCount);
+            DMRaito.FdTbImportacao.Active := False;
+            DMRaito.FdTbImportacao.Active := True;
+            lblRecordCount.Caption := 'Total de Registros importados: ' + IntToStr(DMRaito.FdTbImportacao.RecordCount);
 
 end;
 

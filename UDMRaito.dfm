@@ -236,46 +236,59 @@ object DMRaito: TDMRaito
   object FdTbImportacao: TFDTable
     Active = True
     Connection = FDConnection1
+    FetchOptions.AssignedValues = [evMode, evRecordCountMode]
+    FetchOptions.Mode = fmAll
+    FetchOptions.RecordCountMode = cmTotal
     ResourceOptions.AssignedValues = [rvEscapeExpand]
     TableName = 'dbratio.tbimportacao'
     Left = 32
     Top = 192
     object FdTbImportacaocodigo: TStringField
+      DisplayWidth = 16
       FieldName = 'codigo'
       Size = 60
     end
     object strngfldFdTbImportacaodescricao: TStringField
+      DisplayWidth = 50
       FieldName = 'descricao'
       Size = 100
     end
     object strngfldFdTbImportacaogrupo: TStringField
+      DisplayWidth = 21
       FieldName = 'grupo'
       Size = 60
     end
     object strngfldFdTbImportacaonorma: TStringField
+      DisplayWidth = 4
       FieldName = 'norma'
       Size = 60
     end
     object strngfldFdTbImportacaoisolacao: TStringField
+      DisplayWidth = 7
       FieldName = 'isolacao'
       Size = 30
     end
     object strngfldFdTbImportacaocobertura: TStringField
+      DisplayWidth = 6
       FieldName = 'cobertura'
       Size = 30
     end
     object strngfldFdTbImportacaoclasse: TStringField
+      DisplayWidth = 5
       FieldName = 'classe'
       Size = 30
     end
     object strngfldFdTbImportacaoblindagem: TStringField
+      DisplayWidth = 4
       FieldName = 'blindagem'
       Size = 30
     end
     object strngfldFdTbImportacaotemperatura: TStringField
+      DisplayWidth = 5
       FieldName = 'temperatura'
     end
     object strngfldFdTbImportacaocustomp: TStringField
+      DisplayWidth = 5
       FieldName = 'customp'
       Size = 10
     end
@@ -283,21 +296,35 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'kg_km'
       Origin = 'kg_km'
+      DisplayFormat = '#,##0'
+      EditFormat = '#,##0'
     end
     object FdTbImportacaoicms18: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'icms18'
       Origin = 'icms18'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
     end
     object FdTbImportacaoicms12: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'icms12'
       Origin = 'icms12'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
     end
     object FdTbImportacaoicms7: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'icms7'
       Origin = 'icms7'
+      DisplayFormat = '#,##0.00'
+      EditFormat = '#,##0.00'
+    end
+    object FdTbImportacaodaterecebida: TDateField
+      AutoGenerateValue = arDefault
+      FieldName = 'daterecebida'
+      Origin = 'daterecebida'
+      EditMask = '!99/99/0000;1;_'
     end
   end
   object FdTableCadastroProdutos: TFDTable
@@ -998,7 +1025,8 @@ object DMRaito: TDMRaito
     Top = 312
   end
   object dsImportacao: TDataSource
-    Left = 112
+    DataSet = FdTbImportacao
+    Left = 128
     Top = 192
   end
 end
