@@ -89,7 +89,7 @@ var
 implementation
 
 uses UDMRaito, UCadastroDeClientes, UPesquisarProdutos, UPesquisaPedido,
- URelatorioPedido, UPesquisarClientes;
+ URelatorioPedido, UPesquisarClientes, UBuscarProdutoParaEmissaoDePedido;
 
 
 {$R *.dfm}
@@ -286,10 +286,10 @@ end;
 procedure TfrmPedido.dbgrdItensEditButtonClick(Sender: TObject);
 begin
  try
- application.CreateForm(TFrmPesquisarProdutos, FrmPesquisarProdutos);
- FrmPesquisarProdutos.ShowModal;
+ application.CreateForm(TfrmBuscarProdutoParaPedido, frmBuscarProdutoParaPedido);
+ frmBuscarProdutoParaPedido.ShowModal;
  finally
- FrmPesquisarProdutos.Free;
+ frmBuscarProdutoParaPedido.Free;
  end;
 end;
 

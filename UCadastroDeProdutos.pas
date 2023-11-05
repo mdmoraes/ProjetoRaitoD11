@@ -35,11 +35,8 @@ type
     lbl7: TLabel;
     lbl8: TLabel;
     lbl9: TLabel;
-    lbl10: TLabel;
     lbl11: TLabel;
-    lbl12: TLabel;
     lbl13: TLabel;
-    lbl14: TLabel;
     lbl15: TLabel;
     lbl151: TLabel;
     dbedtncm: TDBEdit;
@@ -48,11 +45,8 @@ type
     dbedtrepresentada: TDBEdit;
     dbedtipi: TDBEdit;
     dbedticm: TDBEdit;
-    dbedtcst: TDBEdit;
     dbedtpeso: TDBEdit;
-    dbedtpcusto: TDBEdit;
     dbedtpvenda: TDBEdit;
-    dbedtmarcado: TDBEdit;
     dbcbbgrupo: TDBComboBox;
     dbcbbgrupo1: TDBComboBox;
     SpeedButton1: TSpeedButton;

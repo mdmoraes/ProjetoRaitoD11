@@ -22,7 +22,9 @@ uses
   UMensagem in 'UMensagem.pas',
   Ucic_cgc in 'Ucic_cgc.pas',
   Rotina in 'Rotina.pas',
-  UTabelaFixaImportada in 'UTabelaFixaImportada.pas' {frmTabelaFixaImportada};
+  UTabelaFixaImportada in 'UTabelaFixaImportada.pas' {frmTabelaFixaImportada},
+  UBuscarProdutoParaEmissaoDePedido in 'UBuscarProdutoParaEmissaoDePedido.pas' {frmBuscarProdutoParaPedido},
+  URelatorioPlanilhaFixa in 'URelatorioPlanilhaFixa.pas' {frmRelatorioPlanilhaFixa};
 
 {$R *.res}
 
@@ -31,5 +33,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
+  Application.CreateForm(TfrmRelatorioPlanilhaFixa, frmRelatorioPlanilhaFixa);
   Application.Run;
 end.

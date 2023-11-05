@@ -168,6 +168,14 @@
             <Form>frmTabelaFixaImportada</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="UBuscarProdutoParaEmissaoDePedido.pas">
+            <Form>frmBuscarProdutoParaPedido</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="URelatorioPlanilhaFixa.pas">
+            <Form>frmRelatorioPlanilhaFixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <None Include="Raito.todo"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>

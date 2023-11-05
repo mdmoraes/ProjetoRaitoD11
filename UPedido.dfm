@@ -681,7 +681,7 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 310
+          Width = 352
           Visible = True
         end
         item
@@ -693,7 +693,7 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 196
+          Width = 217
           Visible = True
         end
         item
@@ -705,7 +705,7 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 30
+          Width = 36
           Visible = True
         end
         item
@@ -780,8 +780,8 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = 79
-          Visible = True
+          Width = -1
+          Visible = False
         end
         item
           Expanded = False

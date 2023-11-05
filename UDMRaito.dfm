@@ -288,12 +288,13 @@ object DMRaito: TDMRaito
       FieldName = 'temperatura'
     end
     object strngfldFdTbImportacaocustomp: TStringField
-      DisplayWidth = 5
+      DisplayWidth = 3
       FieldName = 'customp'
       Size = 10
     end
     object FdTbImportacaokg_km: TFloatField
       AutoGenerateValue = arDefault
+      DisplayWidth = 5
       FieldName = 'kg_km'
       Origin = 'kg_km'
       DisplayFormat = '#,##0'
@@ -301,6 +302,7 @@ object DMRaito: TDMRaito
     end
     object FdTbImportacaoicms18: TFloatField
       AutoGenerateValue = arDefault
+      DisplayWidth = 6
       FieldName = 'icms18'
       Origin = 'icms18'
       DisplayFormat = '#,##0.00'
@@ -906,22 +908,22 @@ object DMRaito: TDMRaito
       AutoGenerateValue = arDefault
       FieldName = 'p1'
       Origin = 'p1'
-      DisplayFormat = '###.00"%"'
-      EditFormat = '###.00"%"'
+      DisplayFormat = '###"%"'
+      EditFormat = '###"%"'
     end
     object FdTableItensp2: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'p2'
       Origin = 'p2'
-      DisplayFormat = '###.00"%"'
-      EditFormat = '###.00"%"'
+      DisplayFormat = '###"%"'
+      EditFormat = '###"%"'
     end
     object FdTableItensp3: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'p3'
       Origin = 'p3'
-      DisplayFormat = '###.00"%"'
-      EditFormat = '###.00"%"'
+      DisplayFormat = '###"%"'
+      EditFormat = '###"%"'
     end
     object FdTableItensliq1: TFloatField
       FieldKind = fkCalculated

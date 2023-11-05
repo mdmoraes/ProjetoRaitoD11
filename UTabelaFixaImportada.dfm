@@ -202,13 +202,13 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
     ParentColor = False
     TabOrder = 3
     object SpeedButton1: TSpeedButton
-      Left = 282
+      Left = 278
       Top = 35
-      Width = 23
+      Width = 48
       Height = 22
       Hint = 'Limpa pesquisa'
       CustomHint = ballonHint
-      Caption = 'X'
+      Caption = 'Limpar'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clRed
       Font.Height = -12
