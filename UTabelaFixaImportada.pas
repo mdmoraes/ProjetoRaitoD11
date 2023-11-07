@@ -10,12 +10,12 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
-  JvComponentBase, JvBalloonHint, Vcl.Buttons;
+  JvComponentBase, JvBalloonHint, Vcl.Buttons, Vcl.DBCtrls, Vcl.Menus,
+  JvMemoryDataset;
 
 type
   TfrmTabelaFixaImportada = class(TForm)
     Panel1: TPanel;
-    JvMaskEdit1: TJvMaskEdit;
     dsQueryFiltro: TDataSource;
     btnFechar: TButton;
     GroupBoxPesquisa: TGroupBox;
@@ -40,21 +40,40 @@ type
     FDQueryFiltrocodigo: TStringField;
     FDQueryFiltrodescricao: TStringField;
     FDQueryFiltrogrupo: TStringField;
-    FDQueryFiltronorma: TStringField;
     FDQueryFiltroisolacao: TStringField;
-    FDQueryFiltrocobertura: TStringField;
     FDQueryFiltroclasse: TStringField;
-    FDQueryFiltroblindagem: TStringField;
     FDQueryFiltrotemperatura: TStringField;
-    FDQueryFiltrocustomp: TStringField;
     FDQueryFiltrokg_km: TFloatField;
     FDQueryFiltroicms18: TFloatField;
     FDQueryFiltroicms12: TFloatField;
     FDQueryFiltroicms7: TFloatField;
-    FDQueryFiltrodaterecebida: TDateField;
     btnlimparFiltro1: TSpeedButton;
     Label4: TLabel;
     Label5: TLabel;
+    DBTextDataAtualizacao: TDBText;
+    btnMontarLista: TSpeedButton;
+    pnlGridItens: TPanel;
+    gridItensCopiados: TJvDBGrid;
+    btnFecharGradeItens: TButton;
+    Label6: TLabel;
+    btnImprimir: TSpeedButton;
+    memdata: TJvMemoryData;
+    btnCopiarItens: TButton;
+    dsmemdata: TDataSource;
+    memdatacodigo: TStringField;
+    memdatadescricao: TStringField;
+    memdatagrupo: TStringField;
+    memdataisolacao: TStringField;
+    memdataclasse: TStringField;
+    memdatatemperatura: TStringField;
+    memdatakg_km: TFloatField;
+    memdataicms18: TFloatField;
+    memdataicms12: TFloatField;
+    memdataicms7: TFloatField;
+    Label7: TLabel;
+    edCliente: TEdit;
+    btnBuscarCliente: TSpeedButton;
+    Label8: TLabel;
     procedure btnFecharClick(Sender: TObject);
     procedure rbCodigoClick(Sender: TObject);
     procedure rbDescricaoClick(Sender: TObject);
@@ -65,6 +84,11 @@ type
     procedure btnlimparFiltro1Click(Sender: TObject);
     procedure edPesquisarChange(Sender: TObject);
     procedure btnFiltroPorDescricaoClick(Sender: TObject);
+    procedure btnMontarListaClick(Sender: TObject);
+    procedure btnFecharGradeItensClick(Sender: TObject);
+    procedure btnCopiarItensClick(Sender: TObject);
+    procedure btnImprimirClick(Sender: TObject);
+    procedure btnBuscarClienteClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -76,9 +100,44 @@ var
 
 implementation
 
-uses UDMRaito;
+uses UDMRaito, URelatorioPlanilhaFixa, UPesquisarClientes;
 
 {$R *.dfm}
+
+procedure TfrmTabelaFixaImportada.btnBuscarClienteClick(Sender: TObject);
+begin
+ try
+    Application.CreateForm(TFrmPesquisarClientes, FrmPesquisarClientes);
+    FrmPesquisarClientes.ShowModal;
+    finally
+    FrmPesquisarClientes.Free;
+    end;
+end;
+
+procedure TfrmTabelaFixaImportada.btnCopiarItensClick(Sender: TObject);
+begin
+    begin
+    FDQueryFiltro.First;
+      while not FDQueryFiltro.Eof do
+      begin
+        memdata.Append;
+        memdata.FieldByName('codigo').Value := FDQueryFiltro.Fields[0].Value;
+        memdata.FieldByName('descricao').Value := FDQueryFiltro.Fields[1].Value;
+        memdata.FieldByName('grupo').Value := FDQueryFiltro.Fields[2].Value;
+        memdata.FieldByName('isolacao').Value := FDQueryFiltro.Fields[3].Value;
+        memdata.FieldByName('classe').Value := FDQueryFiltro.Fields[4].Value;
+        memdata.FieldByName('temperatura').Value := FDQueryFiltro.Fields[5].Value;
+        memdata.FieldByName('kg_km').Value := FDQueryFiltro.Fields[6].Value;
+        memdata.FieldByName('icms18').Value := FDQueryFiltro.Fields[7].Value;
+        memdata.FieldByName('icms12').Value := FDQueryFiltro.Fields[8].Value;
+        memdata.FieldByName('icms7').Value := FDQueryFiltro.Fields[9].Value;
+
+        FDQueryFiltro.Next;
+
+
+      end;
+    end;
+end;
 
 procedure TfrmTabelaFixaImportada.btnFecharClick(Sender: TObject);
 begin
@@ -96,6 +155,11 @@ procedure TfrmTabelaFixaImportada.SpeedButton1Click(Sender: TObject);
 begin
 edPesquisar.Clear;
 DMRaito.FdTbImportacao.IndexName:= '';
+end;
+
+procedure TfrmTabelaFixaImportada.btnFecharGradeItensClick(Sender: TObject);
+begin
+pnlGridItens.Visible:= False;
 end;
 
 procedure TfrmTabelaFixaImportada.btnFiltroporCodigoClick(Sender: TObject);
@@ -132,6 +196,16 @@ FDQueryFiltro.Open;
 lblRecordCount.Caption := 'Total de Registros: ' + IntToStr(FDQueryFiltro.RecordCount);
 end;
 
+procedure TfrmTabelaFixaImportada.btnImprimirClick(Sender: TObject);
+begin
+   try
+      Application.CreateForm(TfrmRelatorioPlanilhaFixa,frmRelatorioPlanilhaFixa);
+      frmRelatorioPlanilhaFixa.qckrpPlanilhaFixa.Preview;
+      finally
+      frmRelatorioPlanilhaFixa.Free;
+      end;
+end;
+
 procedure TfrmTabelaFixaImportada.btnlimparFiltro1Click(Sender: TObject);
 begin
   Edit1.Clear;
@@ -142,6 +216,11 @@ begin
   FDQueryFiltro.SQL.Add('SELECT * FROM dbratio.tbimportacao');
   FDQueryFiltro.Open;
   lblRecordCount.Caption := 'Total de Registros: ' + IntToStr(FDQueryFiltro.RecordCount);
+end;
+
+procedure TfrmTabelaFixaImportada.btnMontarListaClick(Sender: TObject);
+begin
+pnlGridItens.Visible:= True;
 end;
 
 procedure TfrmTabelaFixaImportada.edPesquisarChange(Sender: TObject);

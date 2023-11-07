@@ -84,14 +84,14 @@ begin
                  DMRaito.FdTbImportacao.FieldByName('Codigo').AsString := strGridExcel.Cells[0,I];
                  DMRaito.FdTbImportacao.FieldByName('Descricao').AsString := strGridExcel.Cells[1,I];
                  DMRaito.FdTbImportacao.FieldByName('Grupo').AsString := strGridExcel.Cells[2,I];
-                 DMRaito.FdTbImportacao.FieldByName('Norma').AsString := strGridExcel.Cells[3,I];
+               //  DMRaito.FdTbImportacao.FieldByName('Norma').AsString := strGridExcel.Cells[3,I];
 
                  DMRaito.FdTbImportacao.FieldByName('Isolacao').AsString := strGridExcel.Cells[4,I];
-                 DMRaito.FdTbImportacao.FieldByName('Cobertura').AsString := strGridExcel.Cells[5,I];
+              //   DMRaito.FdTbImportacao.FieldByName('Cobertura').AsString := strGridExcel.Cells[5,I];
                  DMRaito.FdTbImportacao.FieldByName('Classe').AsString := strGridExcel.Cells[6,I];
-                 DMRaito.FdTbImportacao.FieldByName('Blindagem').AsString := strGridExcel.Cells[7,I];
+              //   DMRaito.FdTbImportacao.FieldByName('Blindagem').AsString := strGridExcel.Cells[7,I];
                  DMRaito.FdTbImportacao.FieldByName('Temperatura').AsString := strGridExcel.Cells[8,I];
-                 DMRaito.FdTbImportacao.FieldByName('CustoMP').AsString := strGridExcel.Cells[9,I];
+             //   DMRaito.FdTbImportacao.FieldByName('CustoMP').AsString := strGridExcel.Cells[9,I];
 
                //  if (s = nil) or (s = '') then
                //  MessageBox.Show("empty string");

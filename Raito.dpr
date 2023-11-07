@@ -33,6 +33,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmPrincipal, frmPrincipal);
   Application.CreateForm(TDMRaito, DMRaito);
-  Application.CreateForm(TfrmRelatorioPlanilhaFixa, frmRelatorioPlanilhaFixa);
   Application.Run;
 end.

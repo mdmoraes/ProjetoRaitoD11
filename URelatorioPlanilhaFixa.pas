@@ -19,11 +19,8 @@ type
     qrxpr1: TQRExpr;
     qrxpr2: TQRExpr;
     QRLabel3: TQRLabel;
-    QRLabel4: TQRLabel;
     QRLabel5: TQRLabel;
-    QRLabel6: TQRLabel;
     QRLabel7: TQRLabel;
-    QRLabel8: TQRLabel;
     QRLabel9: TQRLabel;
     QRLabel10: TQRLabel;
     QRDBText1: TQRDBText;
@@ -31,11 +28,18 @@ type
     QRDBText3: TQRDBText;
     QRDBText4: TQRDBText;
     qrdbtxtGrupo: TQRDBText;
-    qrdbtxtNorma: TQRDBText;
     qrdbtxtIsolacao: TQRDBText;
     qrdbtxtCustoMP: TQRDBText;
     qrdbtxtClasse: TQRDBText;
-    qrlblPaginas: TQRLabel;
+    QRSysData1: TQRSysData;
+    QRLabel4: TQRLabel;
+    QRLabel6: TQRLabel;
+    QRLabel8: TQRLabel;
+    QRDBText5: TQRDBText;
+    QRDBText6: TQRDBText;
+    QRDBText7: TQRDBText;
+    QRDBText8: TQRDBText;
+    QRImage1: TQRImage;
   private
     { Private declarations }
   public
@@ -49,7 +53,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDMRaito;
+uses UDMRaito, UTabelaFixaImportada;
 
 
 

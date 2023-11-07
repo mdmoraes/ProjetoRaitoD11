@@ -88,6 +88,62 @@ object frmImportarPlanilha: TfrmImportarPlanilha
     TitleFont.Height = -12
     TitleFont.Name = 'Segoe UI'
     TitleFont.Style = []
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'codigo'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'descricao'
+        Width = 411
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'grupo'
+        Width = 169
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'isolacao'
+        Width = 70
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'classe'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'temperatura'
+        Title.Caption = 'Temp.'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'kg_km'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'icms18'
+        Width = 51
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'icms12'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'icms7'
+        Visible = True
+      end>
   end
   object dbedtcodigo: TDBEdit
     Left = 80

@@ -235,6 +235,7 @@ object DMRaito: TDMRaito
   end
   object FdTbImportacao: TFDTable
     Active = True
+    DetailFields = 'codigo;descricao;grupo'
     Connection = FDConnection1
     FetchOptions.AssignedValues = [evMode, evRecordCountMode]
     FetchOptions.Mode = fmAll

@@ -492,8 +492,10 @@ object frmPedido: TfrmPedido
       Top = 32
       Width = 83
       Height = 23
+      TabStop = False
       DataField = 'data_pedido'
       DataSource = DMRaito.dsPedidos
+      ReadOnly = True
       TabOrder = 1
     end
     object dbrgrptipopedido: TDBRadioGroup
@@ -780,7 +782,6 @@ object frmPedido: TfrmPedido
           Title.Font.Height = -12
           Title.Font.Name = 'Segoe UI'
           Title.Font.Style = [fsBold]
-          Width = -1
           Visible = False
         end
         item

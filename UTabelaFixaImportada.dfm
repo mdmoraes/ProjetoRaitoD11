@@ -2,7 +2,7 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
   Left = 0
   Top = 0
   Caption = 'Tabela Fixa Importada'
-  ClientHeight = 612
+  ClientHeight = 662
   ClientWidth = 1188
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,7 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
   TextHeight = 15
   object lblRecordCount: TLabel
     Left = 8
-    Top = 583
+    Top = 623
     Width = 113
     Height = 21
     Caption = 'lblRecordCount'
@@ -25,6 +25,32 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
     Font.Name = 'Segoe UI'
     Font.Style = [fsBold, fsItalic]
     ParentFont = False
+  end
+  object btnMontarLista: TSpeedButton
+    Left = 304
+    Top = 622
+    Width = 137
+    Height = 22
+    Hint = 'Monta um lista de itens solicitada pelo Cliente. '
+    CustomHint = ballonHint
+    Caption = 'Montar Lista de Itens'
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      0400000000000001000000000000000000001000000010000000000000000000
+      80000080000000808000800000008000800080800000C0C0C000808080000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      333333333333333333333333333444444444333333388888888833333334FFFF
+      FFF4333333387777777833333334F00000F4333333387000007830000004FFFF
+      FFF43FFFFFF87777777830FFFFF4F00000F43F7777787000007830F00004FFFF
+      FFF43F7FFFF87777777830FFFFF4F00F44443F7777787007888830F00004FFFF
+      4F433F7FFFF87777878330FFFFF4FFFF44333F7777787777883330F00F044444
+      43333F7FF7F88888833330FFFF0F033333333F7777F7F333333330FFFF003333
+      33333F7777FF3333333330000003333333333FFFFFF333333333333333333333
+      3333333333333333333333333333333333333333333333333333}
+    NumGlyphs = 2
+    ParentShowHint = False
+    ShowHint = True
+    OnClick = btnMontarListaClick
   end
   object Panel1: TPanel
     Left = 0
@@ -43,16 +69,13 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
     ParentFont = False
     TabOrder = 0
     ExplicitWidth = 1184
-    object JvMaskEdit1: TJvMaskEdit
-      Left = 696
-      Top = 6
-      Width = 120
-      Height = 29
-      TabStop = False
-      EditMask = '!99/99/0000;1;_'
-      MaxLength = 10
-      TabOrder = 0
-      Text = '  /  /    '
+    object DBTextDataAtualizacao: TDBText
+      Left = 702
+      Top = 10
+      Width = 65
+      Height = 17
+      DataField = 'daterecebida'
+      DataSource = DMRaito.dsImportacao
     end
   end
   object gridTabelaFixa: TJvDBUltimGrid
@@ -108,21 +131,8 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       end
       item
         Expanded = False
-        FieldName = 'norma'
-        Width = 30
-        Visible = True
-      end
-      item
-        Expanded = False
         FieldName = 'isolacao'
         Width = 58
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'cobertura'
-        Title.Caption = 'cob.'
-        Width = 27
         Visible = True
       end
       item
@@ -133,22 +143,9 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       end
       item
         Expanded = False
-        FieldName = 'blindagem'
-        Title.Caption = 'blind.'
-        Width = 26
-        Visible = True
-      end
-      item
-        Expanded = False
         FieldName = 'temperatura'
         Title.Caption = 'temp.'
         Width = 43
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'customp'
-        Title.Caption = 'c.mp'
         Visible = True
       end
       item
@@ -174,16 +171,11 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
         FieldName = 'icms7'
         Width = 51
         Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'daterecebida'
-        Visible = False
       end>
   end
   object btnFechar: TButton
-    Left = 552
-    Top = 579
+    Left = 1105
+    Top = 619
     Width = 75
     Height = 25
     Caption = 'Fechar'
@@ -563,10 +555,234 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       TabOrder = 2
     end
   end
+  object pnlGridItens: TPanel
+    Left = 502
+    Top = 81
+    Width = 667
+    Height = 495
+    TabOrder = 5
+    Visible = False
+    object Label6: TLabel
+      Left = 16
+      Top = 1
+      Width = 302
+      Height = 17
+      Caption = 'Lista de itens da Tabela Fixa Solicitadas pelo Cliente'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object btnImprimir: TSpeedButton
+      Left = 520
+      Top = 10
+      Width = 119
+      Height = 26
+      Hint = 'Imprimir a lista e gerar relat'#243'rio em .PDF'
+      CustomHint = ballonHint
+      Caption = 'Imprimir Lista'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000130B0000130B00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00300000000000
+        00033FFFFFFFFFFFFFFF0888888888888880777777777777777F088888888888
+        8880777777777777777F0000000000000000FFFFFFFFFFFFFFFF0F8F8F8F8F8F
+        8F80777777777777777F08F8F8F8F8F8F9F0777777777777777F0F8F8F8F8F8F
+        8F807777777777777F7F0000000000000000777777777777777F3330FFFFFFFF
+        03333337F3FFFF3F7F333330F0000F0F03333337F77773737F333330FFFFFFFF
+        03333337F3FF3FFF7F333330F00F000003333337F773777773333330FFFF0FF0
+        33333337F3FF7F3733333330F08F0F0333333337F7737F7333333330FFFF0033
+        33333337FFFF7733333333300000033333333337777773333333}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnImprimirClick
+    end
+    object Label7: TLabel
+      Left = 16
+      Top = 32
+      Width = 43
+      Height = 15
+      Caption = 'Cliente: '
+    end
+    object btnBuscarCliente: TSpeedButton
+      Left = 418
+      Top = 28
+      Width = 29
+      Height = 24
+      Hint = 'Buscar Cliente'
+      CustomHint = ballonHint
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333300
+        3333333333333333FF333333333330EC033333333333333FE7F3330000000ECC
+        00333333FFFFFFFE77FF33033330ECC330333333F8888FE7788F330FFF0ECC3F
+        30333333F333FE77838F3300003CC3FF30333333FFFF8778338F303E30003FFF
+        3033333F8E8FFF83338F0FE3E303FFFF303333F3E8E8F833338F0EFE3E03FFFF
+        303333FE3E8EF833338F0FEFE303FFFF303333F3E3E8F833338F30FEF03FFFFF
+        3033333F3E3F8333338F330003FFFFFF30333333FFF83333338F330FFFFFFF00
+        00333333F3333333FFFF330FFFFFFF3F03333333F333333383F3330FFFFFFF30
+        33333333F33333338F3333000000000333333333FFFFFFFFF333}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = btnBuscarClienteClick
+    end
+    object Label8: TLabel
+      Left = 19
+      Top = 64
+      Width = 107
+      Height = 15
+      Caption = 'Data da Atualiza'#231#227'o:'
+    end
+    object gridItensCopiados: TJvDBGrid
+      Left = 16
+      Top = 96
+      Width = 633
+      Height = 341
+      DataSource = dsmemdata
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -12
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      AutoSizeColumns = True
+      SelectColumnsDialogStrings.Caption = 'Select columns'
+      SelectColumnsDialogStrings.OK = '&OK'
+      SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
+      EditControls = <
+        item
+          FieldName = 'codigo'
+          FitCell = fcCellSize
+          LeaveOnEnterKey = True
+          LeaveOnUpDownKey = True
+        end
+        item
+          FieldName = 'descricao'
+          FitCell = fcCellSize
+          LeaveOnEnterKey = True
+          LeaveOnUpDownKey = True
+        end
+        item
+          FieldName = 'grupo'
+          FitCell = fcCellSize
+          LeaveOnEnterKey = True
+          LeaveOnUpDownKey = True
+        end>
+      RowsHeight = 17
+      TitleRowHeight = 19
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'codigo'
+          Width = 54
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'descricao'
+          Width = 154
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'grupo'
+          Width = 53
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'isolacao'
+          Title.Caption = 'Isol.'
+          Width = 29
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'classe'
+          Width = 37
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'temperatura'
+          Title.Caption = 'Temp.'
+          Width = 45
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'kg_km'
+          Width = 49
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'icms18'
+          Width = 55
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'icms12'
+          Width = 62
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'icms7'
+          Width = 69
+          Visible = True
+        end>
+    end
+    object btnFecharGradeItens: TButton
+      Left = 568
+      Top = 448
+      Width = 75
+      Height = 25
+      Caption = '&Fechar'
+      Default = True
+      TabOrder = 1
+      OnClick = btnFecharGradeItensClick
+    end
+    object btnCopiarItens: TButton
+      Left = 16
+      Top = 448
+      Width = 75
+      Height = 25
+      Hint = 'Copia os Itens do Filtro'
+      CustomHint = ballonHint
+      Caption = 'Copiar itens'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      OnClick = btnCopiarItensClick
+    end
+    object edCliente: TEdit
+      Left = 63
+      Top = 29
+      Width = 353
+      Height = 23
+      TabOrder = 3
+      Text = 'edCliente'
+    end
+  end
   object dsQueryFiltro: TDataSource
     DataSet = FDQueryFiltro
-    Left = 584
-    Top = 312
+    Left = 248
+    Top = 352
   end
   object FDQueryFiltro: TFDQuery
     Active = True
@@ -590,8 +806,8 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       
         'WHERE CODIGO between :CODIGO1 AND :CODIGO2 OR DESCRICAO LIKE :DE' +
         'SCRICAO')
-    Left = 992
-    Top = 320
+    Left = 256
+    Top = 280
     ParamData = <
       item
         Name = 'CODIGO1'
@@ -629,22 +845,10 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       Origin = 'grupo'
       Size = 60
     end
-    object FDQueryFiltronorma: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'norma'
-      Origin = 'norma'
-      Size = 60
-    end
     object FDQueryFiltroisolacao: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'isolacao'
       Origin = 'isolacao'
-      Size = 30
-    end
-    object FDQueryFiltrocobertura: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'cobertura'
-      Origin = 'cobertura'
       Size = 30
     end
     object FDQueryFiltroclasse: TStringField
@@ -653,22 +857,10 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       Origin = 'classe'
       Size = 30
     end
-    object FDQueryFiltroblindagem: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'blindagem'
-      Origin = 'blindagem'
-      Size = 30
-    end
     object FDQueryFiltrotemperatura: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'temperatura'
       Origin = 'temperatura'
-    end
-    object FDQueryFiltrocustomp: TStringField
-      AutoGenerateValue = arDefault
-      FieldName = 'customp'
-      Origin = 'customp'
-      Size = 10
     end
     object FDQueryFiltrokg_km: TFloatField
       AutoGenerateValue = arDefault
@@ -698,14 +890,108 @@ object frmTabelaFixaImportada: TfrmTabelaFixaImportada
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
     end
-    object FDQueryFiltrodaterecebida: TDateField
-      AutoGenerateValue = arDefault
-      FieldName = 'daterecebida'
-      Origin = 'daterecebida'
-    end
   end
   object ballonHint: TBalloonHint
-    Left = 1072
-    Top = 64
+    Left = 288
+    Top = 16
+  end
+  object memdata: TJvMemoryData
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'codigo'
+        DataType = ftString
+        Size = 60
+      end
+      item
+        Name = 'descricao'
+        DataType = ftString
+        Size = 100
+      end
+      item
+        Name = 'grupo'
+        DataType = ftString
+        Size = 60
+      end
+      item
+        Name = 'isolacao'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'classe'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'temperatura'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'kg_km'
+        DataType = ftFloat
+      end
+      item
+        Name = 'icms18'
+        DataType = ftFloat
+      end
+      item
+        Name = 'icms12'
+        DataType = ftFloat
+      end
+      item
+        Name = 'icms7'
+        DataType = ftFloat
+      end
+      item
+        Name = 'C67F70Z90'
+        DataType = ftSmallint
+      end>
+    DataSet = FDQueryFiltro
+    LoadRecords = True
+    ApplyMode = amAppend
+    Left = 694
+    Top = 274
+    object memdatacodigo: TStringField
+      FieldName = 'codigo'
+      Size = 60
+    end
+    object memdatadescricao: TStringField
+      FieldName = 'descricao'
+      Size = 100
+    end
+    object memdatagrupo: TStringField
+      FieldName = 'grupo'
+      Size = 60
+    end
+    object memdataisolacao: TStringField
+      FieldName = 'isolacao'
+      Size = 30
+    end
+    object memdataclasse: TStringField
+      FieldName = 'classe'
+      Size = 30
+    end
+    object memdatatemperatura: TStringField
+      FieldName = 'temperatura'
+    end
+    object memdatakg_km: TFloatField
+      FieldName = 'kg_km'
+    end
+    object memdataicms18: TFloatField
+      FieldName = 'icms18'
+    end
+    object memdataicms12: TFloatField
+      FieldName = 'icms12'
+    end
+    object memdataicms7: TFloatField
+      FieldName = 'icms7'
+    end
+  end
+  object dsmemdata: TDataSource
+    DataSet = memdata
+    Left = 822
+    Top = 274
   end
 end
